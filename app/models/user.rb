@@ -1,10 +1,10 @@
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token, :first_name, :last_name, :phone_number, presence: true
+  validates :username, uniqueness: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
   attr_reader :password
 
-  has_many :polls
-  has_many :groups
 
   after_initialize :ensure_session_token
 
