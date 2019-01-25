@@ -1,0 +1,162 @@
+.nav-logged-in {
+  height: 75px;
+  display: flex;
+  width: 100%; 
+  background-color: #1F3349;
+  color: white;
+  justify-content: space-between;
+}
+
+.nav-logged-in > li {
+  display: flex;
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
+  flex-direction: column;
+  /* text-align: center; */
+}
+
+.nav-logged-out {
+  height: 75px;
+  display: flex;
+  width: 950px; 
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: white;
+  font-weight: 550;
+} 
+
+.nav-logged-out > li {
+  display: flex;
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav-logged-out-expanded {
+  height: 75px;
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.nav-logged-out-expanded > li {
+  display: flex;
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
+  flex-direction: column;
+  /* text-align: center; */
+}
+
+.nav-logged-out-expanded:hover {
+  color: gray;
+}
+
+.nav-logged-out-expanded > li:hover {
+  color: black;
+}
+
+.nav-logged-in > li:hover {
+  background-color: #20445f;
+}
+
+.my_polls_logo {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  padding-left: 160px;
+  padding-right: 160px;
+}
+
+.logo{
+  display: flex;
+  width: 190px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.my_polls_logo:hover {
+  background-color: #1F3349;
+}
+.my_polls_logo_container:hover {
+  background-color: #1F3349;
+}
+
+/* .nav-logged-out-hamburger {
+  display: none;
+}
+
+
+@media all and (max-width: 900px) {
+  .nav-logged-out-expanded  {
+    display: none;
+  }
+
+  .nav-logged-out-hamburger {
+    display: block;
+    color: black;
+  }
+
+  .nav-logged-out-hamburger > li {
+    background: url(images/hamburger.png);
+    background-repeat: no-repeat;
+    background-size: 50px 50px; 
+    width: 100px;
+    height: 100px;
+    /* nearest relatively positioned parent of absolute positioned child */
+    /* position: relative;
+    cursor: pointer;
+  } */
+  /* .nav-logged-out-hamburger ul { */
+    /* Every time we position an element absolutely we should be thinking about
+    which parent element we need to position relatively */
+    /* position: absolute;
+    top: 300px;
+    left: 0;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: black 5px 5px 10px;
+  } */
+
+  /* This is how we create pure css dropdown effects. No JS required. */
+  /* .nav-logged-out-hamburger:hover ul {
+    display: flex;
+    background: ghostwhite;
+  }
+
+  .nav-logged-out-hamburger ul li:hover a {
+    text-decoration: underline;
+  }  */
+/* };  */
+
+.signup {
+  color: #6193C5;
+  border: 1px solid #6193C5;
+  width: 85px;
+  height: 30px;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.signup:hover {
+  background-color: #6193C5;
+  color: white;
+
+}
+
+.demo {
+  color: #6193C5;
+}
+.login {
+  color: #6193C5;
+}
+
