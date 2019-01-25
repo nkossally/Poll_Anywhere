@@ -41,7 +41,7 @@ const HomePage = () => {
         <ul>
           <li className="corporate-clients-big">
     
-              Over 75% of the Fortune 500 trust Poll Everywhere
+              Over 75% of the Fortune 500 trust Poll Anywhere
      
           </li>
           <li className="corporate-clients-small">
