@@ -1,0 +1,14 @@
+.create-poll{
+  display: flex;
+  border: 1px solid black
+}
+
+.poll-input-label{
+
+}
+
+.poll-input-box{
+  display: flex;
+  border: 1px solid black
+}
+

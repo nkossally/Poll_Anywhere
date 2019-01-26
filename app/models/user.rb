@@ -29,6 +29,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def poll_ids
+    self.polls.map{|poll| poll.id}
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)

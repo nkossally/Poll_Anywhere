@@ -5,15 +5,14 @@ import PollForm from './poll_form';
 
 const mapStateToProps = (state) => {
   return {
-    polls: state.entities.polls
+    polls: state.entities.polls,
+    user_id: state.session.id,
+    formType: "create-poll",
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  create: (poll) => dispatch(create(poll)),
-  destroy: (id) => dispatch(destroy(id)),
-  show: (id) => dispatch(show(id)),
-  showAll: () => dispatch(showAll()),
+  action: (poll) => dispatch(create(poll)),
 
 });
 

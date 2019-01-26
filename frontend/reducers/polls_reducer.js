@@ -1,4 +1,5 @@
 import { RECEIVE_POLL, RECEIVE_POLLS, DELETE_POLL } from '../actions/poll_actions';
+import merge from 'lodash/merge';
 
 const pollsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
