@@ -7,9 +7,17 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 
 
-export const logout = () => dispatch =>(
-  SessionApiUtil.logout().then(()=>(dispatch(logoutCurrentUser()))
-));
+export const logout = () => {
+  return dispatch => {
+    return SessionApiUtil.logout().then(
+      () => {
+        return dispatch(logoutCurrentUser());
+      }
+    )
+  }   
+};
+
+
 
 export const login = user => {
   return dispatch => {

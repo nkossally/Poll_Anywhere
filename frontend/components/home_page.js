@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   return(
     <ul>
-      <li class="container">
+      <li className="container">
         <img src={window.conference3} className="home-page-big-img" />
-        <ul class="top-left">
+        <ul className="top-left">
           <li className="first-img-big-txt">
           Live interactive audience participation
           </li>
