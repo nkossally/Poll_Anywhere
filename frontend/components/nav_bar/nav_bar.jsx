@@ -28,9 +28,9 @@ class NavBar extends React.Component {
               <Link id="support" to="">Support</Link>
             </li>
             <li>
-              <Link className="login" to="/login">Log in</Link>
+              <Link className="login-nav" to="/login">Log in</Link>
             </li>
-            <li className="signup">
+            <li className="signup-nav">
               <Link  to="/signup">Sign up</Link>
             </li>
             <li>

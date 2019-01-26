@@ -37,22 +37,22 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signup'){
       return(
         <div>
-          <label>First Name:
-          <input type="text"
+          <label className="input-label">First Name:
+          <input className="input-box" type="text"
             value={this.state.first_name}
             onChange={this.update('first_name')}
           />
         </label>
         <br/>
-        <label>Last Name:
-          <input type="text"
+        <label className="input-label">Last Name:
+          <input className="input-box" type="text"
             value={this.state.last_name}
             onChange={this.update('last_name')}
           />
         </label>
         <br/>
-        <label>Phone Number:
-          <input type="text"
+        <label className="input-label">Phone Number:
+          <input className="input-box" type="text"
             value={this.state.phone_number}
             onChange={this.update('phone_number')}
           />
@@ -62,6 +62,8 @@ class SessionForm extends React.Component {
       )
     }
   }
+  
+
 
   render() {
     return (
@@ -71,22 +73,25 @@ class SessionForm extends React.Component {
           {/* {this.props.formType} or {this.props.link} */}
           {this.renderErrors()}
             <br/>
-            <label>Username:
-              <input type="text"
+            <label className="input-label">Username:
+              <input className="input-box" type="text"
                 value={this.state.username}
-                onChange={this.update('username')}
+                onChange={this.update('username') }
               />
             </label>
             <br/>
-            <label>Password:
-              <input type="password"
+            <label className="input-label">Password:          </label>
+            <br/>
+              <input className="input-box" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
-            </label>
+  
             <br/>
             {this.additionalFields()}
-            <input type="submit" value={this.props.formType} />
+            {/* <input type="submit" value={this.props.formType} /> */}
+            <input type="submit" className={this.props.formType} value={this.props.formType}/>
+
           </div>
 
         </form>

@@ -1,0 +1,37 @@
+.input-label{
+  
+  font-weight: 500;
+}
+
+.input-box{
+  display: flex;
+  width: 460px;
+  height: 40px;
+  border: 1px solid #6193C5;
+}
+
+.login{
+  color: white;
+  display: flex;
+  width: 460px;
+  height: 40px;
+  background-color: #FC5D51;
+
+}
+
+.signup{
+  color: white;
+  display: flex;
+  width: 460px;
+  height: 40px;
+  background-color: #FC5D51;
+
+}
+
+.signup:hover {
+  background-color: #e75750;
+}
+
+.login:hover {
+  background-color: #e75750;
+}

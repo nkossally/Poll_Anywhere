@@ -136,7 +136,7 @@
   }  */
 /* };  */
 
-.signup {
+.signup-nav {
   color: #6193C5;
   border: 1px solid #6193C5;
   width: 85px;
@@ -147,16 +147,15 @@
   padding-right: 0px;
 }
 
-.signup:hover {
+.signup-nav:hover {
   background-color: #6193C5;
   color: white;
-
 }
 
 .demo {
   color: #6193C5;
 }
-.login {
+.login-nav {
   color: #6193C5;
 }
 

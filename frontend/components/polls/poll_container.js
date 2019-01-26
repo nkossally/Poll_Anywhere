@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {create, destroy, show, showAll } from '../../actions/poll_actions';
 
-import Poll from './poll';
+import PollForm from './poll_form';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Poll);
+export default connect(mapStateToProps, mapDispatchToProps)(PollForm);
