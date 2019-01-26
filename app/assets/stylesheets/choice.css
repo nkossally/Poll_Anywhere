@@ -1,0 +1,14 @@
+.create-choice{
+  display: flex;
+  border: 1px solid black
+}
+
+.choice-input-label{
+
+}
+
+.choice-input-box{
+  display: flex;
+  border: 1px solid black
+}
+

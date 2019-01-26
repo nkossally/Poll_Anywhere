@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 
-import * as PollActions from './actions/poll_actions';
+import * as ChoiceActions from './actions/choice_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.create = PollActions.create;
-  window.show = PollActions.show;
-  window.showAll = PollActions.showAll;
-  window.destroy = PollActions.destroy;
+  window.create = ChoiceActions.create;
+  window.show = ChoiceActions.show;
+  window.showAll = ChoiceActions.showAll;
+  window.destroy = ChoiceActions.destroy;
 
 
 

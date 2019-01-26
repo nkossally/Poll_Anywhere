@@ -6,7 +6,9 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import { AuthRoute } from '../util/route_util';
 import HomePage from './home_page';
-import CreateForm from './polls/create_poll_container';
+import CreatePollForm from './polls/create_poll_container';
+import CreateChoiceForm from './choices/create_choice_container';
+
 
 
 
@@ -23,7 +25,8 @@ const App = () => (
 
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/createPoll" component={CreateForm}/>
+      <Route exact path="/createpoll" component={CreatePollForm}/>
+      <Route exact path="/createchoice" component={CreateChoiceForm}/>
       <AuthRoute path="/" component={HomePage}/>
 
 
