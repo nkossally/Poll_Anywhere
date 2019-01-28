@@ -8,6 +8,9 @@ import { AuthRoute } from '../util/route_util';
 import HomePage from './home_page';
 import CreatePollForm from './polls/create_poll_container';
 import CreateChoiceForm from './choices/create_choice_container';
+import UserShow from './users/user_container';
+import PollShow from './polls/poll_show_container';
+import PollsShow from './polls/polls_show_container';
 
 
 
@@ -18,16 +21,29 @@ const App = () => (
   <div>
     <header>
       <NavBar />
-      <GreetingContainer />
     </header>
 
     <Switch>
 
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/createpoll" component={CreatePollForm}/>
+      <Route exact path="/polls" component={PollsShow}/>
+      <Route exact path="/polls/:pollId" component={PollShow}/>
+      <Route exact path="/users/:userId" component={UserShow}/>
+      <Route exact path="/users/:userId/polls/:pollId" component={PollShow}/>
+
+      <Route exact path="/users/:userId/createpoll" component={CreatePollForm} />
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
+
+      <Route exact path="/users/:userId/polls" component={PollsShow}/>
+
       <AuthRoute path="/" component={HomePage}/>
+
+      {/* <Route exact path="/users/:userId" component={UserShow}/> */}
+
+      
+      {/* <Route path="/createchoice" component={CreateChoiceForm}/> */}
+
 
 
 

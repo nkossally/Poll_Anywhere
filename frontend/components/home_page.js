@@ -70,13 +70,13 @@ const HomePage = () => {
             < img src={window.verizon} className="corporate-logo"/>     
           </ul>
       </li>
-      <li className="sign-up-block">
-        <ul>
+      <li >
+        <ul className="sign-up-block">
           <li>
             Sign up for your free account.
           </li>
           <li >
-            <button className="sign-up-now">Sign up now</button>
+            <Link className="sign-up-now" to="/signup">Sign up now</Link>
           </li>
         </ul>
       </li>

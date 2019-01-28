@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_many :polls
+  has_many :groups
 
   attr_reader :password
   after_initialize :ensure_session_token
@@ -31,6 +32,10 @@ class User < ApplicationRecord
 
   def poll_ids
     self.polls.map{|poll| poll.id}
+  end
+
+  def group_ids
+    self.groups.map{|group| group.id}
   end
 
   private

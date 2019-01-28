@@ -141,8 +141,10 @@
   border: 1px solid #6193C5;
   width: 85px;
   height: 30px;
+  display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
   padding-left: 0px;
   padding-right: 0px;
 }

@@ -5,7 +5,7 @@ import Root from './components/root';
 
 
 import * as ChoiceActions from './actions/choice_actions';
-
+import * as PollActions from './actions/poll_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.show = ChoiceActions.show;
   window.showAll = ChoiceActions.showAll;
   window.destroy = ChoiceActions.destroy;
+
+  window.showAll = PollActions.showAll;
 
 
 

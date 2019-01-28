@@ -8,17 +8,20 @@ class NavBar extends React.Component {
   render() {
     const navLinks = this.props.user ? (
       <ul className="nav-logged-in">
+        {/* <li className="logo"><Link to="">< img src={window.my_polls_logo} /></Link></li> */}
         <li className="my_polls_logo_container">< img src={window.my_polls_logo}  className="my_polls_logo" /></li>
         <li className="help">
           <Link to="">Help</Link>
         </li>
         <li className="logout">
-          <button onClick={this.props.logout}>Log out</button>
+          <button onClick={this.props.logout}>{this.props.user.username} Log out</button>
         </li>
       </ul>
     ) : (
       <ul className="nav-logged-out">
-        <li>< img src={window.logo}  className="logo" /></li>
+        <li>
+          <Link to="">< img src={window.logo}  className="logo" /></Link>
+        </li>
         <li>
           <ul className="nav-logged-out-expanded">
             <li>
@@ -30,8 +33,8 @@ class NavBar extends React.Component {
             <li>
               <Link className="login-nav" to="/login">Log in</Link>
             </li>
-            <li className="signup-nav">
-              <Link  to="/signup">Sign up</Link>
+            <li >
+              <Link className="signup-nav" to="/signup">Sign up</Link>
             </li>
             <li>
               <button className="demo" onClick={this.props.demo}>demo</button>
