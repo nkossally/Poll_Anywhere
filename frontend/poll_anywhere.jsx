@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.create = ChoiceActions.create;
+  window.createChoice = ChoiceActions.createChoice;
   window.show = ChoiceActions.show;
   window.showAll = ChoiceActions.showAll;
   window.destroy = ChoiceActions.destroy;

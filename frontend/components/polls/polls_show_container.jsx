@@ -4,11 +4,9 @@ import {create, destroy, show, showAll } from '../../actions/poll_actions';
 import PollsShow from './polls_show';
 
 const mapStateToProps = (state) => {
-  debugger
+  
   return {
-    
-    polls: Object.keys(state.entities.polls).map((id)=>state.entities.polls[id])
-    
+    polls: Object.keys(state.entities.polls).map((id)=>state.entities.polls[id])  
   };
 };
 

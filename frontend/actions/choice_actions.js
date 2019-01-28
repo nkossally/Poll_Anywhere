@@ -6,7 +6,7 @@ export const DELETE_CHOICE = 'DELETE_CHOICE';
 export const RECEIVE_CHOICE_ERRORS = 'RECEIVE_CHOICE_ERRORS';
 
 
-export const create = (choice) =>{
+export const createChoice = (choice) =>{
   return dispatch =>{
     ChoiceApiUtil.create(choice).then(
       (choice) =>{

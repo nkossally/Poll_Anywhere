@@ -9,6 +9,9 @@
 
 .choice-input-box{
   display: flex;
-  border: 1px solid black
+  flex-direction: column;
+  width: 975px;
+  height: 50px;
+  background-color: white;
 }
 

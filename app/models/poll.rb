@@ -2,7 +2,7 @@ class Poll < ApplicationRecord
   validates :body, :category, :active, :user_id, presence: true
   validates :category, inclusion: { in: %w(multiple_choice free_response) }
   belongs_to :user
-  belongs_to :group
+  # belongs_to :group
   has_many :choices
   has_many :responses
 

@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 class ChoiceForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { poll_id: this.props.poll_id, body: ""};
+    debugger
+    // this.state = { poll_id: this.props.poll_id, body: ""};
+    this.state = { poll_id: props.poll_id, body: props.body};
     this.handleSubmit = this.handleSubmit.bind(this);
+    debugger
 
   }
 
@@ -16,27 +19,31 @@ class ChoiceForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
-    const poll = Object.assign({}, this.state);
-    this.props.action(poll);
+    const choice = Object.assign({}, this.state);
+    this.createChoice(choice);
   }
 
-
+  componentDidMount(){
+    // this.props.fetchPost(this.props.match.params.pollId)
+  }
 
   render() {
+    
     return (
       <div >
         <form onSubmit={this.handleSubmit} >
           <label className="choice-input-label">Choice: </label>
             <input className="choice-input-box" type="text"
               value={this.state.body}
-              onChange={this.update('body') }
-              />
+              onChange={this.props.updateChoice }
+              />     
   
-            <input type="submit" className={this.props.formType} value={this.props.formType}/>
+            {/* <input type="submit" className={this.props.formType} value={this.props.formType}/> */}
 
         </form>
-      </div>
+      </div>                                                           
     );
   }
 }
