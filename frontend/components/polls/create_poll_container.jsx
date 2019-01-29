@@ -5,7 +5,7 @@ import {createChoice} from '../../actions/choice_actions';
 import PollForm from './poll_form';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  // debugger
   return {
     polls: state.entities.polls,
     // user_id: state.session.id,
@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  action: (poll) => dispatch(create(poll)),
+  action: (poll, choices) => dispatch(create(poll, choices)),
   createChoice: (choice) => dispatch(createChoice(choice)),
 
 });

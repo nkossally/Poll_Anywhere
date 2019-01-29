@@ -8,8 +8,8 @@ class PollForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { user_id: this.props.user_id, body: "", category: "",
-    active: true, choice1: {}, choice2: {}, choice1Body: "", choice2Body: ""
-     };
+    active: true, choice1Body: "", choice2Body: "",
+    choices: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.updateChoice = this.updateChoice.bind(this);
     this.submitChoices = this.submitChoices.bind(this);
@@ -23,14 +23,14 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const poll = {user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
-    
-    let dispatchReturn = this.props.action(poll)
+    this.state.choices.push({body: this.state.choice1Body});
+    this.state.choices.push({body: this.state.choice2Body});
     debugger
-    this.submitChoices();
+    this.props.action(poll, this.state.choices);
+    // this.submitChoices();
   }
 
   submitChoices(){
@@ -54,18 +54,6 @@ class PollForm extends React.Component {
   // }
 
  
-
-  // choiceForms(){
-  //   let choiceOne = <ChoiceForm updateChoice={this.updateChoice(1)}/>;
-  //   let choiceTwo = <ChoiceForm  updateChoice={this.updateChoice(2)}/>;
-  //   return(
-  //     <div>
-  //       {choiceOne}
-  //       {choiceTwo}
-  //     </div>
-  //   );
-  // }
-
 
   render() {
     
@@ -95,7 +83,6 @@ class PollForm extends React.Component {
 
           </form>
         </div>  
-        {/* {choiceForms} */}
 
       </div>
     );

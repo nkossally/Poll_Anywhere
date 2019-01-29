@@ -7,11 +7,12 @@
 
 }
 .gray-box{
-  /* background-color: #D3D3D3;
+  background-color: #D3D3D3;
   display: flex;
   min-height: 100vh;
-  flex-direction: row; */
-
+  flex-direction: column;
+  justify-content: center;
+  
 }
 
 .choice-inside-poll{
@@ -19,7 +20,7 @@
   width: 975px;
   height: 50px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid blue;
 }
 
 .white-box{

@@ -7,9 +7,7 @@ import ChoiceForm from './choice_form';
 const mapStateToProps = (state) => {
   debugger
   return {
-    
-    // poll_id: state.entities.polls[ownProps.match.params.pollId] || 4,
-    poll_id: state.session.poll_id || 5,
+  
     body: "",
     formType: "create-choice",
   };
