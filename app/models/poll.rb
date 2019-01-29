@@ -10,6 +10,10 @@ class Poll < ApplicationRecord
     self.choices.map{|choice| choice.id}
   end
 
+  def choicess
+    self.choices
+  end
+
   def response_ids
     self.responses.map{|response| response.id}
   end

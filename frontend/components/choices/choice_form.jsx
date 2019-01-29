@@ -13,6 +13,7 @@ class ChoiceForm extends React.Component {
   }
 
   update(field) {
+    debugger
     return e => this.setState({
       [field]: e.currentTarget.value
     });
@@ -37,6 +38,9 @@ class ChoiceForm extends React.Component {
           <label className="choice-input-label">Choice: </label>
             <input className="choice-input-box" type="text"
               value={this.state.body}
+              // value={""}
+              // onChange={this.props.update }
+
               onChange={this.props.updateChoice }
               />     
   

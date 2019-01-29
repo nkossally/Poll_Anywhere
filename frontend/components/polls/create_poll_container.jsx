@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   action: (poll) => dispatch(create(poll)),
-  createChoice: (choice) => dispatch(createChoice),
+  createChoice: (choice) => dispatch(createChoice(choice)),
 
 });
 

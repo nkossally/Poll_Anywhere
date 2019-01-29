@@ -11,10 +11,12 @@ class PollShow extends React.Component {
 
   render(){
     const poll = this.props.poll || {};
-    
+    debugger
+
     return(
       <h4>
-        id:{poll.id}, body: {poll.body}, user_id: {poll.user_id}
+        id:{poll.id}, body: {poll.body}, user_id: {poll.user_id} , 
+        choice_ids: {poll.choice_ids}
       </h4>
     )
   }

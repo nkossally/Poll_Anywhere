@@ -32,6 +32,8 @@ export const show = (id) =>{
   }
 }
 
+
+
 export const showAll = () =>{
   return dispatch =>{
     PollApiUtil.showAll().then(
