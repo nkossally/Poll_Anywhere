@@ -7,13 +7,12 @@ import merge from 'lodash/merge';
 class PollForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = { user_id: this.props.user_id, body: "", category: "",
     active: true, choice1Body: "", choice2Body: "",
-    choices: [] };
+    choices: [], choiceArray: []};
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.updateChoice = this.updateChoice.bind(this);
-    this.submitChoices = this.submitChoices.bind(this);
-
+    this.addChoice = this.addChoice.bind(this);
   }
 
   update(field) {
@@ -23,6 +22,7 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const poll = {user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
@@ -30,21 +30,24 @@ class PollForm extends React.Component {
     this.state.choices.push({body: this.state.choice2Body});
     debugger
     this.props.action(poll, this.state.choices);
-    // this.submitChoices();
   }
 
-  submitChoices(){
+  addChoice(){
     debugger
-    // const choice1 = merge({}, this.state.choice1, {poll_id: 5});
-    // const choice2 = merge({}, this.state.choice2, {poll_id: 5});
-
-    const choice1 = merge({}, {body: this.state.choice1Body, poll_id: 5});
-    const choice2 = merge({}, {body: this.state.choice2Body, poll_id: 5});
-    debugger
-
-    this.props.createChoice(choice1);
-    this.props.createChoice(choice2);
+ 
+      // this.render();
+      let newArr = this.state.choiceArray;
+      newArr.push(
+        <input className="choice-inside-poll"  />
+      )
+      this.setState({
+        choiceArray: newArr
+      });
   }
+
+  
+
+
 
   // updateChoice(num){
   //   debugger
@@ -53,7 +56,7 @@ class PollForm extends React.Component {
   //   }
   // }
 
- 
+
 
   render() {
     
@@ -77,11 +80,16 @@ class PollForm extends React.Component {
                   value={this.state.body}
                   onChange={this.update('body')}
                 />
-                      <input className="choice-inside-poll" onChange={this.update('choice1Body')} />
+              <input className="choice-inside-poll" onChange={this.update('choice1Body')} />
               <input className="choice-inside-poll"  onChange={this.update('choice2Body')} />
+              <ul>
+                {this.state.choiceArray}
+              </ul>
               <input type="submit" className="submit-button" value={this.props.formType}/>
 
           </form>
+
+          <button className="add-choice" onClick={this.addChoice}>Add option</button>
         </div>  
 
       </div>

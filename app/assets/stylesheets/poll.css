@@ -6,6 +6,13 @@
 .poll-input-label{
 
 }
+
+.add-choice{
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
 .gray-box{
   background-color: #D3D3D3;
   display: flex;
