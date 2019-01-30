@@ -6,11 +6,24 @@ export const DELETE_CHOICE = 'DELETE_CHOICE';
 export const RECEIVE_CHOICE_ERRORS = 'RECEIVE_CHOICE_ERRORS';
 
 
-export const createChoice = (choice) =>{
+// export const createChoice = (choice) =>{
+//   return dispatch =>{
+//     ChoiceApiUtil.createChoice(choice).then(
+//       (choice) =>{
+//         return dispatch(receiveChoice(choice))
+//       },
+//       errors =>{
+//         return dispatch(receiveChoiceErrors(errors.responseJSON));
+//       }
+//     )
+//   }
+// }
+
+export const createChoice = (choiceArr, poll) =>{
   return dispatch =>{
-    ChoiceApiUtil.createChoice(choice).then(
-      (choice) =>{
-        return dispatch(receiveChoice(choice))
+    ChoiceApiUtil.createChoice(choiceArr, poll).then(
+      (choiceArr) =>{
+        return dispatch(receiveChoice(choiceArr))
       },
       errors =>{
         return dispatch(receiveChoiceErrors(errors.responseJSON));

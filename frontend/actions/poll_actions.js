@@ -10,33 +10,13 @@ import merge from 'lodash/merge';
 
 
 
-export const createPoll = (poll, choices) =>{
-  // debugger
-  return dispatch =>{
-    PollApiUtil.createPoll(poll).then(
-      (poll) =>{
-        // debugger
-        choices.forEach(choice => {
-          dispatch(ChoiceActions.createChoice({poll_id: poll.id, body: choice}))
-        });
-      }).then(
-        (poll) =>{
-          debugger
-        return dispatch(receivePoll(poll))
-      },
-      errors =>{
-        return dispatch(receivePollErrors(errors.responseJSON));
-      }
-    )
-  }
-}
-
-// export const create = (poll, choices) =>{
+// export const createPoll = (poll, choices) =>{
 //   return dispatch =>{
-//     PollApiUtil.create(poll).then(
+//     PollApiUtil.createPoll(poll).then(
 //       (poll) =>{
-//         debugger
-//           dispatch(ChoiceActions.createChoice(choices, poll))
+//         choices.forEach(choice => {
+//           dispatch(ChoiceActions.createChoice({poll_id: poll.id, body: choice}))
+//         });
 //       }).then(
 //         (poll) =>{
 //           debugger
@@ -48,6 +28,24 @@ export const createPoll = (poll, choices) =>{
 //     )
 //   }
 // }
+
+export const createPoll = (poll, choices) =>{
+  return dispatch =>{
+    PollApiUtil.createPoll(poll, choices).then(
+      (poll) =>{
+        debugger
+          dispatch(ChoiceActions.createChoice(choices, poll))
+      }).then(
+        (poll) =>{
+          debugger
+        return dispatch(receivePoll(poll))
+      },
+      errors =>{
+        return dispatch(receivePollErrors(errors.responseJSON));
+      }
+    )
+  }
+}
 
 export const showPoll = (id) =>{
   return dispatch =>{

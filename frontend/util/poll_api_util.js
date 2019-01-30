@@ -1,10 +1,21 @@
-export const createPoll = (poll)=>(
-  $.ajax({
+// export const createPoll = (poll)=>(
+//   $.ajax({
+// 		method: 'POST',
+// 		url: '/api/polls',
+// 		data: { poll }
+//   })
+// )
+
+export const createPoll = (poll, choices)=>{
+	debugger
+  return(
+		$.ajax({
 		method: 'POST',
 		url: '/api/polls',
-		data: { poll }
-  })
-)
+		data: { poll, choices }
+  	})
+	)
+}
 
 export const showPoll = (id)=>(
   $.ajax({

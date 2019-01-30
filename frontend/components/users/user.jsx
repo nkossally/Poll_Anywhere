@@ -13,7 +13,8 @@ class User extends React.Component {
 
 
   render() {
-    
+    // debugger
+    // if (!this.props.polls) return null
 
     return (
       <h4>
@@ -22,9 +23,8 @@ class User extends React.Component {
         <p>username: {this.props.user.username}</p>
         <p>polls:</p> 
         <ul>
-        {this.props.user.polls.map((poll)=>poll.body)}
+        {this.props.polls.map((poll)=>poll.body)}
         </ul>
-
         
       </h4>
 
