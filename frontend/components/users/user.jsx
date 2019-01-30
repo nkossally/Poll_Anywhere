@@ -7,14 +7,19 @@ class User extends React.Component {
     
   }
 
+  componentDidMount(){
+    this.props.showAllPolls();
+  }
 
 
   render() {
 
     return (
       <h4>
-        first name: {this.props.user.first_name}, last name: {this.props.user.lastt_name}, username: {this.props.user.username},
-        polls: 
+        <p>first name: {this.props.user.first_name}</p> 
+        <p>last name: {this.props.user.last_name}</p>
+        <p>username: {this.props.user.username}</p>
+        <p>polls:</p> 
         <ul>
         {this.props.user.polls.map((poll)=>poll.body)}
         </ul>

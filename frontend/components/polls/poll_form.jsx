@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ChoiceForm from "../choices/create_choice_container";
 import merge from 'lodash/merge';
-// import {saveId} from '../../actions/poll_actions'
 
 class PollForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { user_id: this.props.user_id, body: "", category: "",
-    active: true, choice1Body: "", choice2Body: "",
-    choices: [], choiceArray: []};
+    active: true, choice1: "", choice2: "", choiceArray: [
+      <input className="choice-inside-poll" onChange={this.update('choice1')} />,
+      <input className="choice-inside-poll"  onChange={this.update('choice2')} />
+    ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
   }
@@ -22,26 +23,30 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const poll = {user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
-    this.state.choices.push({body: this.state.choice1Body});
-    this.state.choices.push({body: this.state.choice2Body});
-    debugger
-    this.props.action(poll, this.state.choices);
+    let choiceObject = this.state;
+    
+    delete choiceObject["user_id"];
+    delete choiceObject["body"];
+    delete choiceObject["category"];
+    delete choiceObject["active"];
+    delete choiceObject["choiceArray"];
+    let choices = Object.values(choiceObject);    
+    this.props.action(poll, choices);
   }
 
-  addChoice(){
-    debugger
- 
-      // this.render();
+  addChoice(e){
+    
+      e.preventDefault();
       let newArr = this.state.choiceArray;
+      const identifier = newArr.length;
       newArr.push(
-        <input className="choice-inside-poll"  />
+        <input className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
       )
       this.setState({
-        choiceArray: newArr
+        choiceArray: newArr, [`choice${identifier}`]: ""
       });
   }
 
@@ -63,7 +68,7 @@ class PollForm extends React.Component {
     return (
       <div >
         <div className="white-box" />
-        <div className="gray-box">
+        <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >
             <label className="poll-input-label">Category: </label><br></br>
             
@@ -80,17 +85,16 @@ class PollForm extends React.Component {
                   value={this.state.body}
                   onChange={this.update('body')}
                 />
-              <input className="choice-inside-poll" onChange={this.update('choice1Body')} />
-              <input className="choice-inside-poll"  onChange={this.update('choice2Body')} />
+
               <ul>
                 {this.state.choiceArray}
               </ul>
-              <input type="submit" className="submit-button" value={this.props.formType}/>
+              <button className="add-choice" onClick={this.addChoice}>Add option</button>
 
+              <input type="submit" className="submit-button" value={this.props.formType}/>
           </form>
 
-          <button className="add-choice" onClick={this.addChoice}>Add option</button>
-        </div>  
+        </ul>  
 
       </div>
     );

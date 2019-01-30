@@ -9,6 +9,18 @@ class Api:: ChoicesController < ApplicationController
     end
   end
 
+  # def create
+  #   debugger
+  #   choice_params[:choiceArr].each do |choice|
+  #     newChoice = Choice.new({body: choice[:body], poll_id: choice_params[:poll][:id]})
+  #     if newChoice.save
+  #     else
+  #       render json: newChoice.errors.full_messages, status: 422
+  #       break
+  #     end
+  #   end
+  # end
+
   def show
     @choice = Choice.find_by(id: params[:id])
     if(@choice)
@@ -29,6 +41,11 @@ class Api:: ChoicesController < ApplicationController
       choice.destroy
     end
   end
+
+  # def choice_params
+  #   debugger
+  #   params.require(:choiceArr).permit()
+  # end
 
   def choice_params
     params.require(:choice).permit(:body, :poll_id)

@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
-import {create, destroy, show, showAll } from '../../actions/response_actions';
+import {create } from '../../actions/response_actions';
+import { show } from '../../actions/poll_actions';
 
 import ResponseForm from './response_form';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    poll_id: state.entities.polls,
-    user_id: state.session.id,
+    poll_id: ownProps.match.params.pollId,
     formType: "create-response",
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  action: (poll) => dispatch(create(poll)),
+  action: (response) => dispatch(create(response)),
+  show: (id)=> dispatch(show(id))
 
 });
 

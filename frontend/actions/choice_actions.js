@@ -8,7 +8,7 @@ export const RECEIVE_CHOICE_ERRORS = 'RECEIVE_CHOICE_ERRORS';
 
 export const createChoice = (choice) =>{
   return dispatch =>{
-    ChoiceApiUtil.create(choice).then(
+    ChoiceApiUtil.createChoice(choice).then(
       (choice) =>{
         return dispatch(receiveChoice(choice))
       },
@@ -32,7 +32,7 @@ export const show = (id) =>{
   }
 }
 
-export const showAll = () =>{
+export const showAllChoices = () =>{
   return dispatch =>{
     ChoiceApiUtil.showAll().then(
       (choices) =>{

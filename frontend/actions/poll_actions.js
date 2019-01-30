@@ -5,24 +5,23 @@ export const RECEIVE_POLLS = 'RECEIVE_POLLS';
 export const DELETE_POLL = 'DELETE_POLL';
 export const RECEIVE_POLL_ERRORS = 'RECEIVE_POLL_ERRORS';
 
-// import * as ChoiceApiUtil from '../util/choice_api_util';
-import * as ChoiceApiUtil from './choice_actions';
+import * as ChoiceActions from './choice_actions';
 import merge from 'lodash/merge';
 
 
 
 export const create = (poll, choices) =>{
-  debugger
+  // debugger
   return dispatch =>{
     PollApiUtil.create(poll).then(
       (poll) =>{
-        debugger
+        // debugger
         choices.forEach(choice => {
-          let updateChoice = merge({}, choice, {poll_id: poll.id})
-          dispatch(ChoiceApiUtil.createChoice(updateChoice))
+          dispatch(ChoiceActions.createChoice({poll_id: poll.id, body: choice}))
         });
       }).then(
         (poll) =>{
+          debugger
         return dispatch(receivePoll(poll))
       },
       errors =>{
@@ -31,6 +30,24 @@ export const create = (poll, choices) =>{
     )
   }
 }
+
+// export const create = (poll, choices) =>{
+//   return dispatch =>{
+//     PollApiUtil.create(poll).then(
+//       (poll) =>{
+//         debugger
+//           dispatch(ChoiceActions.createChoice(choices, poll))
+//       }).then(
+//         (poll) =>{
+//           debugger
+//         return dispatch(receivePoll(poll))
+//       },
+//       errors =>{
+//         return dispatch(receivePollErrors(errors.responseJSON));
+//       }
+//     )
+//   }
+// }
 
 export const show = (id) =>{
   return dispatch =>{

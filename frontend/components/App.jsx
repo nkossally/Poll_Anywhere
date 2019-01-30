@@ -11,6 +11,7 @@ import CreateChoiceForm from './choices/create_choice_container';
 import UserShow from './users/user_container';
 import PollShow from './polls/poll_show_container';
 import PollsShow from './polls/polls_show_container';
+import ResponseForm from './responses/create_response_container';
 
 
 
@@ -32,6 +33,8 @@ const App = () => (
       <Route exact path="/users/:userId" component={UserShow}/>
       <Route exact path="/createpoll" component={CreatePollForm} />
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
+      <Route exact path="/polls/:pollId/respond" component={ResponseForm}/>
+
       <AuthRoute path="/" component={HomePage}/>
 
 
