@@ -10,10 +10,10 @@ import merge from 'lodash/merge';
 
 
 
-export const create = (poll, choices) =>{
+export const createPoll = (poll, choices) =>{
   // debugger
   return dispatch =>{
-    PollApiUtil.create(poll).then(
+    PollApiUtil.createPoll(poll).then(
       (poll) =>{
         // debugger
         choices.forEach(choice => {
@@ -49,9 +49,9 @@ export const create = (poll, choices) =>{
 //   }
 // }
 
-export const show = (id) =>{
+export const showPoll = (id) =>{
   return dispatch =>{
-    PollApiUtil.show(id).then(
+    PollApiUtil.showPoll(id).then(
       (poll) =>{
         return dispatch(receivePoll(poll))
       },
@@ -64,9 +64,9 @@ export const show = (id) =>{
 
 
 
-export const showAll = () =>{
+export const showAllPolls = () =>{
   return dispatch =>{
-    PollApiUtil.showAll().then(
+    PollApiUtil.showAllPolls().then(
       (polls) =>{
         return dispatch(receivePolls(polls))
       },
@@ -77,9 +77,9 @@ export const showAll = () =>{
   }
 }
 
-export const destroy = (id) =>{
+export const destroyPoll = (id) =>{
   return dispatch =>{
-    PollApiUtil.destroy(id).then(
+    PollApiUtil.destroyPoll(id).then(
       () =>{
         return dispatch(deletePoll(id))
       },

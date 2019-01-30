@@ -16,21 +16,21 @@ export const createChoice = (choice)=>(
 //   }))
 // }
 
-export const show = (id)=>(
+export const showChoice = (id)=>(
   $.ajax({
 		method: 'GET',
 		url: `/api/choices/${id}`,
   })
 )
 
-export const showAll = ()=>(
+export const showAllChoices = ()=>(
   $.ajax({
 		method: 'GET',
 		url: '/api/choices'
   })
 )
 
-export const destroy = (id)=>(
+export const destroyChoice = (id)=>(
   $.ajax({
 		method: 'DELETE',
 		url: `/api/choices/${id}`

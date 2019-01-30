@@ -6,9 +6,9 @@ export const DELETE_GROUP = 'DELETE_GROUP';
 export const RECEIVE_GROUP_ERRORS = 'RECEIVE_GROUP_ERRORS';
 
 
-export const create = (group) =>{
+export const createGroup = (group) =>{
   return dispatch =>{
-    GroupApiUtil.create(group).then(
+    GroupApiUtil.createGroup(group).then(
       (group) =>{
         return dispatch(receiveGroup(group))
       },
@@ -19,9 +19,9 @@ export const create = (group) =>{
   }
 }
 
-export const show = (id) =>{
+export const showGroup = (id) =>{
   return dispatch =>{
-    GroupApiUtil.show(id).then(
+    GroupApiUtil.showGroup(id).then(
       (group) =>{
         return dispatch(receiveGroup(group))
       },
@@ -32,9 +32,9 @@ export const show = (id) =>{
   }
 }
 
-export const showAll = () =>{
+export const showAllGroups = () =>{
   return dispatch =>{
-    GroupApiUtil.showAll().then(
+    GroupApiUtil.showAllGroups().then(
       (groups) =>{
         return dispatch(receiveGroups(groups))
       },
@@ -45,9 +45,9 @@ export const showAll = () =>{
   }
 }
 
-export const destroy = (id) =>{
+export const destroyGroup = (id) =>{
   return dispatch =>{
-    GroupApiUtil.destroy(id).then(
+    GroupApiUtil.destroyGroup(id).then(
       () =>{
         return dispatch(deleteGroup(id))
       },

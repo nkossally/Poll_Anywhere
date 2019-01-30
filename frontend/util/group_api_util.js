@@ -1,4 +1,4 @@
-export const create = (group)=>(
+export const createGroup = (group)=>(
   $.ajax({
 		method: 'POST',
 		url: '/api/groups',
@@ -6,21 +6,21 @@ export const create = (group)=>(
   })
 )
 
-export const show = (id)=>(
+export const showGroup = (id)=>(
   $.ajax({
 		method: 'GET',
 		url: `/api/groups/${id}`,
   })
 )
 
-export const showAll = ()=>(
+export const showAllGroups = ()=>(
   $.ajax({
 		method: 'GET',
 		url: '/api/groups'
   })
 )
 
-export const destroy = (id)=>(
+export const destroyGroup = (id)=>(
   $.ajax({
 		method: 'DELETE',
 		url: `/api/groups/${id}`

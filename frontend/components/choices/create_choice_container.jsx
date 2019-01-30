@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import {create } from '../../actions/choice_actions';
-import {show } from '../../actions/poll_actions';
+import {createChoice } from '../../actions/choice_actions';
+import {showPoll } from '../../actions/poll_actions';
 
 import ChoiceForm from './choice_form';
 

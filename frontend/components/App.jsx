@@ -35,6 +35,7 @@ const App = () => (
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
       <Route exact path="/polls/:pollId/respond" component={ResponseForm}/>
 
+
       <AuthRoute path="/" component={HomePage}/>
 
 

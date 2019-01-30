@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {create, destroy, show, showAll } from '../../actions/poll_actions';
+import {createPoll, showPoll, showAllPolls } from '../../actions/poll_actions';
 import {createChoice} from '../../actions/choice_actions';
 
 import PollForm from './poll_form';
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  action: (poll, choices) => dispatch(create(poll, choices)),
+  action: (poll, choices) => dispatch(createPoll(poll, choices)),
   createChoice: (choice) => dispatch(createChoice(choice)),
 
 });

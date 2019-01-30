@@ -7,7 +7,7 @@ class ResponseForm extends React.Component {
 
   render(){
     debugger
-    const poll = this.props.show(this.props.poll_id);
+    const poll = this.props.showPoll(this.props.poll_id);
     debugger
     return(
       <div>

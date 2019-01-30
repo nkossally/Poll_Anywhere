@@ -19,9 +19,9 @@ export const createChoice = (choice) =>{
   }
 }
 
-export const show = (id) =>{
+export const showChoice = (id) =>{
   return dispatch =>{
-    ChoiceApiUtil.show(id).then(
+    ChoiceApiUtil.showChoice(id).then(
       (choice) =>{
         return dispatch(receiveChoice(choice))
       },
@@ -34,7 +34,7 @@ export const show = (id) =>{
 
 export const showAllChoices = () =>{
   return dispatch =>{
-    ChoiceApiUtil.showAll().then(
+    ChoiceApiUtil.showAllChoices().then(
       (choices) =>{
         return dispatch(receiveChoices(choices))
       },
@@ -45,9 +45,9 @@ export const showAllChoices = () =>{
   }
 }
 
-export const destroy = (id) =>{
+export const destroyChoice = (id) =>{
   return dispatch =>{
-    ChoiceApiUtil.destroy(id).then(
+    ChoiceApiUtil.destroyChoice(id).then(
       () =>{
         return dispatch(deleteChoice(id))
       },

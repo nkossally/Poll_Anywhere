@@ -1,4 +1,4 @@
-export const create = (response)=>(
+export const createResponse = (response)=>(
   $.ajax({
 		method: 'POST',
 		url: '/api/responses',
@@ -6,21 +6,21 @@ export const create = (response)=>(
   })
 )
 
-export const show = (id)=>(
+export const showResponse = (id)=>(
   $.ajax({
 		method: 'GET',
 		url: `/api/responses/${id}`,
   })
 )
 
-export const showAll = ()=>(
+export const showAllResponses = ()=>(
   $.ajax({
 		method: 'GET',
 		url: '/api/responses'
   })
 )
 
-export const destroy = (id)=>(
+export const destroyResponse = (id)=>(
   $.ajax({
 		method: 'DELETE',
 		url: `/api/responses/${id}`

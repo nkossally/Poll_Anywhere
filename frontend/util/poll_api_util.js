@@ -1,4 +1,4 @@
-export const create = (poll)=>(
+export const createPoll = (poll)=>(
   $.ajax({
 		method: 'POST',
 		url: '/api/polls',
@@ -6,21 +6,21 @@ export const create = (poll)=>(
   })
 )
 
-export const show = (id)=>(
+export const showPoll = (id)=>(
   $.ajax({
 		method: 'GET',
 		url: `/api/polls/${id}`,
   })
 )
 
-export const showAll = ()=>(
+export const showAllPolls = ()=>(
   $.ajax({
 		method: 'GET',
 		url: '/api/polls'
   })
 )
 
-export const destroy = (id)=>(
+export const destroyPoll = (id)=>(
   $.ajax({
 		method: 'DELETE',
 		url: `/api/polls/${id}`

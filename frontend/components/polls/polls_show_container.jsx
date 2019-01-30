@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {create, destroy, show, showAll } from '../../actions/poll_actions';
+import {createPoll, showPoll, showAllPolls } from '../../actions/poll_actions';
 
 import PollsShow from './polls_show';
 
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  action: () => dispatch(showAll()),
+  action: () => dispatch(showAllPolls()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PollsShow);

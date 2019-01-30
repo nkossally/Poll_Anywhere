@@ -23,7 +23,7 @@ class ChoiceForm extends React.Component {
     debugger
     e.preventDefault();
     const choice = Object.assign({}, this.state);
-    this.createChoice(choice);
+    this.props.action(choice);
   }
 
   componentDidMount(){

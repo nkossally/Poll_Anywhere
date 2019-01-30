@@ -6,9 +6,9 @@ export const DELETE_RESPONSE = 'DELETE_RESPONSE';
 export const RECEIVE_RESPONSE_ERRORS = 'RECEIVE_RESPONSE_ERRORS';
 
 
-export const create = (response) =>{
+export const createResponse = (response) =>{
   return dispatch =>{
-    ResponseApiUtil.create(response).then(
+    ResponseApiUtil.createResponse(response).then(
       (response) =>{
         return dispatch(receiveResponse(response))
       },
@@ -19,9 +19,9 @@ export const create = (response) =>{
   }
 }
 
-export const show = (id) =>{
+export const showResponse = (id) =>{
   return dispatch =>{
-    ResponseApiUtil.show(id).then(
+    ResponseApiUtil.showResponse(id).then(
       (response) =>{
         return dispatch(receiveResponse(response))
       },
@@ -32,9 +32,9 @@ export const show = (id) =>{
   }
 }
 
-export const showAll = () =>{
+export const showAllResponses = () =>{
   return dispatch =>{
-    ResponseApiUtil.showAll().then(
+    ResponseApiUtil.showAllResponses().then(
       (responses) =>{
         return dispatch(receiveResponses(responses))
       },
@@ -45,9 +45,9 @@ export const showAll = () =>{
   }
 }
 
-export const destroy = (id) =>{
+export const destroyResponse = (id) =>{
   return dispatch =>{
-    ResponseApiUtil.destroy(id).then(
+    ResponseApiUtil.destroyResponse(id).then(
       () =>{
         return dispatch(deleteResponse(id))
       },
