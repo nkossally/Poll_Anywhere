@@ -6,6 +6,7 @@ export const DELETE_POLL = 'DELETE_POLL';
 export const RECEIVE_POLL_ERRORS = 'RECEIVE_POLL_ERRORS';
 
 import * as ChoiceActions from './choice_actions';
+import * as ChoiceApiUtil from '../util/choice_api_util';
 import merge from 'lodash/merge';
 
 
@@ -34,16 +35,16 @@ export const createPoll = (poll, choices) =>{
     PollApiUtil.createPoll(poll, choices).then(
       (poll) =>{
         debugger
-          dispatch(ChoiceActions.createChoice(choices, poll))
-      }).then(
-        (poll) =>{
-          debugger
-        return dispatch(receivePoll(poll))
-      },
-      errors =>{
-        return dispatch(receivePollErrors(errors.responseJSON));
-      }
-    )
+           return ChoiceApiUtil.createChoice(choices, poll).then(
+            (poll) =>{
+              // dispatch receive choices
+            return dispatch(receivePoll(poll))
+          },
+          errors =>{
+            return dispatch(receivePollErrors(errors.responseJSON));
+          }
+        )
+      })
   }
 }
 

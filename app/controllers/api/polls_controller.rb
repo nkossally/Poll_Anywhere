@@ -1,4 +1,4 @@
-class Api:: PollsController < ApplicationController
+class Api::PollsController < ApplicationController
 
   def create
     @poll = Poll.new(poll_params)
