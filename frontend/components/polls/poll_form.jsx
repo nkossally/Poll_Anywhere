@@ -17,12 +17,18 @@ class PollForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e =>{
+      debugger
+      e.preventDefault();
+      e.stopPropagation();
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    } 
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const poll = {user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
@@ -67,31 +73,35 @@ class PollForm extends React.Component {
     
     return (
       <div >
-        <div className="white-box" />
+        <div className="white-box" >
+          <div className="orange-x" >x</div>
+        </div>
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >
-            <label className="poll-input-label">Category: </label><br></br>
-            
-              <label> Multiple Choice
-              <input className="poll-input-box" name="category"  type="radio" value="multiple_choice" onChange={this.update('category')} /> 
-              </label>
-              <label> Free Response
-
-              <input className="poll-input-box" name="category" type="radio" value="free_response" onChange={this.update('category')} /> 
-              </label>
-              <br/>
-              <label className="poll-input-label">Question: </label>
-                <textarea className="poll-input-box"
+            <ul className="Question-Type-Box">            
+              <button className="multiple-choice" value="multiple_choice" onClick={this.update('category')}> 
+                <p><i class="fas fa-poll-h fa-5x" ></i></p>
+                Multiple Choice 
+                <button  className="multiple-choice" type="hidden" value="multiple_choice" onClick={this.update('category')} /> 
+              </button>
+              <button className="free-response" value="free_response" onClick={this.update('category')}> 
+                <p><i class="fas fa-question fa-5x" ></i></p> 
+                Free Response 
+                <button className="multiple-choice" type="hidden" value="free_response" onClick={this.update('category')} /> 
+              </button>
+            </ul>
+            <input className="poll-input-box"
                   value={this.state.body}
+                  placeholder="Question"
                   onChange={this.update('body')}
                 />
 
               <ul>
                 {this.state.choiceArray}
               </ul>
-              <button className="add-choice" onClick={this.addChoice}>Add option</button>
-
-              <input type="submit" className="submit-button" value={this.props.formType}/>
+             <button className="add-choice" onClick={this.addChoice}><i class="fas fa-plus"></i> &nbsp;Add option</button>
+              <div className="horizontal-dashes" />
+             <input type="submit" className="submit-button" value={"Create"}/>
           </form>
 
         </ul>  

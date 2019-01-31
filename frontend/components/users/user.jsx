@@ -17,17 +17,16 @@ class User extends React.Component {
     // if (!this.props.polls) return null
 
     return (
-      <h4>
-        <p>first name: {this.props.user.first_name}</p> 
-        <p>last name: {this.props.user.last_name}</p>
-        <p>username: {this.props.user.username}</p>
-        <p>polls:</p> 
-        <ul>
-        {this.props.polls.map((poll)=>poll.body)}
+      <div className="user-container">
+        <div className="user-create-button">
+          Create
+        </div>
+        <ul className="user-polls">
+          <li className="user-polls-header">My Polls</li>
+          {this.props.polls.map((poll)=><li className="user-single-poll"><Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link></li>)}
         </ul>
-        
-      </h4>
-
+      </div>
+  
     )
   }
 }

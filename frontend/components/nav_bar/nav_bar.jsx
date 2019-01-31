@@ -5,6 +5,24 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown menu if the user clicks outside of it
+  // window.onclick = function(event) {
+  //   if (!event.target.matches('.dropbtn')) {
+  //     var dropdowns = document.getElementsByClassName("dropdown-content");
+  //     var i;
+  //     for (i = 0; i < dropdowns.length; i++) {
+  //       var openDropdown = dropdowns[i];
+  //       if (openDropdown.classList.contains('show')) {
+  //         openDropdown.classList.remove('show');
+  //       }
+  //     }
+  //   }
+  // }
   render() {
     const navLinks = this.props.user ? (
       <ul className="nav-logged-in">
@@ -13,8 +31,11 @@ class NavBar extends React.Component {
         <li className="help">
           <Link to="">Help</Link>
         </li>
-        <li className="logout">
-          <button onClick={this.props.logout}>{this.props.user.username} Log out</button>
+        <li className="logout-dropdown">
+          <button onClick={this.myFunction} className="dropbtn">{this.props.user.username} <i class="fas fa-cog"></i></button>
+          <div id="myDropdown" className="dropdown-content">
+            <button onClick={this.props.logout}>Log out</button>
+          </div>
         </li>
       </ul>
     ) : (

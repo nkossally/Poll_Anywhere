@@ -4,13 +4,87 @@
 
 }
 
+.Question-Type-Box{
+  display: flex;
+  width: 975px;
+  height: 115px;
+  margin-bottom: 40px;
+}
+
+.multiple-choice{
+  width: 125px;
+  background-color: #E6E6E6;
+  color: #6193C5;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 20px;
+
+}
+
+.free-response{
+  width: 125px;
+  background-color: #E6E6E6;
+  color: #6193C5;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center
+}
+
+.multiple-choice:focus{
+  background: white;
+
+}
+
+.free-response:focus{
+  background: white;
+}
+
+
+
+.white-box{
+  background-color: white;
+  display: flex;
+  height: 55px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.orange-x{
+  position: relative;
+  left: 70px;
+  display: flex;
+  color: white;
+  background-color: #FC5D51;
+  width: 40px;
+  height: 35px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.orange-x:hover{
+  background-color: #f83e37;
+}
+
 .add-choice{
+  font-size: 12px;
+  font-weight: bold;
   display: flex;
   width: 120px;
   height: 35px;
   border: 1px solid #6193C5;
   color: #6193C5;
   justify-content: center;
+}
+
+
+.add-choice:hover{
+  color: white;
+  background-color: #3f759c;
 }
 
 .gray-box{
@@ -31,11 +105,7 @@
   margin-bottom: 10px;
 }
 
-.white-box{
-  background-color: white;
-  display: flex;
-  height: 55px;
-}
+
 
 .poll-input-box{
   display: flex;
@@ -47,6 +117,8 @@
 }
 
 .submit-button{
+  font-size: 12px;
+  font-weight: bold;
   display: flex;
   width: 110px;
   height: 50px;
@@ -61,3 +133,10 @@
   background-color: #3f759c;
 }
 
+.horizontal-dashes{
+  width: 975px;
+  border-bottom: 1px dashed white;
+  margin-top: 20px;
+  margin-bottom: 15px;
+
+}

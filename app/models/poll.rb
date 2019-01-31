@@ -4,7 +4,6 @@ class Poll < ApplicationRecord
   belongs_to :user
   # belongs_to :group
   has_many :choices
-  has_many :responses
 
   def choice_ids
     self.choices.map{|choice| choice.id}

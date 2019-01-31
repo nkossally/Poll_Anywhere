@@ -3,7 +3,6 @@ import {RECEIVE_POLL} from '../actions/poll_actions';
 import merge from 'lodash/merge';
 
 const choicesReducer = (oldState = {}, action) => {
-  debugger
   Object.freeze(oldState);
   let newState;
   switch(action.type){
@@ -18,7 +17,11 @@ const choicesReducer = (oldState = {}, action) => {
       delete newState[action.id];
       return newState;
     case RECEIVE_POLL:
-      return action.poll.choices;
+      if(action.poll.choices){
+        return action.poll.choices;
+      } else{
+        return oldState;
+      }
     default:
       return oldState;
   }

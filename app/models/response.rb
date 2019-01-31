@@ -1,6 +1,6 @@
 class Response < ApplicationRecord
-  validates :screen_name, :poll_id, presence: true
-  belongs_to :poll
+  validates :user_id, :choice_id, presence: true
+  belongs_to :user
   belongs_to :choice
 
 end

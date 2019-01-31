@@ -31,7 +31,7 @@ class Api:: ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(:body, :poll_id, :choice_id)
+    params.require(:response).permit(:body, :user_id, :choice_id)
   end
 
 end

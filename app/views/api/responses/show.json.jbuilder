@@ -1,1 +1,1 @@
-json.extract! @response, :id, :screen_name, :poll_id, :choice_id, :body, :poll
+json.extract! @response, :id, :choice_id, :user_id, :body
