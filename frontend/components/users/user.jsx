@@ -24,7 +24,7 @@ class User extends React.Component {
         </Link>
         <ul className="user-polls">
           <li className="user-polls-header">My Polls</li>
-          {this.props.polls.map((poll)=><li className="user-single-poll"><Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link></li>)}
+          {this.props.polls.map((poll, idx)=><li key={idx} className="user-single-poll"><Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link></li>)}
         </ul>
       </div>
   

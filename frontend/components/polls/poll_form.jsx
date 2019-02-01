@@ -9,8 +9,8 @@ class PollForm extends React.Component {
 
     this.state = { user_id: this.props.user_id, body: "", category: "",
     active: true, choice1: "", choice2: "", choiceArray: [
-      <input className="choice-inside-poll" onChange={this.update('choice1')} />,
-      <input className="choice-inside-poll"  onChange={this.update('choice2')} />
+      <input key="0" className="choice-inside-poll" onChange={this.update('choice1')} />,
+      <input key="1" className="choice-inside-poll"  onChange={this.update('choice2')} />
     ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
@@ -48,7 +48,7 @@ class PollForm extends React.Component {
       let newArr = this.state.choiceArray;
       const identifier = newArr.length;
       newArr.push(
-        <input className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
+        <input key={newArr.length} className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
       )
       this.setState({
         choiceArray: newArr, [`choice${identifier}`]: ""
@@ -68,12 +68,10 @@ class PollForm extends React.Component {
               <button className="multiple-choice" value="multiple_choice" onClick={this.update('category')}> 
                 <p><i class="fas fa-poll-h fa-5x" ></i></p>
                 Multiple Choice 
-                <button  className="multiple-choice" type="hidden" value="multiple_choice" onClick={this.update('category')} /> 
               </button>
               <button className="free-response" value="free_response" onClick={this.update('category')}> 
                 <p><i class="fas fa-question fa-5x" ></i></p> 
                 Free Response 
-                <button className="multiple-choice" type="hidden" value="free_response" onClick={this.update('category')} /> 
               </button>
             </ul>
             <input className="poll-input-box"

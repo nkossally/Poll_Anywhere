@@ -14,9 +14,7 @@ class ResponseForm extends React.Component {
   }
 
   update(id) {
-    
     return (e)=> {
-      
       this.setState({
         choice_id: id
       });
@@ -36,11 +34,11 @@ class ResponseForm extends React.Component {
     let choiceButtons;
     if (Object.keys(poll).length !== 0) {
 
-      choiceButtons=poll.choices.map((choice)=>{
+      choiceButtons=poll.choices.map((choice, idx)=>{
         let id = choice.id;
         return(
-          <div >
-            <button  className="response-choice" onClick={this.update( id )} value={choice.id} > {choice.body} </button>
+          <div key={idx}>
+            <button   className="response-choice" onClick={this.update( id )} value={choice.id} > {choice.body} </button>
           </div>
         ) 
       })
