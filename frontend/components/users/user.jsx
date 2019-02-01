@@ -13,8 +13,7 @@ class User extends React.Component {
 
 
   render() {
-    // debugger
-    // if (!this.props.polls) return null
+
 
     return (
       <div className="user-container">

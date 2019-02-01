@@ -18,7 +18,6 @@ class PollForm extends React.Component {
 
   update(field) {
     return e =>{
-      debugger
       e.preventDefault();
       e.stopPropagation();
       this.setState({
@@ -28,7 +27,7 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+    
     e.preventDefault();
     const poll = {user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }

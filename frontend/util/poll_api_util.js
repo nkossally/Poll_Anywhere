@@ -7,7 +7,6 @@
 // )
 
 export const createPoll = (poll, choices)=>{
-	debugger
   return(
 		$.ajax({
 		method: 'POST',

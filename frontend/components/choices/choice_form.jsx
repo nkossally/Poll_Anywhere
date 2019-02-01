@@ -4,23 +4,23 @@ import { Link } from "react-router-dom";
 class ChoiceForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
+    
     // this.state = { poll_id: this.props.poll_id, body: ""};
     this.state = { poll_id: props.poll_id, body: props.body};
     this.handleSubmit = this.handleSubmit.bind(this);
-    debugger
+    
 
   }
 
   update(field) {
-    debugger
+    
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
 
   handleSubmit(e) {
-    debugger
+    
     e.preventDefault();
     const choice = Object.assign({}, this.state);
     this.props.action(choice);

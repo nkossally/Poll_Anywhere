@@ -1,13 +1,6 @@
 class Api::ChoicesController < ApplicationController
 
-  # def create
-  #   @choice = Choice.new(choice_params)
-  #   if @choice.save
-  #     render :show
-  #   else
-  #     render json: @choice.errors.full_messages, status: 422
-  #   end
-  # end
+
 
   def create
     broken = false
@@ -47,13 +40,5 @@ class Api::ChoicesController < ApplicationController
     end
   end
 
-  def choice_params
-    debugger
-    params.require(:choiceArr).permit()
-  end
-
-  # def choice_params
-  #   params.require(:choice).permit(:body, :poll_id)
-  # end
 
 end

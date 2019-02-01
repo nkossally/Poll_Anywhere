@@ -5,7 +5,7 @@ import {showPoll } from '../../actions/poll_actions';
 import ChoiceForm from './choice_form';
 
 const mapStateToProps = (state) => {
-  debugger
+  
   return {
   
     body: "",
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => { 
-  debugger
+  
   return({
   action: (choice) => dispatch(createChoice(choice)),
   // fetchPost: (id) => dispatch(show(id))

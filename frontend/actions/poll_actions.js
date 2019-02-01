@@ -11,30 +11,11 @@ import merge from 'lodash/merge';
 
 
 
-// export const createPoll = (poll, choices) =>{
-//   return dispatch =>{
-//     PollApiUtil.createPoll(poll).then(
-//       (poll) =>{
-//         choices.forEach(choice => {
-//           dispatch(ChoiceActions.createChoice({poll_id: poll.id, body: choice}))
-//         });
-//       }).then(
-//         (poll) =>{
-//           debugger
-//         return dispatch(receivePoll(poll))
-//       },
-//       errors =>{
-//         return dispatch(receivePollErrors(errors.responseJSON));
-//       }
-//     )
-//   }
-// }
 
 export const createPoll = (poll, choices) =>{
   return dispatch =>{
     PollApiUtil.createPoll(poll, choices).then(
       (poll) =>{
-        debugger
            return ChoiceApiUtil.createChoice(choices, poll).then(
             (poll) =>{
               // dispatch receive choices
