@@ -9,7 +9,6 @@ import {showAllResponses} from '../../actions/response_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     poll: state.entities.polls[ownProps.match.params.pollId],
-    // responses: state.entities.responses,
     id: ownProps.match.params.pollId
     
   };

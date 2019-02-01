@@ -39,6 +39,8 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  text-indent: 5px;
+
 
 }
 
@@ -52,6 +54,10 @@
   justify-content: center;
   text-align: left;
 
+}
+
+.poll-text{
+  text-indent: 5px;
 }
 
 .poll-text:hover{

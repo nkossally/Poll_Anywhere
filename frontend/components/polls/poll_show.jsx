@@ -19,10 +19,11 @@ class PollShow extends React.Component {
     let choices;
     let responseCount;
     if (Object.keys(poll).length !== 0) {
-      choices = poll.choices;
-      
-      choicesText=choices.map((choice, idx)=><div key={idx} className="choice-body">{choice.body} </div>);
-      this.props.showAllResponses();
+      if(poll.choices){
+        choices = poll.choices;
+        choicesText=choices.map((choice, idx)=><div key={idx} className="choice-body">{choice.body} </div>);
+        this.props.showAllResponses();
+      }
     }
     if(choices && choices[0].responses){
       responseCount = choices.map((choice, idx)=><div key={idx} className="choice-body">{choice.body} </div>);
