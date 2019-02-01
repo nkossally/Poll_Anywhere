@@ -18,9 +18,11 @@ class User extends React.Component {
 
     return (
       <div className="user-container">
-        <div className="user-create-button">
-          Create
-        </div>
+        <Link to="/createpoll">
+          <div className="user-create-button">
+            Create
+          </div>
+        </Link>
         <ul className="user-polls">
           <li className="user-polls-header">My Polls</li>
           {this.props.polls.map((poll)=><li className="user-single-poll"><Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link></li>)}

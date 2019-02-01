@@ -9,15 +9,14 @@ class ResponseForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.action(this.state);
   }
 
   update(id) {
-    debugger
+    
     return (e)=> {
-      debugger
+      
       this.setState({
         choice_id: id
       });

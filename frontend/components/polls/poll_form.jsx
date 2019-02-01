@@ -56,25 +56,12 @@ class PollForm extends React.Component {
       });
   }
 
-  
-
-
-
-  // updateChoice(num){
-  //   debugger
-  //   return(e)=>{
-  //     this.setState({[`choice${num}`]: {body: e.currentTarget.value}});
-  //   }
-  // }
-
-
-
   render() {
     
     return (
       <div >
         <div className="white-box" >
-          <div className="orange-x" >x</div>
+        <Link to={`/users/${this.props.user_id}`}> <div className="orange-x" >x</div></Link>
         </div>
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >

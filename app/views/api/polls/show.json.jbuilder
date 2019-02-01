@@ -6,7 +6,7 @@ if @choices
   json.choices do
     @choices.each do |choice|
       json.set! choice.id do
-        json.extract! choice, :id, :body
+        json.extract! choice, :id, :body, :responses
       end
     end
   end

@@ -1,5 +1,4 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
 import NavBar from './nav_bar/nav_bar_container';
 import { Route, Switch, Redirect, HashRouter, Link } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
@@ -23,6 +22,7 @@ const App = () => (
     <header>
       <NavBar />
     </header>
+    <Route exact path="/" component={HomePage}/>
 
     <Switch>
 
@@ -35,16 +35,7 @@ const App = () => (
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
       <Route exact path="/polls/:pollId/respond" component={ResponseForm}/>
 
-
-      <AuthRoute path="/" component={HomePage}/>
-
-
-
-
     </Switch>
-
-
-
 
   </div>
 )

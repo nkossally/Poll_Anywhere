@@ -1,1 +1,1 @@
-json.extract! @choice, :poll
+json.extract! @choice, :poll, :responses
