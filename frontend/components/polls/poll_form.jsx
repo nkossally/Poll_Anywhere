@@ -66,11 +66,11 @@ class PollForm extends React.Component {
           <form onSubmit={this.handleSubmit} >
             <ul className="Question-Type-Box">            
               <button className="multiple-choice" value="multiple_choice" onClick={this.update('category')}> 
-                <p><i class="fas fa-poll-h fa-5x" ></i></p>
+                <p><i className="fas fa-poll-h fa-5x" ></i></p>
                 Multiple Choice 
               </button>
               <button className="free-response" value="free_response" onClick={this.update('category')}> 
-                <p><i class="fas fa-question fa-5x" ></i></p> 
+                <p><i className="fas fa-question fa-5x" ></i></p> 
                 Free Response 
               </button>
             </ul>
@@ -83,7 +83,7 @@ class PollForm extends React.Component {
               <ul>
                 {this.state.choiceArray}
               </ul>
-             <button className="add-choice" onClick={this.addChoice}><i class="fas fa-plus"></i> &nbsp;Add option</button>
+             <button className="add-choice" onClick={this.addChoice}><i className="fas fa-plus"></i> &nbsp;Add option</button>
               <div className="horizontal-dashes" />
              <input type="submit" className="submit-button" value={"Create"}/>
           </form>

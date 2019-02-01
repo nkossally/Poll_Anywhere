@@ -10,29 +10,16 @@ class NavBar extends React.Component {
     document.getElementById("myDropdown").classList.toggle("show");
   }
   
-  // Close the dropdown menu if the user clicks outside of it
-  // window.onclick = function(event) {
-  //   if (!event.target.matches('.dropbtn')) {
-  //     var dropdowns = document.getElementsByClassName("dropdown-content");
-  //     var i;
-  //     for (i = 0; i < dropdowns.length; i++) {
-  //       var openDropdown = dropdowns[i];
-  //       if (openDropdown.classList.contains('show')) {
-  //         openDropdown.classList.remove('show');
-  //       }
-  //     }
-  //   }
-  // }
+
   render() {
     const navLinks = this.props.user ? (
       <ul className="nav-logged-in">
-        {/* <li className="logo"><Link to="">< img src={window.my_polls_logo} /></Link></li> */}
         <li className="my_polls_logo_container">< img src={window.my_polls_logo}  className="my_polls_logo" /></li>
         <li className="help">
           <Link to="">Help</Link>
         </li>
         <li className="logout-dropdown">
-          <button onClick={this.myFunction} className="dropbtn">{this.props.user.username} <i class="fas fa-cog"></i></button>
+          <button onClick={this.myFunction} className="dropbtn">{this.props.user.username} <i className="fas fa-cog"></i></button>
           <div id="myDropdown" className="dropdown-content">
             <button onClick={this.props.logout}>Log out</button>
           </div>
@@ -79,26 +66,3 @@ class NavBar extends React.Component {
 
 export default NavBar;
 
-{/* <li>
-          <ul className="nav-logged-out-hamburger">
-            <li>
-              <ul>
-              <li>
-                <Link id="how-it-works" to="">How it works</Link>
-              </li>
-              <li>
-                <Link id="support" to="">Support</Link>
-              </li>
-              <li>
-                <Link className="login" to="/login">Log in</Link>
-              </li>
-              <li>
-                <Link className="signup" to="/signup">Sign up</Link>
-              </li>
-              <li>
-                <button className="demo" onClick={this.props.demo}>demo</button>
-              </li>
-              </ul>
-            </li>
-          </ul>
-        </li> */}
