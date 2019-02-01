@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 const responsesReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState;
+  
   switch(action.type){
     case RECEIVE_RESPONSE:
       newState = merge({}, oldState, {[action.response.id]: action.response});

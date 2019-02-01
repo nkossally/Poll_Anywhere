@@ -3,7 +3,7 @@
 
 .response-blue-box{
   width: 100%;
-  height: 600px;
+  min-height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +19,8 @@
   border: 1 px solid black;
   background-color: #efefef;
   margin-bottom: 10px;
+  text-indent: 5px;
+
 }
 
 .response-question{
@@ -27,5 +29,8 @@
   border: 1 px solid black;
   color: white;
   font-weight: bold;
+  text-indent: 5px;
+  margin-top: 15px;
+
 
 }

@@ -33,15 +33,16 @@ class ResponseForm extends React.Component {
     const poll = this.props.poll || {};
     let choiceButtons;
     if (Object.keys(poll).length !== 0) {
-
-      choiceButtons=poll.choices.map((choice, idx)=>{
-        let id = choice.id;
-        return(
-          <div key={idx}>
-            <button   className="response-choice" onClick={this.update( id )} value={choice.id} > {choice.body} </button>
-          </div>
-        ) 
-      })
+      if(poll.choices){
+        choiceButtons=poll.choices.map((choice, idx)=>{
+          let id = choice.id;
+          return(
+            <div key={idx}>
+              <button   className="response-choice" onClick={this.update( id )} value={choice.id} > {choice.body} </button>
+            </div>
+          ) 
+        })
+      }
     } else {
       return null;
     }

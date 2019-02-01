@@ -9,8 +9,8 @@ class PollForm extends React.Component {
 
     this.state = { user_id: this.props.user_id, body: "", category: "",
     active: true, choice1: "", choice2: "", choiceArray: [
-      <input key="0" className="choice-inside-poll" onChange={this.update('choice0')} />,
-      <input key="1" className="choice-inside-poll"  onChange={this.update('choice1')} />
+      <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
+      <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
     ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
@@ -46,9 +46,9 @@ class PollForm extends React.Component {
     
       e.preventDefault();
       let newArr = this.state.choiceArray;
-      const identifier = newArr.length;
+      const identifier = newArr.length+1;
       newArr.push(
-        <input key={newArr.length} className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
+        <input key={identifier} className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
       )
       this.setState({
         choiceArray: newArr, [`choice${identifier}`]: ""
