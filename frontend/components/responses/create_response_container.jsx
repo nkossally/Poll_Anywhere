@@ -11,10 +11,21 @@ const mapStateToProps = (state, ownProps) => {
   // if(state.entities.polls[ownProps.match.params.pollId]){
   //   poll = state.entities.polls[ownProps.match.params.pollId];
   // }
+  const poll = state.entities.polls[ownProps.match.params.pollId];
+  let choices;
+  if (poll){
+     choices = poll.choice_ids.map(choice_id => {
+      return state.entities.choices[choice_id];
+    }).filter(choice=>{
+      return choice
+    })
+  
+  }
 
   return {
     user_id: state.session.id,
-    poll: state.entities.polls[ownProps.match.params.pollId],
+    poll: poll,
+    choices: choices,
     formType: "create-response",
   };
 };

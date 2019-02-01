@@ -33,8 +33,8 @@ class ResponseForm extends React.Component {
     const poll = this.props.poll || {};
     let choiceButtons;
     if (Object.keys(poll).length !== 0) {
-      if(poll.choices){
-        choiceButtons=poll.choices.map((choice, idx)=>{
+      if(this.props.choices){
+        choiceButtons=this.props.choices.map((choice, idx)=>{
           let id = choice.id;
           return(
             <div key={idx}>
@@ -46,6 +46,7 @@ class ResponseForm extends React.Component {
     } else {
       return null;
     }
+    
     return(
       
       <div>
