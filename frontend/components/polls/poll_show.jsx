@@ -14,17 +14,19 @@ class PollShow extends React.Component {
     const poll = this.props.poll || {};
     let choices;
     if (Object.keys(poll).length !== 0) {
-      choices=poll.choices.map((choice)=>choice.body)
+      choices=poll.choices.map((choice)=><div className="choice-body">{choice.body}</div>)
     }
     return(
-      <h4>
-        <p>id:{poll.id}</p> 
-        <p>body: {poll.body}</p>
-        <p>user_id: {poll.user_id} </p>
-        <p>choice_ids: {poll.choice_ids}</p>
-        <p>choices:</p>
-        <ul> {choices}</ul>
-      </h4>
+      <>
+        <div className="poll-box">
+          
+          <div className="poll-body">{poll.body}</div>
+          {choices}
+          <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
+
+
+        </div>
+      </>
     )
   }
 

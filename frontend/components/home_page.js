@@ -11,7 +11,7 @@ const HomePage = () => {
           <li className="first-img-big-txt">
           Live interactive audience participation
           </li>
-          <li>
+          <li className="first-img-small-txt">
           Engage your audience or class in real time
           </li>
         </ul>
@@ -51,24 +51,21 @@ const HomePage = () => {
         </ul>
       </li>
       <li >
-        <ul className="home-page-four">
-          < img src={window.apple} className="corporate-logo"/>
-            < img src={window.atandt} className="corporate-logo" id="middle"/>
-            < img src={window.bankOfAmerica} className="corporate-logo" id="middle"/>
-            < img src={window.chevron} className="corporate-logo"/>
-        </ul>
-        <ul className="home-page-four">
-        < img src={window.coca} className="corporate-logo"/>
-            < img src={window.navy} className="corporate-logo" id="middle"/>
-            < img src={window.google} className="corporate-logo" id="middle"/>
-            < img src={window.hp} className="corporate-logo"/>
-          </ul>
-          <ul className="home-page-four">
+        <ul className="corporate-logos-container">
+          < img src={window.apple} className="corporate-logo" id="shrink-img" />
+          < img src={window.atandt} className="corporate-logo" />
+          < img src={window.bankOfAmerica} className="corporate-logo" />
+          < img src={window.chevron} className="corporate-logo" id="shrink-img" />
+
+          < img src={window.coca} className="corporate-logo"/>
+          < img src={window.navy} className="corporate-logo" />
+          < img src={window.google} className="corporate-logo" />
+          < img src={window.hp} className="corporate-logo" id="shrink-img" />
           < img src={window.merrill} className="corporate-logo"/>
-            < img src={window.microsoft} className="corporate-logo" id="middle"/>
-            < img src={window.target} className="corporate-logo" id="middle"/>
-            < img src={window.verizon} className="corporate-logo"/>     
-          </ul>
+          < img src={window.microsoft} className="corporate-logo" />
+          < img src={window.target} className="corporate-logo" id="shrink-img" />
+          < img src={window.verizon} className="corporate-logo"/>     
+        </ul>
       </li>
       <li >
         <ul className="sign-up-block">
@@ -95,3 +92,22 @@ const HomePage = () => {
 
 
 export default HomePage;
+
+{/* <ul className="home-page-four">
+< img src={window.apple} className="corporate-logo" id="shrink-img" />
+  < img src={window.atandt} className="corporate-logo" id="middle"/>
+  < img src={window.bankOfAmerica} className="corporate-logo" id="middle"/>
+  < img src={window.chevron} className="corporate-logo" id="shrink-img" />
+</ul>
+<ul className="home-page-four">
+< img src={window.coca} className="corporate-logo"/>
+  < img src={window.navy} className="corporate-logo" id="middle"/>
+  < img src={window.google} className="corporate-logo" id="middle"/>
+  < img src={window.hp} className="corporate-logo" id="shrink-img" />
+</ul>
+<ul className="home-page-four">
+< img src={window.merrill} className="corporate-logo"/>
+  < img src={window.microsoft} className="corporate-logo" id="middle"/>
+  < img src={window.target} className="corporate-logo" id="shrink-img" />
+  < img src={window.verizon} className="corporate-logo"/>     
+</ul> */}

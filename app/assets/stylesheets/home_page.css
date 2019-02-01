@@ -17,9 +17,17 @@
 
 .first-img-big-txt{
   font-weight: 550;
-  font-size: 40px;
+  font-size: 8vw;
   margin-bottom: 15px;
   margin-right: 100px;
+  margin-left: 10px;
+}
+
+.first-img-small-txt{
+  font-size: 20px;
+  margin-left: 10px;
+
+
 }
 
 
@@ -52,6 +60,20 @@
   margin-bottom: 15px;
 }
 
+#shrink-img {
+  width: 5%;
+}
+
+.corporate-logos-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+
+}
+
 .corporate-clients-big {
   display: flex;
   text-align: center;
@@ -71,7 +93,9 @@
 
 .corporate-logo {
   display: flex;
-  width: 21%;
+  width: 10%;
+  margin-right: 35px;
+  margin-left: 35px;
 }
 
 .sign-up-block {
