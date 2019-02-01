@@ -3,11 +3,20 @@
   font-weight: 500;
 }
 
+.session-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
 .input-box{
   display: flex;
   width: 460px;
   height: 40px;
   border: 1px solid #6193C5;
+  text-indent: 5px;
 }
 
 .login{
@@ -16,6 +25,9 @@
   width: 460px;
   height: 40px;
   background-color: #FC5D51;
+  text-align: center;
+  justify-content: center;
+
 
 }
 
@@ -25,6 +37,7 @@
   width: 460px;
   height: 40px;
   background-color: #FC5D51;
+  justify-content: center;
 
 }
 

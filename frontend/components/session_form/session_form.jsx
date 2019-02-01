@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div >
+      <div className="session-container">
         <form onSubmit={this.handleSubmit} >
           <div >
           {/* {this.props.formType} or {this.props.link} */}
