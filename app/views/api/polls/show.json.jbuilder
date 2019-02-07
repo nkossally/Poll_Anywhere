@@ -1,5 +1,5 @@
 json.poll do 
-  json.extract! @poll, :id, :body, :category, :user_id, :choice_ids, :user
+  json.extract! @poll, :id, :body, :category, :user_id, :choice_ids, :choices
 end
 
 if @choices

@@ -16,11 +16,22 @@
   display:flex;
   justify-content: center;
   justify-items: center;
+  flex-direction: row;
+
+}
+
+.poll-show-left-box{
+  display:flex;
+  justify-content: center;
+  justify-items: center;
   flex-direction: column;
-  width: 80%;
+  width: 60%;
   height: 80vh;
   box-shadow: 0px 1px 1px 1px #D1D1D1;
-  margin: auto;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
 
 }
 
@@ -39,5 +50,44 @@
 }
 
 .black-logo{
-  height: 30px
+  height: 30px;
+}
+
+.poll-show-right-box{
+  display: flex;
+
+  flex-direction: row;
+  width: 360px;
+  height: 100vh;
+  box-shadow: 0px 1px 1px 1px #D1D1D1;
+  background-color: #e9eff4;
+}
+
+.poll-show-delete{
+  width: 50%;
+  height: 45px;
+  background-color: #275172;
+  color: white;
+  text-align: center;
+
+}
+
+.poll-show-edit{
+  width: 180px;
+  height: 45px;
+  border-right: 1px solid black;
+  background-color: #275172;
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  right: 360px;
+}
+
+.poll-show-edit:hover{
+  background-color: #203348;
+}
+
+.poll-show-delete:hover{
+  background-color: #203348;
 }

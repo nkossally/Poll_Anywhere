@@ -18,7 +18,13 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    let group;
+    if(this.props.formType === "signup"){
+      group = {title: "Ungrouped"}
+    }
+    debugger
+    this.props.processForm(user, group);
+
   }
 
   renderErrors() {

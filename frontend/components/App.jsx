@@ -11,6 +11,8 @@ import UserShow from './users/user_container';
 import PollShow from './polls/poll_show_container';
 import PollsShow from './polls/polls_show_container';
 import ResponseForm from './responses/create_response_container';
+import EditPollForm from './polls/edit_poll_container';
+
 
 
 
@@ -34,6 +36,8 @@ const App = () => (
       <Route exact path="/createpoll" component={CreatePollForm} />
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
       <Route exact path="/polls/:pollId/respond" component={ResponseForm}/>
+      <Route exact path="/polls/:pollId/edit" component={EditPollForm}/>
+
 
     </Switch>
 

@@ -23,6 +23,14 @@ export const showPoll = (id)=>(
   })
 )
 
+export const updatePoll = (poll, choices)=>(
+  $.ajax({
+		method: 'PATCH',
+		url: `/api/polls/${poll.id}`,
+		data: {poll, choices}
+  })
+)
+
 export const showAllPolls = ()=>(
   $.ajax({
 		method: 'GET',

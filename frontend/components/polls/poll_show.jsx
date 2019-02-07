@@ -5,6 +5,7 @@ class PollShow extends React.Component {
   constructor( props) {
     super(props)
     this.responses = this.props.responses;
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -13,19 +14,28 @@ class PollShow extends React.Component {
     this.props.showAllResponses();
   }
 
+
+  handleSubmit(action){
+    return()=>{
+      if (action === "destroyPoll"){
+      this.props.destroyPoll(this.props.poll.id)
+      }
+    }
+  }
+
   render(){
-    if (!this.props.poll || !this.props.poll.choice_ids || !this.props.choices) return null;
+    if (!this.props.poll || !this.props.poll.choice_ids) return null;
     const { poll } = this.props;
     const choicesArr = poll.choice_ids.map(choice_id =>{
       const choice = this.props.choices[choice_id];
       return <div className="choice-body" key={choice_id} >< ChoiceShow choice={choice} /></div>
     })
-    
+
   
   
     return(
-      <>
-        <div className="poll-box">
+      <div className="poll-box">
+        <div className="poll-show-left-box">
           
           <div className="poll-body">{poll.body} </div>
           {/* {choicesText} */}
@@ -34,7 +44,15 @@ class PollShow extends React.Component {
 
 
         </div>
-      </>
+        <div className="poll-show-right-box">
+          <button className="poll-show-edit" >
+            Edit
+          </button>
+          <button className="poll-show-delete" onClick={this.handleSubmit("destroyPoll")} >
+            Delete
+          </button>
+        </div>
+      </div>
     )
   }
 

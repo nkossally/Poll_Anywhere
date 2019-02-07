@@ -42,6 +42,10 @@ export const showPoll = (id) =>{
   }
 }
 
+export const updatePoll = (poll, choices) =>{
+
+}
+
 
 
 export const showAllPolls = () =>{

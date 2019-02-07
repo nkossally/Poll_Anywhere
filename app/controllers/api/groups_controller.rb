@@ -1,7 +1,11 @@
 class Api:: GroupsController < ApplicationController
 
   def create
-    @group = Group.new(group_params)
+    debugger
+    @group = Group.new(
+      {title: params[:group][:title], user_id: params[:user_id]}
+      )
+    debugger
     if @group.save
       render :show
     else
@@ -30,8 +34,8 @@ class Api:: GroupsController < ApplicationController
     end
   end
 
-  def group_params
-    params.require(:group).permit(:title, :user_id)
-  end
+  # def group_params
+  #   params.require(:group).permit(:title, :user_id)
+  # end
 
 end

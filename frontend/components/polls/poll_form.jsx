@@ -7,13 +7,18 @@ class PollForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { user_id: this.props.user_id, body: "", category: "",
+    this.state = { group_id: this.props.user.groups[0].id, user_id: this.props.user_id, body: "", category: "",
     active: true, choice1: "", choice2: "", choiceArray: [
       <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
       <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
     ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
+    this.fetchUngrouped = this.fetchUngrouped.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.showAllGroups();
   }
 
   update(field) {
@@ -27,9 +32,10 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
+
     
     e.preventDefault();
-    const poll = {user_id: this.state.user_id, body: this.state.body,
+    const poll = {group_id: this.state.group_id, user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
     let choiceObject = this.state;
     
@@ -38,6 +44,7 @@ class PollForm extends React.Component {
     delete choiceObject["category"];
     delete choiceObject["active"];
     delete choiceObject["choiceArray"];
+    delete choiceObject["group_id"];
     let choices = Object.values(choiceObject);    
     this.props.action(poll, choices);
   }
@@ -55,9 +62,32 @@ class PollForm extends React.Component {
       });
   }
 
+  fetchUngrouped(){
+    let ungrouped;
+    this.props.user.groups.forEach(group=>{
+      if (group.title === "Ungrouped"){
+        ungrouped = group;
+      }
+    })
+    return ungrouped;
+  }
+
   render() {
+
+    let groupDropdown;
+    if(this.props.user){
+      groupDropdown = (
+          <div >
+            <select value={this.state.group_id} 
+                    onChange={this.update('group_id')}>
+              {this.props.user.groups.map((group) => <option key={group.id} value={group.id}>{group.title}</option>)}
+            </select>
+          </div>
+      )
+      }
+        
     
-    return (
+   return (
       <div >
         <div className="white-box" >
         <Link to={`/users/${this.props.user_id}`}> <div className="orange-x" >x</div></Link>
@@ -84,15 +114,19 @@ class PollForm extends React.Component {
                 {this.state.choiceArray}
               </ul>
              <button className="add-choice" onClick={this.addChoice}><i className="fas fa-plus"></i> &nbsp;Add option</button>
+             {groupDropdown}
+
               <div className="horizontal-dashes" />
              <input type="submit" className="submit-button" value={"Create"}/>
+
           </form>
 
-        </ul>  
+        </ul> 
 
       </div>
     );
   }
+
 }
 
 
