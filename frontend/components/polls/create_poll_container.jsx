@@ -5,17 +5,27 @@ import {showAllGroups} from '../../actions/group_actions';
 
 import PollForm from './poll_form';
 
-// import {showAllUsers} from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let user;
+  
   if(state.entities.users[state.session.id]){
     user = state.entities.users[state.session.id];
   }
-
+  const userGroups = [];
+  for(let j=0; j<user.group_ids.length; j++){
+    const group = state.entities.groups[user.group_ids[j]];
+    if(group){
+      userGroups.push(group);
+    }
+  }
+  let defaultGroupId;
+  if(userGroups.length>0) defaultGroupId = userGroups[0].id;
   return {
     user: user,
     user_id: state.session.id,
+    groups: userGroups,
+    defaultGroupId: defaultGroupId,
     formType: "create-poll",
   };
 };
@@ -24,7 +34,6 @@ const mapDispatchToProps = dispatch => ({
   action: (poll, choices) => dispatch(createPoll(poll, choices)),
   createChoice: (choice) => dispatch(createChoice(choice)),
   showAllGroups: () => dispatch(showAllGroups()),
-  // showAllUsers: () => dispatch(showAllUsers()),
 
 });
 

@@ -8,19 +8,25 @@ class User extends React.Component {
   }
 
   componentDidMount(){
+    debugger
     this.props.showAllPolls();
     this.props.showAllGroups();
+    debugger
   }
 
 
   render() {
     debugger
 
-    const groupsAndPolls = this.props.user.groups.map(group=>{
+    const groupsAndPolls = this.props.groups.map(group=>{
+      debugger
       return(
-        <li>{group.title}</li>
-        
+        <div>
+          <li>{group.title}</li>
+          <ul>{group.polls.map(poll=>poll.body)};</ul>
+        </div>
       )
+      
     })
 
     return (
@@ -49,7 +55,6 @@ class User extends React.Component {
             </ul>)}
         </ul>
   
-        <ul>{this.props.user.groups.map(group=>group.title)}</ul>
       </div>
   
     )

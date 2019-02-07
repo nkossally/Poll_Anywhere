@@ -17,9 +17,18 @@ const mapStateToProps = (state, ownProps) => {
       userPolls.push(poll);
     }
   }
+  const userGroups = [];
+  for(let j=0; j<user.group_ids.length; j++){
+    const group = state.entities.groups[user.group_ids[j]];
+    if(group){
+      userGroups.push(group);
+    }
+  }
+
   return {
     user: user,
     polls: userPolls,
+    groups: userGroups,
   };
 };
 

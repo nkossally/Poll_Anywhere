@@ -7,14 +7,13 @@ class PollForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { group_id: this.props.user.groups[0].id, user_id: this.props.user_id, body: "", category: "",
+    this.state = { group_id: "", user_id: this.props.user_id, body: "", category: "",
     active: true, choice1: "", choice2: "", choiceArray: [
       <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
       <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
     ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
-    this.fetchUngrouped = this.fetchUngrouped.bind(this);
   }
 
   componentDidMount(){
@@ -32,10 +31,18 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
+    let group_id;
+    if(!this.state.group_id){
+      group_id = this.props.defaultGroupId;
+    } else {
+      group_id = this.state.group_id;
+    }
+    
 
     
     e.preventDefault();
-    const poll = {group_id: this.state.group_id, user_id: this.state.user_id, body: this.state.body,
+    const poll = {group_id: group_id, user_id: this.state.user_id, body: this.state.body,
       category: this.state.category, active: this.state.active }
     let choiceObject = this.state;
     
@@ -62,15 +69,7 @@ class PollForm extends React.Component {
       });
   }
 
-  fetchUngrouped(){
-    let ungrouped;
-    this.props.user.groups.forEach(group=>{
-      if (group.title === "Ungrouped"){
-        ungrouped = group;
-      }
-    })
-    return ungrouped;
-  }
+ 
 
   render() {
 
@@ -80,7 +79,7 @@ class PollForm extends React.Component {
           <div >
             <select value={this.state.group_id} 
                     onChange={this.update('group_id')}>
-              {this.props.user.groups.map((group) => <option key={group.id} value={group.id}>{group.title}</option>)}
+              {this.props.groups.map((group) => <option key={group.id} value={group.id}>{group.title}</option>)}
             </select>
           </div>
       )
