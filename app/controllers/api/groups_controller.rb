@@ -1,11 +1,9 @@
 class Api:: GroupsController < ApplicationController
 
   def create
-    debugger
     @group = Group.new(
       {title: params[:group][:title], user_id: params[:user_id]}
       )
-    debugger
     if @group.save
       render :show
     else

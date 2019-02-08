@@ -52,7 +52,6 @@ export const signup = (user, group) => {
   return dispatch => {
     SessionApiUtil.signup(user, group).then(
       user => { 
-        debugger
         return GroupApiUtil.createGroup(group, user).then(
           (user) =>{ 
             return dispatch(receiveCurrentUser(user))

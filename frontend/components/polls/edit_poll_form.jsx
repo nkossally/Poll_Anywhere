@@ -6,22 +6,21 @@ import EditChoiceShow from "../choices/edit_choice_show";
 
 class EditPoll extends React.Component {
   constructor(props) {
-    debugger
     super(props);
  
-    this.state = { body: this.props.body, choice1: "" , choice2 : "", choice3: "", choice4: "", choice5: ""};
-    
+    this.state = { body: "", choice1: "", choice2: "", choiceArray: [
+        <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
+        <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
+      ]
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addOldChoices = this.addOldChoices.bind(this);
-    
-  }
-
-  addOldChoices(){
+    this.addChoice = this.addChoice.bind(this);
 
   }
 
   componentDidMount(){
     this.props.showPoll(this.props.match.params.pollId);
+    this.props.showAllChoices();
   }
 
   update(field) {
@@ -37,17 +36,15 @@ class EditPoll extends React.Component {
   handleSubmit(e) {
     
     e.preventDefault();
-    const poll = {user_id: this.state.user_id, body: this.state.body,
-      category: this.state.category, active: this.state.active }
+    const poll = this.props.poll;
+    const newPoll = {user_id: poll.user_id, body: this.state.body,
+      category: poll.category, active: poll.active }
     let choiceObject = this.state;
     
-    delete choiceObject["user_id"];
     delete choiceObject["body"];
-    delete choiceObject["category"];
-    delete choiceObject["active"];
     delete choiceObject["choiceArray"];
     let choices = Object.values(choiceObject);    
-    this.props.action(poll, choices);
+    this.props.updatePoll(newPoll, poll.id, choices);
   }
 
   addChoice(e){
@@ -67,19 +64,28 @@ class EditPoll extends React.Component {
     if (!this.props.poll || !this.props.poll.choice_ids ){
       return null;
     }
-    const poll = this.props.poll;
-    const choices = [];
-    for(let i=0; i<poll.choices.length; i++){
-      choices.push(
-        <input key={i+1} className="choice-inside-poll" value={poll.choices[i].body} onChange={this.update([`choice${i+1}`])}  />
-      );
-    }
-
-    debugger
     return (
-      <div className="gray-box">
-        {this.props.poll.body}
-        <ul>{choices}</ul>
+      <div >
+        <ul className="gray-box">
+          <form onSubmit={this.handleSubmit} >
+            <input className="poll-input-box"
+                  value={this.state.body}
+                  placeholder="Question"
+                  onChange={this.update('body')}
+                />
+
+              <ul>
+                {this.state.choiceArray}
+              </ul>
+            <button className="add-choice" onClick={this.addChoice}><i className="fas fa-plus"></i> &nbsp;Add option</button>
+
+              <div className="horizontal-dashes" />
+            <input type="submit" className="submit-button" value={"Edit"}/>
+
+          </form>
+
+        </ul> 
+
       </div>
 
     );

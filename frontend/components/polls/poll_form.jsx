@@ -8,7 +8,7 @@ class PollForm extends React.Component {
     super(props);
 
     this.state = { group_id: "", user_id: this.props.user_id, body: "", category: "",
-    active: true, choice1: "", choice2: "", choiceArray: [
+    choice1: "", choice2: "", choiceArray: [
       <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
       <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
     ]};
@@ -31,7 +31,6 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     let group_id;
     if(!this.state.group_id){
       group_id = this.props.defaultGroupId;
@@ -43,13 +42,12 @@ class PollForm extends React.Component {
     
     e.preventDefault();
     const poll = {group_id: group_id, user_id: this.state.user_id, body: this.state.body,
-      category: this.state.category, active: this.state.active }
+      category: this.state.category, active: false }
     let choiceObject = this.state;
     
     delete choiceObject["user_id"];
     delete choiceObject["body"];
     delete choiceObject["category"];
-    delete choiceObject["active"];
     delete choiceObject["choiceArray"];
     delete choiceObject["group_id"];
     let choices = Object.values(choiceObject);    

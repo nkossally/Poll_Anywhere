@@ -18,6 +18,16 @@ class Api::PollsController < ApplicationController
     end
   end
 
+  def update
+    @poll = Poll.find_by(id: params[:id])
+    if(@poll.update(poll_params))
+      render :show
+    else
+      render json: ["Could not update poll"], status: 404
+    end
+  end
+
+
   def index
     @polls = Poll.all
     render :index

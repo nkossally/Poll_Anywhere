@@ -69,8 +69,19 @@
   flex-direction: row;
   justify-content: left;
   text-align: left;
-
 }
+
+.green-user-single-poll{
+  background-color: #BBF3C2;
+  height: 40px;
+  color: #3C749E;
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: left;
+}
+
 
 .poll-text{
   text-indent: 5px;
@@ -83,6 +94,10 @@
 
 .user-single-poll:hover{
   background-color: #d8e3eb;
+}
+
+.green-user-single-poll:hover{
+  background-color: #8af2a7;
 }
 
 .check-container {
@@ -150,4 +165,15 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+
+
+.fa-toggle-on{
+  /* text-align: right;
+  justify-content: right; */
+}
+.fa-toggle-on:hover{
+  color: #47b559;
+
 }

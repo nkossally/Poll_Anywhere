@@ -22,7 +22,6 @@ class SessionForm extends React.Component {
     if(this.props.formType === "signup"){
       group = {title: "Ungrouped"}
     }
-    debugger
     this.props.processForm(user, group);
 
   }

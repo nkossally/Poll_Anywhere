@@ -1,41 +1,43 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import User from './user';
-import {showAllPolls} from '../../actions/poll_actions';
+import {showAllPolls, updatePoll} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId];
-  // const userPolls = user.poll_ids.map((id)=>{
-  //   return state.entities.polls[id];
-  // })
-  const userPolls = [];
-  for(let i=0; i<user.poll_ids.length; i++){
-    const poll = state.entities.polls[user.poll_ids[i]];
-    if(poll){
-      userPolls.push(poll);
-    }
-  }
-  const userGroups = [];
+
+  const groups = [];
   for(let j=0; j<user.group_ids.length; j++){
     const group = state.entities.groups[user.group_ids[j]];
     if(group){
-      userGroups.push(group);
+      groups.push(group);
+    }
+  }
+
+  const polls = [];
+  if(user && state.entities.polls){
+    for(let i=0; i<user.poll_ids.length; i++){
+      const poll = state.entities.polls[user.poll_ids[i]];
+      if(poll){
+        polls.push(poll);
+      }
     }
   }
 
   return {
     user: user,
-    polls: userPolls,
-    groups: userGroups,
+    polls: polls,
+    groups: groups,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     showAllPolls: ()=>dispatch(showAllPolls()),
-    showAllGroups: ()=>dispatch(showAllGroups())
+    showAllGroups: ()=>dispatch(showAllGroups()),
+    updatePoll: (poll, id)=>dispatch(updatePoll(poll, id))
   };
 };
 

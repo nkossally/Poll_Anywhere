@@ -4,34 +4,76 @@ import { Link } from "react-router-dom";
 class User extends React.Component {
   constructor(props) {
     super(props);
+    this.state={active_poll_id: ""}
+    this.activate = this.activate.bind(this);
     
   }
 
   componentDidMount(){
-    debugger
     this.props.showAllPolls();
     this.props.showAllGroups();
-    debugger
+  }
+
+  activate(id){
+    
+    return()=>{
+      let inactivePoll = {active: false};
+      let activePoll = {active: true};
+      for(let i=0; i<this.props.polls.length; i++){
+        const poll = this.props.polls[i];
+
+        if(poll.id === id){
+          this.props.updatePoll(activePoll, poll.id)
+        } else {
+          
+          this.props.updatePoll(inactivePoll, poll.id)
+        }
+      }
+      this.setState({active_poll_id: id})
+
+    } 
   }
 
 
   render() {
-    debugger
 
     const groupsAndPolls = this.props.groups.map(group=>{
-      debugger
       return(
-        <div>
-          <li>{group.title}</li>
-          <ul>{group.polls.map(poll=>poll.body)};</ul>
+        <div key={group.id}>
+          <li >{group.title}</li>
+          <ul>
+            {group.polls.map(poll=>{
+              // return <li key={poll.id}>{poll.body}</li>
+              let className;
+              if(poll.active){
+                className = "green-user-single-poll";
+              } else {
+                className = "user-single-poll";
+              }
+              return(
+                <div className={className} key={poll.id}> 
+                  <div className="check-container">
+                    <input type="checkbox" checked="checked" />
+                    <span className="checkmark"></span>
+                  </div>
+                  
+                  <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
+                
+                  <button onClick={this.activate(poll.id)}>
+                    <i className="fas fa-toggle-on"></i>
+                  </button>
+
+                </div>
+                )
+            })}
+          </ul>
         </div>
       )
       
     })
-
+    
     return (
       <div className="user-container">
-        <ul>{groupsAndPolls}</ul>
         <Link to="/createpoll">
           <div className="user-create-button">
             Create
@@ -43,16 +85,8 @@ class User extends React.Component {
             <button>Ungroup</button>
           </li>
 
-          {this.props.polls.map((poll, idx)=>
-            <ul key={idx} className="user-single-poll">
-              <div className="check-container">
-                <input type="checkbox" checked="checked" />
-                <span className="checkmark"></span>
-              </div>
+          {groupsAndPolls}
 
-
-              <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
-            </ul>)}
         </ul>
   
       </div>

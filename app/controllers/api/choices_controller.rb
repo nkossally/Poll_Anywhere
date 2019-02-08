@@ -5,14 +5,16 @@ class Api::ChoicesController < ApplicationController
   def create
     broken = false
     @choices = []
-    params[:choiceArr].each do |choice|
-      newChoice = Choice.new({body: choice, poll_id: params[:poll_id]})
-      if newChoice.save
-        @choices.push(newChoice)
-      else
-        render json: newChoice.errors.full_messages, status: 422
-        broken = true
-        break
+    if (params[:choiceArr])
+      params[:choiceArr].each do |choice|
+        newChoice = Choice.new({body: choice, poll_id: params[:poll_id]})
+        if newChoice.save
+          @choices.push(newChoice)
+        else
+          render json: newChoice.errors.full_messages, status: 422
+          broken = true
+          break
+        end
       end
     end
     @poll = Poll.find_by(id: params[:poll_id])

@@ -1,5 +1,4 @@
 export const signup = (user, group)=>{
-	debugger
 	return(
 		$.ajax({
 			method: 'POST',

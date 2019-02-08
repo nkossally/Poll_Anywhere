@@ -4,7 +4,7 @@ const pollErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
   switch(action.type){
     case RECEIVE_POLL_ERRORS:
-      return action.errors;
+      return action.errors ? action.errors : null;
     case RECEIVE_POLL:
       return [];
     case RECEIVE_POLLS:

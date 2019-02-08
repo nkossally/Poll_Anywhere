@@ -1,6 +1,8 @@
 class Poll < ApplicationRecord
-  validates :body, :category, :active, :user_id, presence: true
+  validates :body, :category, :user_id, presence: true
   validates :category, inclusion: { in: %w(multiple_choice free_response) }
+  validates :active, inclusion: { in: [true, false] }
+
   belongs_to :user
   belongs_to :group
   has_many :choices
@@ -9,8 +11,5 @@ class Poll < ApplicationRecord
     self.choices.map{|choice| choice.id}
   end
 
-  def response_ids
-    self.responses.map{|response| response.id}
-  end
 
 end

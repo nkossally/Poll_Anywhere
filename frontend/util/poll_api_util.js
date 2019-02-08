@@ -1,11 +1,3 @@
-// export const createPoll = (poll)=>(
-//   $.ajax({
-// 		method: 'POST',
-// 		url: '/api/polls',
-// 		data: { poll }
-//   })
-// )
-
 export const createPoll = (poll, choices)=>{
   return(
 		$.ajax({
@@ -23,13 +15,15 @@ export const showPoll = (id)=>(
   })
 )
 
-export const updatePoll = (poll, choices)=>(
-  $.ajax({
-		method: 'PATCH',
-		url: `/api/polls/${poll.id}`,
-		data: {poll, choices}
-  })
-)
+export const updatePoll = (poll, id, choices)=>{
+	return(
+		$.ajax({
+			method: 'PATCH',
+			url: `/api/polls/${id}`,
+			data: {poll, id, choices}
+		})
+	)
+}
 
 export const showAllPolls = ()=>(
   $.ajax({
