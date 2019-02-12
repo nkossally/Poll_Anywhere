@@ -6,11 +6,10 @@ import { showAllChoices } from '../../actions/choice_actions';
 
 import ActivePollResponseForm from './active_poll_response_form';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let poll;
   if(state.entities.polls){
     let polls = Object.values(state.entities.polls);
-    debugger
     for(let i=0; i<polls.length; i++){
       if(polls[i].active){
         poll = polls[i];
@@ -29,7 +28,7 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    user_id: state.session.id,
+    user_id: ownProps.match.params.userId,
     poll: poll,
     choices: choices,
     formType: "create-response",

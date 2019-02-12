@@ -38,7 +38,7 @@ const App = () => (
       <Route exact path="/createchoice" component={CreateChoiceForm}/>
       <Route exact path="/polls/:pollId/respond" component={ResponseForm}/>
       <Route exact path="/polls/:pollId/edit" component={EditPollForm}/>
-      <Route exact path="/respond" component={ActivePollResponseForm}/>
+      <Route exact path="/:userId/respond" component={ActivePollResponseForm}/>
 
 
 
