@@ -66,7 +66,7 @@
   background-color: #20445f;
 }
 
-.my_polls_logo {
+.blue_logo {
   display: flex;
   width: 25px;
   height: 25px;
@@ -82,10 +82,10 @@
   padding-right: 10px;
 }
 
-/* .my_polls_logo:hover {
+/* .blue_logo:hover {
   background-color: #1F3349;
 } */
-.my_polls_logo_container:hover {
+.blue_logo_container:hover {
   background-color: #1F3349;
 }
 
@@ -207,3 +207,21 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.my-polls {
+  color: #6193C5;
+  border: 1px solid #6193C5;
+  width: 85px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.my-polls:hover {
+  background-color: #6193C5;
+  color: white;
+}

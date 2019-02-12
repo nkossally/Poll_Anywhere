@@ -14,7 +14,8 @@ class NavBar extends React.Component {
   render() {
     const navLinks = this.props.user ? (
       <ul className="nav-logged-in">
-        <li className="my_polls_logo_container">< img src={window.my_polls_logo}  className="my_polls_logo" /></li>
+        <li className="my-polls"><Link to={`/users/${this.props.user.id}`}>MyPolls</Link></li>
+        <li className="blue_logo_container"> <Link to="">< img src={window.blue_logo}  className="blue_logo" /></Link></li>
         <li className="help">
           <Link to="">Help</Link>
         </li>

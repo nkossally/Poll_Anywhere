@@ -7,21 +7,17 @@ import {showAllResponses} from '../../actions/response_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let responses;
   let choices;
   if (state.entities.choices) choices = state.entities.choices;
-  if (state.entities.responses) responses = state.entities.responses;
   return {
     poll: state.entities.polls[ownProps.match.params.pollId],
     choices: choices,
-    responses: responses
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   showPoll: (id) => dispatch(showPoll(id)),
   showAllChoices: () => dispatch(showAllChoices()),
-  showAllResponses: () => dispatch(showAllResponses()),
   showChoice: (id) => dispatch(showChoice(id)),
   destroyPoll: (id) => dispatch(destroyPoll(id)),
 
