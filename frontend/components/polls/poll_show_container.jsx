@@ -3,14 +3,16 @@ import { showPoll, destroyPoll } from '../../actions/poll_actions';
 
 import PollShow from './poll_show';
 import {showAllChoices, showChoice} from '../../actions/choice_actions';
-import {showAllResponses} from '../../actions/response_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const poll = state.entities.polls[ownProps.match.params.pollId];
   let choices;
-  if (state.entities.choices) choices = state.entities.choices;
+  // if (state.entities.choices) choices = state.entities.choices;
+  if (state.entities.choices) choices = Object.values(state.entities.choices).filter(choice => choice.poll_id === poll.id);
+
   return {
-    poll: state.entities.polls[ownProps.match.params.pollId],
+    poll: poll,
     choices: choices,
   };
 };
@@ -18,7 +20,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   showPoll: (id) => dispatch(showPoll(id)),
   showAllChoices: () => dispatch(showAllChoices()),
-  showChoice: (id) => dispatch(showChoice(id)),
   destroyPoll: (id) => dispatch(destroyPoll(id)),
 
 });

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={active_poll_id: ""}
+    this.state={active_poll_id: "", selected_polls: []};
     this.activate = this.activate.bind(this);
+    this.selectPoll = this.selectPoll.bind(this);
     
   }
 
@@ -14,8 +15,31 @@ class User extends React.Component {
     this.props.showAllGroups();
   }
 
+  selectPoll(id, checkboxId){
+    return()=>{
+      let that = this;
+
+      let newSelection = this.state.selected_polls;
+      if(newSelection.includes(id)){
+        newSelection.splice(newSelection.indexOf(id), 1);
+      } else {
+        newSelection.push(id);
+      }
+      this.setState({selected_polls: newSelection});
+      this.toggleCheckbox(checkboxId)
+      debugger
+    }
+  }
+
+  toggleCheckbox(checkboxId) {
+    // let checkbox = document.getElementById(checkboxId);
+    // debugger
+
+    // checkbox.checked = !checkbox.checked;
+    // debugger
+  }
+
   activate(id){
-    
     return()=>{
       let inactivePoll = {active: false};
       let activePoll = {active: true};
@@ -25,25 +49,21 @@ class User extends React.Component {
         if(poll.id === id){
           this.props.updatePoll(activePoll, poll.id)
         } else {
-          
           this.props.updatePoll(inactivePoll, poll.id)
         }
       }
       this.setState({active_poll_id: id})
-
     } 
   }
 
 
   render() {
-
     const groupsAndPolls = this.props.groups.map(group=>{
       return(
         <div key={group.id}>
           <li >{group.title}</li>
           <ul>
             {group.polls.map(poll=>{
-              // return <li key={poll.id}>{poll.body}</li>
               let className;
               if(poll.active){
                 className = "green-user-single-poll";
@@ -52,9 +72,9 @@ class User extends React.Component {
               }
               return(
                 <div className={className} key={poll.id}> 
+
                   <div className="check-container">
-                    <input type="checkbox" checked="checked" />
-                    <span className="checkmark"></span>
+                    <input type="checkbox" id={`checkbox${poll.id}`} onClick={this.selectPoll(poll.id, `checkbox${poll.id}`)}/>
                   </div>
                   
                   <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>

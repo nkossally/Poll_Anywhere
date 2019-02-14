@@ -5,12 +5,39 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar, Legend, Responsive
 class PollShow extends React.Component {
   constructor( props) {
     super(props)
+    this.state = {responseReceived: false};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.receiveResponse = this.receiveResponse.bind(this);
   }
 
   componentDidMount() {
     this.props.showPoll(this.props.match.params.pollId);
     this.props.showAllChoices();
+    let that = this;
+
+    const pusher = new Pusher('a00864a1ebfc95672108', {
+      cluster: 'us2',
+      forceTLS: true
+    });
+    const channel = pusher.subscribe('response_channel');
+
+    channel.bind('pusher:subscription_succeeded', function (members) {
+      console.log('subscribed successful');
+    });
+    channel.bind('pusher:subscription_error', function (status) {
+      console.log('subscribed error: ' + status);
+    });
+    channel.bind('respond', function (status) {
+      console.log('response noted');
+      that.receiveResponse;
+    });
+
+
+
+  }
+
+  receiveResponse(){
+    this.props.showPoll(this.props.match.params.pollId);
   }
 
   handleSubmit(action){
@@ -25,12 +52,12 @@ class PollShow extends React.Component {
     let poll;
     let pollData = [];
     let totalCount = 0;
-    if (!this.props.poll || !this.props.choices || !this.props.poll.choice_ids || !this.props.choices){
+    if (!this.props.poll || !this.props.choices){
       return null;
     } else{
     poll  = this.props.poll;
-    for (let i = 0; i < poll.choice_ids.length; i++) {
-      let choice = this.props.choices[poll.choice_ids[i]];
+    for (let i = 0; i < this.props.choices.length; i++) {
+      let choice = this.props.choices[i];
       if(choice){
         totalCount += choice.response_ids.length;
         pollData.push({choice: choice.body, count: choice.response_ids.length})

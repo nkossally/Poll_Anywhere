@@ -20,6 +20,7 @@ import ActivePollResponseForm from './responses/active_poll_response_container';
 
 
 
+
 const App = () => (    
   <div>
     <header>
