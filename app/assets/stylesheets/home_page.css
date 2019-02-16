@@ -17,15 +17,16 @@
 
 .first-img-big-txt{
   font-weight: 550;
-  font-size: 8vw;
+  font-size: 4.5vw;
   margin-bottom: 15px;
   margin-right: 100px;
-  margin-left: 10px;
+  margin-left: 4vw;
+  margin-top: 4vw;
 }
 
 .first-img-small-txt{
-  font-size: 20px;
-  margin-left: 10px;
+  font-size: 3vw;
+  margin-left: 4vw;
 
 
 }

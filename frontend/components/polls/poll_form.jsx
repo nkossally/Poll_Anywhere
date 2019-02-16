@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ChoiceForm from "../choices/create_choice_container";
 import merge from 'lodash/merge';
+import BlueNavBar from '../nav_bar/blue_nav_bar_container';
 
 class PollForm extends React.Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class PollForm extends React.Component {
     
    return (
       <div >
+        <BlueNavBar />
         <div className="white-box" >
         <Link to={`/users/${this.props.user_id}`}> <div className="orange-x" >x</div></Link>
         </div>

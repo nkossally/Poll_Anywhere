@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={active_poll_id: "", selected_polls: []};
+    this.state={active_poll_id: "", selected_polls: [], showModal: false};
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
+
     
   }
 
@@ -14,6 +16,11 @@ class User extends React.Component {
     this.props.showAllPolls();
     this.props.showAllGroups();
   }
+
+
+
+
+
 
   selectPoll(id, checkboxId){
     return()=>{
@@ -26,17 +33,7 @@ class User extends React.Component {
         newSelection.push(id);
       }
       this.setState({selected_polls: newSelection});
-      this.toggleCheckbox(checkboxId)
-      debugger
     }
-  }
-
-  toggleCheckbox(checkboxId) {
-    // let checkbox = document.getElementById(checkboxId);
-    // debugger
-
-    // checkbox.checked = !checkbox.checked;
-    // debugger
   }
 
   activate(id){
@@ -93,24 +90,26 @@ class User extends React.Component {
     })
     
     return (
-      <div className="user-container">
-        <Link to="/createpoll">
-          <div className="user-create-button">
-            Create
-          </div>
-        </Link>
-        <ul className="user-polls">
-          <li className="user-polls-header">
-            <button>Group</button>
-            <button>Ungroup</button>
-          </li>
+      <div>
+        <BlueNavBar />
+        <div className="user-container">
+          <Link to="/createpoll">
+            <div className="user-create-button">
+              Create
+            </div>
+          </Link>
+          <ul className="user-polls">
+            <li className="user-polls-header">
+              <button onClick={this.props.openModal}>Group</button>
+              <button>Ungroup</button>
+            </li>
 
-          {groupsAndPolls}
+            {groupsAndPolls}
 
-        </ul>
-  
+          </ul>
+    
+        </div>
       </div>
-  
     )
   }
 }

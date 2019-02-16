@@ -5,11 +5,11 @@ import NavBar from './nav_bar';
 const mapStateToProps = (state) =>{
     return({
         user: state.entities.users[state.session.id],
-        // try to get the path from props and decide if blue this.props.location.pathname
     })
 };
 
 const mapDispatchToProps = dispatch => {
+    
     return( {
 
     logout: () => dispatch(logout()),

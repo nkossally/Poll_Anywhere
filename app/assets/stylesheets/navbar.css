@@ -62,16 +62,22 @@
   color: black;
 }
 
+
+
 .nav-logged-in > li:hover {
   background-color: #20445f;
 }
 
-.blue_logo {
+.blue-logo {
   display: flex;
   width: 25px;
   height: 25px;
   padding-left: 160px;
   padding-right: 160px;
+}
+
+.blue-logo-container:hover {
+  background-color: #1F3349 !important;
 }
 
 .logo{
@@ -82,12 +88,7 @@
   padding-right: 10px;
 }
 
-/* .blue_logo:hover {
-  background-color: #1F3349;
-} */
-.blue_logo_container:hover {
-  background-color: #1F3349;
-}
+
 
 /* .nav-logged-out-hamburger {
   display: none;
@@ -213,12 +214,12 @@
   border: 1px solid #6193C5;
   width: 85px;
   height: 30px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+
   text-align: center;
   padding-left: 0px;
   padding-right: 0px;
+
+  align-self: center;
 }
 
 .my-polls:hover {

@@ -3,6 +3,7 @@ import React from 'react';
 import User from './user';
 import {showAllPolls, updatePoll} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -37,7 +38,10 @@ const mapDispatchToProps = dispatch => {
   return {
     showAllPolls: ()=>dispatch(showAllPolls()),
     showAllGroups: ()=>dispatch(showAllGroups()),
-    updatePoll: (poll, id)=>dispatch(updatePoll(poll, id))
+    updatePoll: (poll, id)=>dispatch(updatePoll(poll, id)),
+    closeModal: () => dispatch(closeModal()),
+    openModal: () => dispatch(openModal()),
+
   };
 };
 

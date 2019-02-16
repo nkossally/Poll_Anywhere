@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../nav_bar/nav_bar_container';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -72,34 +73,37 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-container">
-        <form onSubmit={this.handleSubmit} >
-          <div >
-          {/* {this.props.formType} or {this.props.link} */}
-          {this.renderErrors()}
-            <br/>
-            <label className="input-label">Username:
-              <input className="input-box" type="text"
-                value={this.state.username}
-                onChange={this.update('username') }
-              />
-            </label>
-            <br/>
-            <label className="input-label">Password:          </label>
-            <br/>
-              <input className="input-box" type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-              />
-  
-            <br/>
-            {this.additionalFields()}
-            {/* <input type="submit" value={this.props.formType} /> */}
-            <input type="submit" className={this.props.formType} value={this.props.formType}/>
+      <div>
+        <NavBar />
+        <div className="session-container">
+          <form onSubmit={this.handleSubmit} >
+            <div >
+            {/* {this.props.formType} or {this.props.link} */}
+            {this.renderErrors()}
+              <br/>
+              <label className="input-label">Username:
+                <input className="input-box" type="text"
+                  value={this.state.username}
+                  onChange={this.update('username') }
+                />
+              </label>
+              <br/>
+              <label className="input-label">Password:          </label>
+              <br/>
+                <input className="input-box" type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                />
+    
+              <br/>
+              {this.additionalFields()}
+              {/* <input type="submit" value={this.props.formType} /> */}
+              <input type="submit" className={this.props.formType} value={this.props.formType}/>
 
-          </div>
+            </div>
 
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

@@ -17,8 +17,8 @@ const choicesReducer = (oldState = {}, action) => {
       delete newState[action.id];
       return newState;
     case RECEIVE_POLL:
-      if(action.poll.choices){
-        return action.poll.choices;
+      if(action.poll.poll.choice_ids){
+        return action.poll.poll.choice_ids;
       } else{
         return oldState;
       }

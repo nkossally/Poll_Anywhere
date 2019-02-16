@@ -1,6 +1,7 @@
 import React from 'react';
 import ChoiceShow from '../choices/choice_show';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar, Legend, ResponsiveContainer } from 'recharts';
+import BlueNavBar from '../nav_bar/blue_nav_bar_container';
 
 class PollShow extends React.Component {
   constructor( props) {
@@ -29,7 +30,7 @@ class PollShow extends React.Component {
     });
     channel.bind('respond', function (status) {
       console.log('response noted');
-      that.receiveResponse;
+      that.props.showAllChoices();
     });
 
 
@@ -72,42 +73,33 @@ class PollShow extends React.Component {
 
 
     return(
-      <div className="poll-box">
-        <div className="poll-show-left-box">
-          
-          <div className="poll-body">{poll.body} </div>
-          <BarChart layout="vertical" width={800} height={250} data={pollDataPercents}>
-            <XAxis type="number" />
-            <YAxis dataKey="choice" type="category" />
-            <Legend />
-            <Bar dataKey="count" fill="#8884d8" />
-          </BarChart>
-          <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
+      <div>
+        <BlueNavBar />
+        <div className="poll-box">
+          <div className="poll-show-left-box">
+            
+            <div className="poll-body">{poll.body} </div>
+            <BarChart layout="vertical" width={800} height={250} data={pollDataPercents}>
+              <XAxis type="number" />
+              <YAxis dataKey="choice" type="category" />
+              <Legend />
+              <Bar dataKey="count" fill="#8884d8" />
+            </BarChart>
+            <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
 
-        </div>
-        <div className="poll-show-right-box">
-          <button className="poll-show-edit" >
-            Edit
-          </button>
-          <button className="poll-show-delete" onClick={this.handleSubmit("destroyPoll")} >
-            Delete
-          </button>
-        </div>
+          </div>
+          <div className="poll-show-right-box">
+            <button className="poll-show-edit" >
+              Edit
+            </button>
+            <button className="poll-show-delete" onClick={this.handleSubmit("destroyPoll")} >
+              Delete
+            </button>
+          </div>
         
 
-          {/* <BarChart width={600} height={300} data={}> */}
-          {/* <BarChart layout="vertical" width={800} height={250} data={data}>
-            <CartesianGrid stroke="#ccc" />
-            <XAxis type="number" />
-            <YAxis dataKey="name" type="category" /> */}
-            {/* <Legend />
-            <Bar dataKey="amt" fill="#8884d8" />
 
-            <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
-          </BarChart> */}
-
-
+        </div>
       </div>
     )
   }

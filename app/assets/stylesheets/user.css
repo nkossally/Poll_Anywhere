@@ -125,12 +125,16 @@
 
 
 
-
-.fa-toggle-on{
-  /* text-align: right;
-  justify-content: right; */
-}
 .fa-toggle-on:hover{
   color: #47b559;
 
+}
+
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

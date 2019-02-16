@@ -4,7 +4,7 @@ import { Route, Switch, Redirect, HashRouter, Link } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import { AuthRoute } from '../util/route_util';
-import HomePage from './home_page';
+import HomePage from './home_page/home_page_container';
 import CreatePollForm from './polls/create_poll_container';
 import CreateChoiceForm from './choices/create_choice_container';
 import UserShow from './users/user_container';
@@ -13,7 +13,8 @@ import PollsShow from './polls/polls_show_container';
 import ResponseForm from './responses/create_response_container';
 import EditPollForm from './polls/edit_poll_container';
 import ActivePollResponseForm from './responses/active_poll_response_container';
-
+import Modal from './modal/modal';
+import BlueNavBar from './nav_bar/blue_nav_bar_container';
 
 
 
@@ -23,8 +24,9 @@ import ActivePollResponseForm from './responses/active_poll_response_container';
 
 const App = () => (    
   <div>
+    <Modal />
     <header>
-      <NavBar />
+      {/* <NavBar /> */}
     </header>
     <Route exact path="/" component={HomePage}/>
 
