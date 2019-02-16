@@ -18,9 +18,7 @@ class NavBar extends React.Component {
     let demo;
     let myPolls;
     let logout;
-    debugger
     if(this.props.user){
-      debugger
       myPolls =  <li className="my-polls"><Link to={`/users/${this.props.user.id}`}>My polls</Link></li>;
       logout = (
           <li className="logout-dropdown">

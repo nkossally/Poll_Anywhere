@@ -27,7 +27,11 @@ class HomePage extends React.Component {
       <ul>
         <NavBar />
         <li className="container">
-          <img src={window.conference3} className="home-page-big-img" />
+          {/* <img src={window.conference3} className="home-page-big-img" /> */}
+          {/* <img src={window.conference_green} className="home-page-big-img" /> */}
+          <img src={window.conference_gray} className="home-page-big-img" />
+
+
           <ul className="top-left">
             <li className="first-img-big-txt">
             Live interactive audience participation
