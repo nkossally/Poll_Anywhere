@@ -8,11 +8,7 @@ class EditPoll extends React.Component {
   constructor(props) {
     super(props);
  
-    this.state = { body: "", choice1: "", choice2: "", choiceArray: [
-        <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
-        <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
-      ]
-    };
+    this.state = { body: "", choice1: "", choice2: "", choiceArray: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
 
@@ -21,6 +17,21 @@ class EditPoll extends React.Component {
   componentDidMount(){
     this.props.showPoll(this.props.match.params.pollId);
     this.props.showAllChoices();
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.prevChoices !== this.props.prevChoices){
+      this.setState({ body: nextProps.body })
+      nextProps.prevChoices.forEach((choice, idx) => {
+        let newChoiceArray = this.state.choiceArray;
+        newChoiceArray.push(<input key={idx} className="choice-inside-poll" placeholder={choice.body} onChange={this.update([`choice${idx}`])} />);
+        
+        this.setState({
+          [`choice${idx}`]: choice.body,
+          choiceArray: newChoiceArray,
+        })  
+      })
+    }
   }
 
   update(field) {
@@ -34,13 +45,15 @@ class EditPoll extends React.Component {
   }
 
   handleSubmit(e) {
-    
     e.preventDefault();
+    this.props.prevChoices.forEach(choice =>{
+      this.props.destroyChoice(choice.id);
+    })
     const poll = this.props.poll;
-    const newPoll = {user_id: poll.user_id, body: this.state.body,
+    const newPoll = {group_id: poll.group_id, user_id: poll.user_id, body: this.state.body,
       category: poll.category, active: poll.active }
-    let choiceObject = this.state;
     
+    let choiceObject = this.state;
     delete choiceObject["body"];
     delete choiceObject["choiceArray"];
     let choices = Object.values(choiceObject);    
@@ -64,13 +77,13 @@ class EditPoll extends React.Component {
     if (!this.props.poll || !this.props.poll.choice_ids ){
       return null;
     }
+    
     return (
       <div >
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >
             <input className="poll-input-box"
                   value={this.state.body}
-                  placeholder="Question"
                   onChange={this.update('body')}
                 />
 

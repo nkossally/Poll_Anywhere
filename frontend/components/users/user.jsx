@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 
 class User extends React.Component {
@@ -16,11 +16,6 @@ class User extends React.Component {
     this.props.showAllPolls();
     this.props.showAllGroups();
   }
-
-
-
-
-
 
   selectPoll(id, checkboxId){
     return()=>{
@@ -58,8 +53,8 @@ class User extends React.Component {
     const groupsAndPolls = this.props.groups.map(group=>{
       return(
         <div key={group.id}>
-          <li >{group.title}</li>
-          <ul>
+          <li className="group-title" >{group.title}</li>
+          <ul className="group-list">
             {group.polls.map(poll=>{
               let className;
               if(poll.active){
@@ -69,13 +64,13 @@ class User extends React.Component {
               }
               return(
                 <div className={className} key={poll.id}> 
-
-                  <div className="check-container">
-                    <input type="checkbox" id={`checkbox${poll.id}`} onClick={this.selectPoll(poll.id, `checkbox${poll.id}`)}/>
+                  <div className="check-and-text">
+                    <div className="check-container">
+                      <input type="checkbox" id={`checkbox${poll.id}`} onClick={this.selectPoll(poll.id, `checkbox${poll.id}`)}/>
+                    </div>
+                    <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
                   </div>
-                  
-                  <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
-                
+                  <Link className="user-edit-poll" to={`/polls/${poll.id}/edit`}>Edit</Link>
                   <button onClick={this.activate(poll.id)}>
                     <i className="fas fa-toggle-on"></i>
                   </button>
@@ -84,6 +79,7 @@ class User extends React.Component {
                 )
             })}
           </ul>
+          <div className="white-space"></div>
         </div>
       )
       

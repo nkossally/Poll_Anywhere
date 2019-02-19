@@ -10,27 +10,29 @@ const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId];
 
   const groups = [];
-  for(let j=0; j<user.group_ids.length; j++){
-    const group = state.entities.groups[user.group_ids[j]];
-    if(group){
-      groups.push(group);
-    }
-  }
-
   const polls = [];
-  if(user && state.entities.polls){
-    for(let i=0; i<user.poll_ids.length; i++){
-      const poll = state.entities.polls[user.poll_ids[i]];
-      if(poll){
-        polls.push(poll);
+  if(user){
+    for(let j=0; j<user.group_ids.length; j++){
+      const group = state.entities.groups[user.group_ids[j]];
+      if(group){
+        groups.push(group);
       }
     }
   }
+  if(groups.length > 0){
+    if(state.entities.polls){
+      groups.forEach(group=>{  
+        group.poll_ids.forEach(id=>
+          polls.push(state.entities.polls[id]));
+      })
+    }
+  }
+
 
   return {
     user: user,
-    polls: polls,
     groups: groups,
+    polls: polls,
   };
 };
 

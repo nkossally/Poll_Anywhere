@@ -2,7 +2,7 @@ import { RECEIVE_RESPONSE, RECEIVE_RESPONSES, DELETE_RESPONSE } from '../actions
 import merge from 'lodash/merge';
 
 const responsesReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
+  // Object.freeze(oldState);
   let newState;
   
   switch(action.type){
@@ -14,6 +14,7 @@ const responsesReducer = (oldState = {}, action) => {
       return newState;
     case DELETE_RESPONSE:
       newState = oldState;
+      // Object.defineProperty(newState, action.id, {configurable: true});
       delete newState[action.id];
       return newState;
     default:

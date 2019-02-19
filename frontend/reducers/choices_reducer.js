@@ -13,7 +13,7 @@ const choicesReducer = (oldState = {}, action) => {
       newState = merge({}, oldState, action.choices);
       return newState;
     case DELETE_CHOICE:
-      newState = oldState;
+      newState = merge({}, oldState);
       delete newState[action.id];
       return newState;
     case RECEIVE_POLL:

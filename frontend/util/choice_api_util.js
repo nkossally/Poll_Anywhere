@@ -29,9 +29,11 @@ export const showAllChoices = ()=>(
   })
 )
 
-export const destroyChoice = (id)=>(
-  $.ajax({
+export const destroyChoice = (id)=>{
+	debugger
+	return ( 
+		$.ajax({
 		method: 'DELETE',
 		url: `/api/choices/${id}`
-  })
-)
+  }))
+}

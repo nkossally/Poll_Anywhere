@@ -1,4 +1,4 @@
-.nav-logged-in {
+.blue-nav {
   height: 75px;
   display: flex;
   width: 100%; 
@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.nav-logged-in > li {
+.blue-nav > li {
   display: flex;
   position: relative;
   padding-right: 20px;
@@ -64,7 +64,7 @@
 
 
 
-.nav-logged-in > li:hover {
+.blue-nav > li:hover {
   background-color: #20445f;
 }
 
@@ -225,4 +225,8 @@
 .my-polls:hover {
   background-color: #6193C5;
   color: white;
+}
+
+.polls-blue-nav {
+
 }

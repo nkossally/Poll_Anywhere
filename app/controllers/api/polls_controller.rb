@@ -41,7 +41,7 @@ class Api::PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:body, :category, :active, :user_id, :group_id, :previous_id, :next_id)
+    params.require(:poll).permit(:body, :category, :active, :group_id, :previous_id, :next_id)
   end
 
 end

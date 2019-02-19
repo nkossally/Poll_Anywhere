@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from "../nav_bar/nav_bar";
+import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -25,12 +25,9 @@ class HomePage extends React.Component {
 
     return(
       <ul>
-        <NavBar />
+        <NavBarContainer />
         <li className="container">
-          {/* <img src={window.conference3} className="home-page-big-img" /> */}
-          {/* <img src={window.conference_green} className="home-page-big-img" /> */}
-          <img src={window.conference_gray} className="home-page-big-img" />
-
+          <img src={window.conference_gradient} className="home-page-big-img" />
 
           <ul className="top-left">
             <li className="first-img-big-txt">

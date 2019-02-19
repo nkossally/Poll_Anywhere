@@ -2,12 +2,13 @@ import React from 'react';
 import ChoiceShow from '../choices/choice_show';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar, Legend, ResponsiveContainer } from 'recharts';
 import BlueNavBar from '../nav_bar/blue_nav_bar_container';
+import { Link } from 'react-router-dom';
 
 class PollShow extends React.Component {
   constructor( props) {
     super(props)
     this.state = {responseReceived: false};
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleDelete.bind(this);
     this.receiveResponse = this.receiveResponse.bind(this);
   }
 
@@ -32,21 +33,18 @@ class PollShow extends React.Component {
       console.log('response noted');
       that.props.showAllChoices();
     });
-
-
-
   }
 
   receiveResponse(){
     this.props.showPoll(this.props.match.params.pollId);
   }
 
-  handleSubmit(action){
+  handleDelete(){
     return()=>{
-      if (action === "destroyPoll"){
       this.props.destroyPoll(this.props.poll.id)
-      }
+      // <Redirect></Redirect>
     }
+    
   }
 
   render(){
@@ -70,8 +68,6 @@ class PollShow extends React.Component {
     return {choice: datum.choice, count: 100*datum.count/totalCount}
   })
     
-
-
     return(
       <div>
         <BlueNavBar />
@@ -88,14 +84,13 @@ class PollShow extends React.Component {
             <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
 
           </div>
-          <div className="poll-show-right-box">
-            <button className="poll-show-edit" >
-              Edit
-            </button>
-            <button className="poll-show-delete" onClick={this.handleSubmit("destroyPoll")} >
-              Delete
+          <div className="poll-show-buttons">
+            <Link to={`/polls/${poll.id}/edit`}>Edit</Link>
+            <button className="poll-show-delete" onClick={this.handleDelete()} >
+                Delete
             </button>
           </div>
+
         
 
 
