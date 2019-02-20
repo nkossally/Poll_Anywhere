@@ -22,16 +22,20 @@ class User extends React.Component {
     )
   }
 
-  selectPoll(id){
+  selectPoll(poll){
+    // return()=>{
+    //   let that = this;
+    //   let newSelection = this.state.selected_polls;
+    //   if(newSelection.includes(id)){
+    //     newSelection.splice(newSelection.indexOf(id), 1);
+    //   } else {
+    //     newSelection.push(id);
+    //   }
+    //   this.setState({selected_polls: newSelection});
+    // }
+
     return()=>{
-      let that = this;
-      let newSelection = this.state.selected_polls;
-      if(newSelection.includes(id)){
-        newSelection.splice(newSelection.indexOf(id), 1);
-      } else {
-        newSelection.push(id);
-      }
-      this.setState({selected_polls: newSelection});
+      this.props.selectPoll(poll);
     }
   }
 
@@ -69,7 +73,7 @@ class User extends React.Component {
                 <div className={className} key={poll.id}> 
                   <div className="check-and-text">
                     <div className="check-container">
-                      <input type="checkbox" onClick={this.selectPoll(poll.id)}/>
+                      <input type="checkbox" onClick={this.selectPoll(poll)}/>
                     </div>
                     <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
                   </div>

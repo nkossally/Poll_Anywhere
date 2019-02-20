@@ -4,6 +4,8 @@ import User from './user';
 import {showAllPolls, updatePoll} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import {selectPoll, deselectPoll, showSelection} from '../../actions/ui_actions';
+
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -43,6 +45,8 @@ const mapDispatchToProps = dispatch => {
     updatePoll: (poll, id)=>dispatch(updatePoll(poll, id)),
     closeModal: () => dispatch(closeModal()),
     openModal: (user_id, selectedPolls ) => dispatch(openModal(user_id, selectedPolls)),
+    selectPoll: (poll) => dispatch(selectPoll(poll)),
+    deselectPoll: (poll) => dispatch(deselectPoll(poll)),
 
   };
 };

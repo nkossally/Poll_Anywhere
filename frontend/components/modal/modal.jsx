@@ -20,7 +20,7 @@ function Modal( {modal, closeModal}){
 
 const mapStateToProps = state => {
   return {
-    modal: state.modal
+    modal: state.ui.modal
   };
 };
 
