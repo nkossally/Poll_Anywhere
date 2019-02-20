@@ -35,18 +35,6 @@ export const login = user => {
   };
 };
 
-// export const signup = user => {
-//   return dispatch => {
-//     return SessionApiUtil.signup(user).then(
-//       user => { 
-//         return dispatch(receiveCurrentUser(user));
-//       },
-//       errors => {
-//         return dispatch(receiveErrors(errors.responseJSON));
-//       }
-//     );
-//   };
-// };
 
 export const signup = (user, group) => {
   return dispatch => {
@@ -64,22 +52,6 @@ export const signup = (user, group) => {
   }
 }
 
-// export const createPoll = (poll, choices) =>{
-//   return dispatch =>{
-//     PollApiUtil.createPoll(poll, choices).then(
-//       (poll) =>{
-//            return ChoiceApiUtil.createChoice(choices, poll).then(
-//             (poll) =>{
-//               // dispatch receive choices
-//             return dispatch(receivePoll(poll))
-//           },
-//           errors =>{
-//             return dispatch(receivePollErrors(errors.responseJSON));
-//           }
-//         )
-//       })
-//   }
-// }
 
 
 const receiveErrors = errors => ({

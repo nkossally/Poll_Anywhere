@@ -1,4 +1,5 @@
 import * as GroupApiUtil from '../util/group_api_util';
+import * as PollApiUtil from '../util/poll_api_util';
 
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
@@ -6,18 +7,39 @@ export const DELETE_GROUP = 'DELETE_GROUP';
 export const RECEIVE_GROUP_ERRORS = 'RECEIVE_GROUP_ERRORS';
 
 
-export const createGroup = (group) =>{
+// export const createGroup = (group, user) =>{
+//   return dispatch =>{
+//     GroupApiUtil.createGroup(group, user).then(
+//       (group) =>{
+//         return dispatch(receiveGroup(group))
+//       },
+//       errors =>{
+//         return dispatch(receiveGroupErrors(errors.responseJSON));
+//       }
+//     )
+//   }
+// }
+
+export const createGroup = (group, user, polls) =>{
+  
   return dispatch =>{
-    GroupApiUtil.createGroup(group).then(
+    GroupApiUtil.createGroup(group, user, polls).then(
       (group) =>{
-        return dispatch(receiveGroup(group))
-      },
+        return polls.forEach(poll =>  {
+          poll.group_id = group.id
+          PollApiUtil.updatePoll(poll, poll.id)
+        }).then(
+          (group)=>{
+            return dispatch(receiveGroup(group))
+          },
       errors =>{
         return dispatch(receiveGroupErrors(errors.responseJSON));
       }
-    )
+      )
+    })
   }
 }
+
 
 export const showGroup = (id) =>{
   return dispatch =>{
@@ -59,7 +81,7 @@ export const destroyGroup = (id) =>{
 }
 
 const receiveGroup = (group) =>({
-  type: RECIEVE_GROUP,
+  type: RECEIVE_GROUP,
   group
 });
 

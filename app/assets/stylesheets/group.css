@@ -10,6 +10,8 @@
   width: 370px;
   height: 30px;
   border: 1px solid #ebebeb;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .create-group-button{
@@ -24,9 +26,15 @@
 .cancel-create-group{
   height: 45px;
   width: 50px;
+  margin-right: 5px;
 
 }
 
 .cancel-create-group:hover {
   background-color: #ebebeb;
+}
+
+.create-group-last-row{
+  display: flex;
+  justify-content: flex-end;
 }

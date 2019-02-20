@@ -35,9 +35,7 @@ class NavBar extends React.Component {
           </li>
           <li>
             <ul className="nav-logged-out-expanded">
-              <li>
-                <Link id="how-it-works" to="">How it works</Link>
-              </li>
+
               <li>
                 <Link id="support" to="">Support</Link>
               </li>

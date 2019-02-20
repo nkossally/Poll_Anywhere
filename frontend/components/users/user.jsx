@@ -23,17 +23,6 @@ class User extends React.Component {
   }
 
   selectPoll(poll){
-    // return()=>{
-    //   let that = this;
-    //   let newSelection = this.state.selected_polls;
-    //   if(newSelection.includes(id)){
-    //     newSelection.splice(newSelection.indexOf(id), 1);
-    //   } else {
-    //     newSelection.push(id);
-    //   }
-    //   this.setState({selected_polls: newSelection});
-    // }
-
     return()=>{
       this.props.selectPoll(poll);
     }

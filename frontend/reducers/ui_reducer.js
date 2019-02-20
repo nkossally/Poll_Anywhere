@@ -13,12 +13,10 @@ const uiReducer = (oldState = {}, action) => {
     case SELECT_POLL:
 
       if(Object.keys(oldState).includes(action.poll.id.toString())){
-        debugger
         newState = merge({}, oldState);
         delete newState[action.poll.id];
         
       } else {
-        debugger
         newState = merge({}, oldState, {[action.poll.id]: action.poll});
       }
       return newState;

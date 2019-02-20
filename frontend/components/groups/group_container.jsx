@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { createGroup } from '../../actions/group_actions';
+import { updatePoll } from '../../actions/poll_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 import CreateGroup from './create_group';
 
@@ -10,11 +12,14 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     user: user,
+    selectedPolls: state.ui.uiReducer,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  createGroup: () => dispatch(createGroup()),
+  createGroup: (group, user, polls) => dispatch(createGroup(group, user, polls)),
+  updatePoll: (poll, id) => dispatch(updatePoll(poll, id)),
+  closeModal: () => dispatch(closeModal()),
 
 });
 

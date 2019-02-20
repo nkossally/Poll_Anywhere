@@ -41,7 +41,6 @@ class PollShow extends React.Component {
   }
 
   handleDelete(){
-    debugger
       this.props.destroyPoll(this.props.poll.id)
       this.props.history.push(`/users/${this.props.userId}`);
 

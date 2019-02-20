@@ -220,6 +220,9 @@
   padding-right: 0px;
 
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .my-polls:hover {

@@ -1,10 +1,13 @@
-export const createGroup = (group, user)=>(
-  $.ajax({
-		method: 'POST',
-		url: '/api/groups',
-		data: { group: group, user_id: user.id }
-  })
-)
+export const createGroup = (group, user, polls)=>{
+	
+	return(
+		$.ajax({
+			method: 'POST',
+			url: '/api/groups',
+			data: { group: group, user_id: user.id, polls: polls }
+		})
+	)
+}
 
 export const showGroup = (id)=>(
   $.ajax({
