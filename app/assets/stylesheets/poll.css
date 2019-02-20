@@ -33,12 +33,16 @@
   text-align: center
 }
 
-.multiple-choice:focus{
+.multiple-choice:hover{
   background: white;
 
 }
 
-.free-response:focus{
+#selected{
+  background: white;
+}
+
+.free-response:hover{
   background: white;
 }
 

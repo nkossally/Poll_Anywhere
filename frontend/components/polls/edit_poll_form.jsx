@@ -22,14 +22,13 @@ class EditPoll extends React.Component {
   componentWillReceiveProps(nextProps){
     if(nextProps.prevChoices !== this.props.prevChoices){
       this.setState({ body: nextProps.body })
+      let newChoiceArray = this.state.choiceArray;
       nextProps.prevChoices.forEach((choice, idx) => {
-        let newChoiceArray = this.state.choiceArray;
-        newChoiceArray.push(<input key={idx} className="choice-inside-poll" placeholder={choice.body} onChange={this.update([`choice${idx}`])} />);
-        
+        newChoiceArray.push(<input key={idx+1} className="choice-inside-poll" placeholder={choice.body} onChange={this.update([`choice${idx+1}`])} />);
         this.setState({
-          [`choice${idx}`]: choice.body,
+          [`choice${idx+1}`]: choice.body,
           choiceArray: newChoiceArray,
-        })  
+        }) 
       })
     }
   }

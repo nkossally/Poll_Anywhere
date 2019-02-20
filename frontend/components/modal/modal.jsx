@@ -1,15 +1,25 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import CreateGroupContainer from '../groups/group_container';
 
 function Modal({modal, closeModal}){
+
   if(!modal) {
     return null;
   }
+  // let component;
+  // switch (modal) {
+  //   case 'create-group':
+  //     component = <CreateGroupContainer />;
+  //     break;
+  //   default:
+  //     return null;
+  // }
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        This is a modal
+        <CreateGroupContainer />
       </div>
     </div>
   );

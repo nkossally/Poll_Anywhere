@@ -20,14 +20,7 @@ class NavBar extends React.Component {
     let logout;
     if(this.props.user){
       myPolls =  <li className="my-polls"><Link to={`/users/${this.props.user.id}`}>My polls</Link></li>;
-      logout = (
-          <li className="logout-dropdown">
-            <button onClick={this.myFunction} className="dropbtn">{this.props.user.username} <i className="fas fa-cog"></i></button>
-            <div id="myDropdown" className="dropdown-content">
-            <button onClick={this.props.logout}>Log out</button>
-          </div>
-        </li>
-      );
+      logout =  <button className="white-nav-logout" onClick={this.props.logout}>Log out</button>    
     } else {
       login = <Link className="login-nav" to="/login">Log in</Link>;
       signup = <Link className="signup-nav" to="/signup">Sign up</Link>;
@@ -60,7 +53,9 @@ class NavBar extends React.Component {
               <li>
                 {myPolls}
               </li>
-              {logout}
+              <li>
+                {logout}
+              </li>
             </ul>
           </li>
         </ul>

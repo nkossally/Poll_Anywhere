@@ -36,7 +36,7 @@ class Api::ChoicesController < ApplicationController
   end
 
   def destroy
-    choice = choice.find_by(id: params[:id])
+    choice = Choice.find_by(id: params[:id])
     if choice
       choice.destroy
     end

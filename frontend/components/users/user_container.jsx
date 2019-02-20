@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
   const groups = [];
   const polls = [];
-  if(user){
+  if(user.group_ids){
     for(let j=0; j<user.group_ids.length; j++){
       const group = state.entities.groups[user.group_ids[j]];
       if(group){

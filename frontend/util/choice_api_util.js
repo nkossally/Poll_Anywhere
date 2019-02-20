@@ -30,7 +30,6 @@ export const showAllChoices = ()=>(
 )
 
 export const destroyChoice = (id)=>{
-	debugger
 	return ( 
 		$.ajax({
 		method: 'DELETE',

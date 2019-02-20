@@ -94,7 +94,7 @@ class PollForm extends React.Component {
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >
             <ul className="Question-Type-Box">            
-              <button className="multiple-choice" value="multiple_choice" onClick={this.update('category')}> 
+              <button className="multiple-choice" value="multiple_choice" id={this.state.category === "multiple_choice" ? "selected" : ""} onClick={this.update('category')}> 
                 <p><i className="fas fa-poll-h fa-5x" ></i></p>
                 Multiple Choice 
               </button>

@@ -2,7 +2,7 @@ import React from 'react';
 import ChoiceShow from '../choices/choice_show';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar, Legend, ResponsiveContainer } from 'recharts';
 import BlueNavBar from '../nav_bar/blue_nav_bar_container';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class PollShow extends React.Component {
   constructor( props) {
@@ -42,7 +42,6 @@ class PollShow extends React.Component {
   handleDelete(){
     return()=>{
       this.props.destroyPoll(this.props.poll.id)
-      // <Redirect></Redirect>
     }
     
   }

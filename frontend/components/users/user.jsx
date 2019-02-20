@@ -8,8 +8,6 @@ class User extends React.Component {
     this.state={active_poll_id: "", selected_polls: [], showModal: false};
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
-
-    
   }
 
   componentDidMount(){
@@ -17,10 +15,9 @@ class User extends React.Component {
     this.props.showAllGroups();
   }
 
-  selectPoll(id, checkboxId){
+  selectPoll(id){
     return()=>{
       let that = this;
-
       let newSelection = this.state.selected_polls;
       if(newSelection.includes(id)){
         newSelection.splice(newSelection.indexOf(id), 1);
@@ -48,14 +45,13 @@ class User extends React.Component {
     } 
   }
 
-
   render() {
     const groupsAndPolls = this.props.groups.map(group=>{
       return(
         <div key={group.id}>
           <li className="group-title" >{group.title}</li>
           <ul className="group-list">
-            {group.polls.map(poll=>{
+            {group.polls.map((poll, idx)=>{
               let className;
               if(poll.active){
                 className = "green-user-single-poll";
@@ -66,7 +62,7 @@ class User extends React.Component {
                 <div className={className} key={poll.id}> 
                   <div className="check-and-text">
                     <div className="check-container">
-                      <input type="checkbox" id={`checkbox${poll.id}`} onClick={this.selectPoll(poll.id, `checkbox${poll.id}`)}/>
+                      <input type="checkbox" onClick={this.selectPoll(poll.id)}/>
                     </div>
                     <Link to={`/polls/${poll.id}`}><div className="poll-text">{poll.body}</div></Link>
                   </div>
@@ -84,7 +80,6 @@ class User extends React.Component {
       )
       
     })
-    
     return (
       <div>
         <BlueNavBar />

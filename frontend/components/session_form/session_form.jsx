@@ -98,7 +98,7 @@ class SessionForm extends React.Component {
               <br/>
               {this.additionalFields()}
               {/* <input type="submit" value={this.props.formType} /> */}
-              <input type="submit" className={this.props.formType} value={this.props.formType}/>
+              <input type="submit" className={this.props.formType} value={this.props.formType === "signup" ? "Sign up" : "Log in"}/>
 
             </div>
 

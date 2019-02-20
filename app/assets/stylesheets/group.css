@@ -1,0 +1,32 @@
+.create-group-box{
+  display: flex;
+  flex-direction: column;
+  width:  400px;
+  height: 165px;
+  background-color: white;
+}
+
+.create-group-input{
+  width: 370px;
+  height: 30px;
+  border: 1px solid #ebebeb;
+}
+
+.create-group-button{
+  background-color: #F95E56;
+  width: 110px;
+  height: 45px;
+}
+.create-group-button:hover {
+  background-color: #f83e37;
+}
+
+.cancel-create-group{
+  height: 45px;
+  width: 50px;
+
+}
+
+.cancel-create-group:hover {
+  background-color: #ebebeb;
+}

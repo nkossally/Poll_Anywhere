@@ -3,7 +3,7 @@ import NavBar from './nav_bar/nav_bar_container';
 import { Route, Switch, Redirect, HashRouter, Link } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HomePage from './home_page/home_page_container';
 import CreatePollForm from './polls/create_poll_container';
 import CreateChoiceForm from './choices/create_choice_container';
@@ -26,7 +26,7 @@ const App = () => (
   <div>
     <Modal />
     <header>
-      {/* <NavBar /> */}
+      
     </header>
     <Route exact path="/" component={HomePage}/>
 
@@ -34,13 +34,13 @@ const App = () => (
 
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/polls" component={PollsShow}/>
-      <Route exact path="/polls/:pollId" component={PollShow}/>
-      <Route exact path="/users/:userId" component={UserShow}/>
-      <Route exact path="/createpoll" component={CreatePollForm} />
-      <Route exact path="/createchoice" component={CreateChoiceForm}/>
-      <Route exact path="/polls/:pollId/edit" component={EditPollForm}/>
-      <Route exact path="/:userId/respond" component={ActivePollResponseForm}/>
+      {/* <Route exact path="/polls" component={PollsShow}/> */}
+      <ProtectedRoute exact path="/polls/:pollId" component={PollShow}/>
+      <ProtectedRoute exact path="/users/:userId" component={UserShow}/>
+      <ProtectedRoute exact path="/createpoll" component={CreatePollForm} />
+      {/* <Route exact path="/createchoice" component={CreateChoiceForm}/> */}
+      <ProtectedRoute exact path="/polls/:pollId/edit" component={EditPollForm}/>
+      <ProtectedRoute exact path="/:userId/respond" component={ActivePollResponseForm}/>
 
 
 

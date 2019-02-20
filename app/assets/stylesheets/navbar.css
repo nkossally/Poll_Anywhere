@@ -46,11 +46,11 @@
 
 .nav-logged-out-expanded > li {
   display: flex;
+  flex-direction: column;
   position: relative;
   padding-right: 20px;
   padding-left: 20px;
   justify-content: center;
-  flex-direction: column;
   /* text-align: center; */
 }
 
@@ -228,5 +228,17 @@
 }
 
 .polls-blue-nav {
+
+}
+
+.white-nav-logout{
+  text-align: center;
+  color: #6193C5;
+  width: 85px;
+  height: 30px;
+}
+
+.white-nav-logout:hover{
+  background-color: #e7e7e7;
 
 }
