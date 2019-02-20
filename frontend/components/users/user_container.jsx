@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
     showAllGroups: ()=>dispatch(showAllGroups()),
     updatePoll: (poll, id)=>dispatch(updatePoll(poll, id)),
     closeModal: () => dispatch(closeModal()),
-    openModal: () => dispatch(openModal()),
+    openModal: (user_id, selectedPolls ) => dispatch(openModal(user_id, selectedPolls)),
 
   };
 };

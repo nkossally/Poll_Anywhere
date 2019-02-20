@@ -8,11 +8,18 @@ class User extends React.Component {
     this.state={active_poll_id: "", selected_polls: [], showModal: false};
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount(){
     this.props.showAllPolls();
     this.props.showAllGroups();
+  }
+
+  handleModal(){
+    return( 
+      this.props.openModal(this.props.user.id, this.state.selected_polls)
+    )
   }
 
   selectPoll(id){
@@ -91,7 +98,7 @@ class User extends React.Component {
           </Link>
           <ul className="user-polls">
             <li className="user-polls-header">
-              <button onClick={this.props.openModal}>Group</button>
+              <button onClick={this.handleModal}>Group</button>
               <button>Ungroup</button>
             </li>
 

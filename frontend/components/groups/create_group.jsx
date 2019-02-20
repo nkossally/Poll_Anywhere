@@ -8,6 +8,8 @@ class CreateGroup extends React.Component {
   }
 
   handleSubmit(){
+    debugger
+    hello = "hello";
 
   }
 

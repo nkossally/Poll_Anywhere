@@ -3,7 +3,7 @@ import { showPoll, destroyPoll } from '../../actions/poll_actions';
 
 import PollShow from './poll_show';
 import {showAllChoices, showChoice} from '../../actions/choice_actions';
-
+import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
   const poll = state.entities.polls[ownProps.match.params.pollId];
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     poll: poll,
     choices: choices,
+    userId: state.session.id, 
   };
 };
 
@@ -24,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PollShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PollShow));

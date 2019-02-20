@@ -10,6 +10,7 @@ class PollShow extends React.Component {
     this.state = {responseReceived: false};
     this.handleSubmit = this.handleDelete.bind(this);
     this.receiveResponse = this.receiveResponse.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -40,9 +41,10 @@ class PollShow extends React.Component {
   }
 
   handleDelete(){
-    return()=>{
+    debugger
       this.props.destroyPoll(this.props.poll.id)
-    }
+      this.props.history.push(`/users/${this.props.userId}`);
+
     
   }
 
@@ -85,7 +87,7 @@ class PollShow extends React.Component {
           </div>
           <div className="poll-show-buttons">
             <Link to={`/polls/${poll.id}/edit`}>Edit</Link>
-            <button className="poll-show-delete" onClick={this.handleDelete()} >
+            <button className="poll-show-delete" onClick={this.handleDelete} >
                 Delete
             </button>
           </div>
