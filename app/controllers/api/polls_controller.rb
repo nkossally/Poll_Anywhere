@@ -19,6 +19,7 @@ class Api::PollsController < ApplicationController
   end
 
   def update
+    debugger
     broken = false
     if (params[:choices] && params[:choices].length > 0)
       @poll = Poll.find_by(id: params[:id])
@@ -29,18 +30,12 @@ class Api::PollsController < ApplicationController
       pollIds = params[:poll]
       pollIds.each do |id|
         realPoll = Poll.find(id)
-
-        if( realPoll.update(group_id: params[:group][:id] ))
-          
-        else
+        if(! realPoll.update(group_id: params[:group][:id] ))
           broken = true
         end
-
       end
-
       @group = Group.find_by(id: params[:group][:id])
       render "api/groups/show" unless broken
-
     else
       render json: ["Could not update poll"], status: 404
     end

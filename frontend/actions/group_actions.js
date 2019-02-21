@@ -35,24 +35,6 @@ export const createGroup = (group, user, pollIds) =>{
   }
 }
 
-// export const createPoll = (poll, choices) =>{
-//   return dispatch =>{
-//     PollApiUtil.createPoll(poll, choices).then(
-//       (poll) =>{
-//            return ChoiceApiUtil.createChoice(choices, poll).then(
-//             (poll) =>{
-//               // dispatch receive choices
-//             return dispatch(receivePoll(poll))
-//           },
-//           errors =>{
-//             return dispatch(receivePollErrors(errors.responseJSON));
-//           }
-//         )
-//       })
-//   }
-// }
-
-
 export const showGroup = (id) =>{
   return dispatch =>{
     GroupApiUtil.showGroup(id).then(

@@ -14,14 +14,6 @@ class CreateGroup extends React.Component {
     let group = { title: this.state.title};
     let pollIds = Object.values(this.props.selectedPolls).map(poll=>poll.id);
     this.props.createGroup(group, this.props.user, pollIds);
-    // Object.values(this.props.selectedPolls).forEach((poll)=>{
-      
-      // let newPoll = merge({}, poll);
-      // newPoll.group_id = this.props.user.group_ids[this.props.user.group_ids.length-1];
-      // this.props.updatePoll(newPoll, poll.id);
-
-    // })
-
   }
 
   update(field) {

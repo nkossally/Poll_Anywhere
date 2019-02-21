@@ -5,15 +5,23 @@ import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={active_poll_id: "", selected_polls: [], showModal: false};
+    this.state={active_poll_id: "", selectedPolls: [], showModal: false};
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
+    this.handleUngroup = this.handleUngroup.bind(this);
   }
 
   componentDidMount(){
     this.props.showAllPolls();
     this.props.showAllGroups();
+  }
+
+  handleUngroup(){
+    let pollIds = this.state.selectedPolls.map(poll=>poll.id);
+    let group = this.props.groups[0];
+    debugger
+    this.props.updatePoll(pollIds, -1, [], group)
   }
 
   handleModal(){
@@ -25,6 +33,9 @@ class User extends React.Component {
   selectPoll(poll){
     return()=>{
       this.props.selectPoll(poll);
+      let newSelection = this.state.selectedPolls;
+      newSelection.push(poll);
+      this.setState({selectedPolls: newSelection});
     }
   }
 
@@ -92,7 +103,7 @@ class User extends React.Component {
           <ul className="user-polls">
             <li className="user-polls-header">
               <button onClick={this.handleModal}>Group</button>
-              <button>Ungroup</button>
+              <button onClick={this.handleUngroup}>Ungroup</button>
             </li>
 
             {groupsAndPolls}

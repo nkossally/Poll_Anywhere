@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
   return {
     showAllPolls: ()=>dispatch(showAllPolls()),
     showAllGroups: ()=>dispatch(showAllGroups()),
-    updatePoll: (poll, id)=>dispatch(updatePoll(poll, id)),
+    updatePoll: (poll, id, choices, group)=>dispatch(updatePoll(poll, id, choices, group)),
     closeModal: () => dispatch(closeModal()),
     openModal: (user_id, selectedPolls ) => dispatch(openModal(user_id, selectedPolls)),
     selectPoll: (poll) => dispatch(selectPoll(poll)),

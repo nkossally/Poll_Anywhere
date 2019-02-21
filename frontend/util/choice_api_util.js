@@ -7,6 +7,7 @@
 // )
 
 export const createChoice = (choiceArr, poll)=>{
+	
 	return(  $.ajax({
 		method: 'POST',
 		url: '/api/choices',

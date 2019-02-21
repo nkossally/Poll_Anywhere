@@ -40,9 +40,9 @@ export const showPoll = (id) =>{
   }
 }
 
-export const updatePoll = (poll, id, choices) =>{
+export const updatePoll = (poll, id, choices, group) =>{
   return dispatch =>{
-    PollApiUtil.updatePoll(poll, id, choices).then(
+    PollApiUtil.updatePoll(poll, id, choices, group).then(
       (poll) =>{
            return ChoiceApiUtil.createChoice(choices, poll).then(
             (poll) =>{
