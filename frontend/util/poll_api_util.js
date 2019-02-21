@@ -16,7 +16,6 @@ export const showPoll = (id)=>(
 )
 
 export const updatePoll = (poll, id, choices, group)=>{
-	debugger
 	return(
 		$.ajax({
 			method: 'PATCH',

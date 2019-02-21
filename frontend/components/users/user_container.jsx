@@ -5,6 +5,8 @@ import {showAllPolls, updatePoll} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import {selectPoll, deselectPoll, showSelection} from '../../actions/ui_actions';
+import { withRouter } from 'react-router';
+
 
 
 
@@ -51,4 +53,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(User));

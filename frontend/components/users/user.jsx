@@ -20,7 +20,6 @@ class User extends React.Component {
   handleUngroup(){
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
-    debugger
     this.props.updatePoll(pollIds, -1, [], group)
   }
 
@@ -53,6 +52,7 @@ class User extends React.Component {
         }
       }
       this.setState({active_poll_id: id})
+
     } 
   }
 
@@ -95,11 +95,9 @@ class User extends React.Component {
       <div>
         <BlueNavBar />
         <div className="user-container">
-          <Link to="/createpoll">
             <div className="user-create-button">
-              Create
+            <Link to="/createpoll">    Create</Link>
             </div>
-          </Link>
           <ul className="user-polls">
             <li className="user-polls-header">
               <button onClick={this.handleModal}>Group</button>

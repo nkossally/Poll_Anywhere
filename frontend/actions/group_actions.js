@@ -26,7 +26,6 @@ export const createGroup = (group, user, pollIds) =>{
       (group) =>{
         return PollApiUtil.updatePoll(pollIds, -1, [], group).then(
           (group) => {
-          debugger;
           return dispatch(receiveGroup(group));
         }, errors => {
           return dispatch(receiveGroupErrors(errors.responseJSON));

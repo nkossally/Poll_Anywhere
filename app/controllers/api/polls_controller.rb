@@ -19,9 +19,9 @@ class Api::PollsController < ApplicationController
   end
 
   def update
-    debugger
     broken = false
-    if (params[:choices] && params[:choices].length > 0)
+    if(!params[:group])
+    # if (params[:choices] && params[:choices].length > 0)
       @poll = Poll.find_by(id: params[:id])
       if(@poll.update(poll_params))
         render :show

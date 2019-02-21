@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import {createPoll, showPoll, showAllPolls } from '../../actions/poll_actions';
 import {createChoice} from '../../actions/choice_actions';
 import {showAllGroups} from '../../actions/group_actions';
+import { withRouter } from 'react-router';
+
 
 import PollForm from './poll_form';
 
@@ -37,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PollForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PollForm));
