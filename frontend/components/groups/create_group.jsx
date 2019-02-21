@@ -12,8 +12,8 @@ class CreateGroup extends React.Component {
   handleSubmit(){
     
     let group = { title: this.state.title};
-    
-    this.props.createGroup(group, this.props.user, Object.values(this.props.selectedPolls));
+    let pollIds = Object.values(this.props.selectedPolls).map(poll=>poll.id);
+    this.props.createGroup(group, this.props.user, pollIds);
     // Object.values(this.props.selectedPolls).forEach((poll)=>{
       
       // let newPoll = merge({}, poll);

@@ -19,7 +19,7 @@ class NavBar extends React.Component {
     let myPolls;
     let logout;
     if(this.props.user){
-      myPolls =  <li className="my-polls"><Link to={`/users/${this.props.user.id}`}>My polls</Link></li>;
+      myPolls =  <Link to={`/users/${this.props.user.id}`} className="my-polls" >My polls</Link>;
       logout =  <button className="white-nav-logout" onClick={this.props.logout}>Log out</button>    
     } else {
       login = <Link className="login-nav" to="/login">Log in</Link>;

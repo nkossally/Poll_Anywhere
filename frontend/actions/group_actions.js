@@ -20,25 +20,37 @@ export const RECEIVE_GROUP_ERRORS = 'RECEIVE_GROUP_ERRORS';
 //   }
 // }
 
-export const createGroup = (group, user, polls) =>{
-  
+export const createGroup = (group, user, pollIds) =>{
   return dispatch =>{
-    GroupApiUtil.createGroup(group, user, polls).then(
+    GroupApiUtil.createGroup(group, user, pollIds).then(
       (group) =>{
-        return polls.forEach(poll =>  {
-          poll.group_id = group.id
-          PollApiUtil.updatePoll(poll, poll.id)
-        }).then(
-          (group)=>{
-            return dispatch(receiveGroup(group))
-          },
-      errors =>{
-        return dispatch(receiveGroupErrors(errors.responseJSON));
-      }
-      )
-    })
+        return PollApiUtil.updatePoll(pollIds, -1, [], group).then(
+          (group) => {
+          debugger;
+          return dispatch(receiveGroup(group));
+        }, errors => {
+          return dispatch(receiveGroupErrors(errors.responseJSON));
+        });
+      })
   }
 }
+
+// export const createPoll = (poll, choices) =>{
+//   return dispatch =>{
+//     PollApiUtil.createPoll(poll, choices).then(
+//       (poll) =>{
+//            return ChoiceApiUtil.createChoice(choices, poll).then(
+//             (poll) =>{
+//               // dispatch receive choices
+//             return dispatch(receivePoll(poll))
+//           },
+//           errors =>{
+//             return dispatch(receivePollErrors(errors.responseJSON));
+//           }
+//         )
+//       })
+//   }
+// }
 
 
 export const showGroup = (id) =>{

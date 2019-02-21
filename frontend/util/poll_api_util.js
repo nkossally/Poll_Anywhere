@@ -15,12 +15,13 @@ export const showPoll = (id)=>(
   })
 )
 
-export const updatePoll = (poll, id, choices)=>{
+export const updatePoll = (poll, id, choices, group)=>{
+	debugger
 	return(
 		$.ajax({
 			method: 'PATCH',
 			url: `/api/polls/${id}`,
-			data: {poll, id, choices}
+			data: {poll, id, choices, group}
 		})
 	)
 }
