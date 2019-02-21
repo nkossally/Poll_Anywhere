@@ -219,7 +219,7 @@
   padding-left: 0px;
   padding-right: 0px;
 
-  align-self: center;
+  /* align-self: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;

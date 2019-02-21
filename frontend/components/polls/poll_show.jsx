@@ -75,12 +75,16 @@ class PollShow extends React.Component {
           <div className="poll-show-left-box">
             
             <div className="poll-body">{poll.body} </div>
-            <BarChart layout="vertical" width={800} height={250} data={pollDataPercents}>
-              <XAxis type="number" />
-              <YAxis dataKey="choice" type="category" />
-              <Legend />
-              <Bar dataKey="count" fill="#8884d8" />
-            </BarChart>
+            <div className="chart-container">
+              <ResponsiveContainer >
+              <BarChart layout="vertical"  data={pollDataPercents}>
+                <XAxis type="number" />
+                <YAxis dataKey="choice" type="category" />
+                <Legend />
+                <Bar dataKey="count" fill="#8884d8" />
+              </BarChart>
+              </ResponsiveContainer>
+            </div>
             <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
 
           </div>
@@ -90,7 +94,6 @@ class PollShow extends React.Component {
                 Delete
             </button>
           </div>
-
         
 
 
