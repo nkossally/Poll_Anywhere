@@ -11,6 +11,7 @@ class PollShow extends React.Component {
     this.handleSubmit = this.handleDelete.bind(this);
     this.receiveResponse = this.receiveResponse.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleActiveStatus = this.toggleActiveStatus.bind(this);
   }
 
   componentDidMount() {
@@ -47,14 +48,46 @@ class PollShow extends React.Component {
     
   }
 
+  toggleActiveStatus(){
+
+      debugger
+      let poll = this.props.poll;
+      let inactivePoll = {active: false};
+      let activePoll = {active: true};
+      for(let i=0; i<this.props.polls.length; i++){
+        let currPoll = this.props.polls[i];
+
+        if(currPoll.id === poll.id){
+          let updatedPoll = poll.active ? inactivePoll : activePoll;
+          this.props.updatePoll(updatedPoll, poll.id)
+        } else {
+          this.props.updatePoll(inactivePoll, currPoll.id)
+        }
+      }
+
+      // let poll = this.props.poll;
+      // let updatedPoll = poll.active ? {active: false} : {active: true};
+      // this.props.updatePoll(updatedPoll, poll.id)
+      debugger
+
+    
+  
+  }
+
   render(){
     let poll;
     let pollData = [];
     let totalCount = 0;
+    let respondText;
+    let respondTextLink;
     if (!this.props.poll || !this.props.choices){
       return null;
     } else{
     poll  = this.props.poll;
+    respondText = poll.active ? "Respond at " : "When this poll is active, respond at ";
+    respondTextLink = poll.active ? <Link className="respond-link" to={`/${this.props.userId}/respond`} >pollanythere.herokuapp.com/#/{this.props.userId}/respond</Link> :
+      `pollanythere.herokuapp.com/#/${this.props.userId}/respond`
+
     for (let i = 0; i < this.props.choices.length; i++) {
       let choice = this.props.choices[i];
       if(choice){
@@ -72,28 +105,37 @@ class PollShow extends React.Component {
       <div>
         <BlueNavBar />
         <div className="poll-box">
-          <div className="poll-show-left-box">
-            
-            <div className="poll-body">{poll.body} </div>
-            <div className="chart-container">
-              <ResponsiveContainer >
-              <BarChart layout="vertical"  data={pollDataPercents}>
-                <XAxis type="number" />
-                <YAxis dataKey="choice" type="category" />
-                <Legend />
-                <Bar dataKey="count" fill="#8884d8" />
-              </BarChart>
-              </ResponsiveContainer>
-            </div>
+          <ul className="poll-show-left-box">
+            <li className="poll-body">{poll.body} </li>
+            <li className="poll-show-respond-text">
+              {respondText}
+              {respondTextLink}
+            </li>
+            <li>
+              <ul className="chart-and-buttons">
+                <li className="chart-container">
+                    <ResponsiveContainer >
+                    <BarChart layout="vertical"  data={pollDataPercents}>
+                      <XAxis type="number" />
+                      <YAxis dataKey="choice" type="category" />
+                      <Legend />
+                      <Bar dataKey="count" fill="#8884d8" />
+                    </BarChart>
+                    </ResponsiveContainer>
+                </li>
+                <li className="poll-show-buttons">
+                  <div id={this.props.poll.active ? "active-blue-poll": ""}><button className="poll-show-activate" id="extend-button" onClick={this.toggleActiveStatus} > {this.props.poll.active ? "Deactivate" : "Activate" }  <i id="poll-show-activate-icon" className="fas fa-toggle-on"></i></button></div>
+                  <div><Link id="extend-button" to={`/polls/${poll.id}/edit`}>Edit</Link></div>
+                  <div><button id="extend-button" className="poll-show-delete" onClick={this.handleDelete} >
+                    Delete
+                  </button></div>
+                </li>
+              </ul>
+            </li>
             <div className="black-logo-container" ><  img src={window.logo_black} className="black-logo" /></div>    
 
-          </div>
-          <div className="poll-show-buttons">
-            <Link to={`/polls/${poll.id}/edit`}>Edit</Link>
-            <button className="poll-show-delete" onClick={this.handleDelete} >
-                Delete
-            </button>
-          </div>
+          </ul>
+
         
 
 

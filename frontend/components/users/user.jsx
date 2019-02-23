@@ -79,7 +79,7 @@ class User extends React.Component {
                   </div>
                   <Link className="user-edit-poll" to={`/polls/${poll.id}/edit`}>Edit</Link>
                   <button onClick={this.activate(poll.id)}>
-                    <i className="fas fa-toggle-on"></i>
+                    <i className="fas fa-toggle-on" id="user-activate-icon"></i>
                   </button>
 
                 </div>

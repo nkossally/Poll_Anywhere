@@ -4,6 +4,7 @@ import ChoiceForm from "../choices/create_choice_container";
 import merge from 'lodash/merge';
 import EditChoiceShow from "../choices/edit_choice_show";
 
+
 class EditPoll extends React.Component {
   constructor(props) {
     super(props);
@@ -57,6 +58,8 @@ class EditPoll extends React.Component {
     delete choiceObject["choiceArray"];
     let choices = Object.values(choiceObject);    
     this.props.updatePoll(newPoll, poll.id, choices);
+    this.props.history.push(`/users/${this.props.userId}`);
+
   }
 
   addChoice(e){

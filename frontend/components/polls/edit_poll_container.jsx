@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+
 
 import { updatePoll, showPoll } from '../../actions/poll_actions';
 
@@ -9,6 +11,7 @@ import { showAllChoices, showChoice, destroyChoice } from '../../actions/choice_
 const mapStateToProps = (state, ownProps) => {
   let poll;
   let prevChoices = [];
+
   if(state.entities.polls) poll = state.entities.polls[ownProps.match.params.pollId]
   if (poll){
     for(let i=0; i<poll.choice_ids.length; i++){
@@ -24,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     poll: poll,
     body: poll ? poll.body : "",
     prevChoices: prevChoices,
+    userId: state.session.id,
   };
 };
 
@@ -35,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPoll);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditPoll));

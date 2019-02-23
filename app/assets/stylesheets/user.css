@@ -27,7 +27,7 @@
   color: #3C749E;
   margin-top: 10px;
   flex-direction: row;
-  padding-right: 2px;
+  padding-right: 4px;
 
 }
 
@@ -142,14 +142,14 @@
 
 }
 
-.fa-toggle-on{
+#user-activate-icon{
   margin-left: auto;
 
   /* align-self: flex-start; */
 
 }
 
-.fa-toggle-on:hover{
+#user-activate-icon:hover{
   color: #47b559;
 
 }
