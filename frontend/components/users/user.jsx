@@ -15,6 +15,7 @@ class User extends React.Component {
   componentDidMount(){
     this.props.showAllPolls();
     this.props.showAllGroups();
+    this.props.showUser(this.props.user.id);
   }
 
   handleUngroup(){
@@ -58,6 +59,7 @@ class User extends React.Component {
 
   render() {
     const groupsAndPolls = this.props.groups.map(group=>{
+      
       return(
         <div key={group.id}>
           <li className="group-title" >{group.title}</li>

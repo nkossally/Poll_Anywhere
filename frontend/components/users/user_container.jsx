@@ -3,6 +3,7 @@ import React from 'react';
 import User from './user';
 import {showAllPolls, updatePoll} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
+import {showAllUsers, showUser} from '../../actions/user_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import {selectPoll, deselectPoll, showSelection} from '../../actions/ui_actions';
 import { withRouter } from 'react-router';
@@ -31,8 +32,6 @@ const mapStateToProps = (state, ownProps) => {
       })
     }
   }
-
-
   return {
     user: user,
     groups: groups,
@@ -49,6 +48,8 @@ const mapDispatchToProps = dispatch => {
     openModal: (user_id, selectedPolls ) => dispatch(openModal(user_id, selectedPolls)),
     selectPoll: (poll) => dispatch(selectPoll(poll)),
     deselectPoll: (poll) => dispatch(deselectPoll(poll)),
+    // showAllUsers: () => dispatch(showAllUsers()),
+    showUser: (id) => dispatch(showUser(id)),
 
   };
 };

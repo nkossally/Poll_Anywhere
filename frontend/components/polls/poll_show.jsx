@@ -50,7 +50,6 @@ class PollShow extends React.Component {
 
   toggleActiveStatus(){
 
-      debugger
       let poll = this.props.poll;
       let inactivePoll = {active: false};
       let activePoll = {active: true};
@@ -68,7 +67,6 @@ class PollShow extends React.Component {
       // let poll = this.props.poll;
       // let updatedPoll = poll.active ? {active: false} : {active: true};
       // this.props.updatePoll(updatedPoll, poll.id)
-      debugger
 
     
   

@@ -41,7 +41,6 @@ export const showPoll = (id) =>{
 }
 
 export const updatePoll = (poll, id, choices, group) =>{
-  debugger
   return dispatch =>{
     PollApiUtil.updatePoll(poll, id, choices, group).then(
       (poll) =>{
