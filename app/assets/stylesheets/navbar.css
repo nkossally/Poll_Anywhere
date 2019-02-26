@@ -1,3 +1,10 @@
+.nav-row{
+  border-bottom: 1px solid #DCDCDC;
+  -webkit-box-shadow:0px 1px 1px #DCDCDC;
+ -moz-box-shadow:0px 1px 1px #DCDCDC;
+ box-shadow:0px 1px 1px #DCDCDC;
+}
+
 .blue-nav {
   height: 75px;
   display: flex;

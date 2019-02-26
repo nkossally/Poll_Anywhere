@@ -9,37 +9,44 @@ class PollShow extends React.Component {
     super(props)
     this.state = {responseReceived: false};
     this.handleSubmit = this.handleDelete.bind(this);
-    this.receiveResponse = this.receiveResponse.bind(this);
+    // this.receiveResponse = this.receiveResponse.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleActiveStatus = this.toggleActiveStatus.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.polls !== prevProps.polls) {
+      this.props.showAllChoices();
+    }
   }
 
   componentDidMount() {
     this.props.showPoll(this.props.match.params.pollId);
     this.props.showAllChoices();
+    this.props.showAllGroups();
     let that = this;
 
-    const pusher = new Pusher('a00864a1ebfc95672108', {
-      cluster: 'us2',
-      forceTLS: true
-    });
-    const channel = pusher.subscribe('response_channel');
+    // const pusher = new Pusher('a00864a1ebfc95672108', {
+    //   cluster: 'us2',
+    //   forceTLS: true
+    // });
+    // const channel = pusher.subscribe('response_channel');
 
-    channel.bind('pusher:subscription_succeeded', function (members) {
-      console.log('subscribed successful');
-    });
-    channel.bind('pusher:subscription_error', function (status) {
-      console.log('subscribed error: ' + status);
-    });
-    channel.bind('respond', function (status) {
-      console.log('response noted');
-      that.props.showAllChoices();
-    });
+    // channel.bind('pusher:subscription_succeeded', function (members) {
+    //   console.log('subscribed successful');
+    // });
+    // channel.bind('pusher:subscription_error', function (status) {
+    //   console.log('subscribed error: ' + status);
+    // });
+    // channel.bind('respond', function (status) {
+    //   console.log('response noted');
+    //   that.props.showAllChoices();
+    // });
   }
 
-  receiveResponse(){
-    this.props.showPoll(this.props.match.params.pollId);
-  }
+  // receiveResponse(){
+  //   this.props.showPoll(this.props.match.params.pollId);
+  // }
 
   handleDelete(){
       this.props.destroyPoll(this.props.poll.id)
@@ -54,9 +61,11 @@ class PollShow extends React.Component {
       let inactivePoll = {active: false};
       let activePoll = {active: true};
       for(let i=0; i<this.props.polls.length; i++){
+        
         let currPoll = this.props.polls[i];
 
         if(currPoll.id === poll.id){
+          
           let updatedPoll = poll.active ? inactivePoll : activePoll;
           this.props.updatePoll(updatedPoll, poll.id)
         } else {

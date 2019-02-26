@@ -2,6 +2,7 @@ import { RECEIVE_GROUP, RECEIVE_GROUPS } from '../actions/group_actions';
 import merge from 'lodash/merge';
 
 const groupsReducer = (oldState = {}, action) => {
+  debugger
   Object.freeze(oldState);
   let newState;
   switch(action.type){

@@ -3,6 +3,7 @@ import { showPoll, destroyPoll, updatePoll} from '../../actions/poll_actions';
 
 import PollShow from './poll_show';
 import {showAllChoices, showChoice} from '../../actions/choice_actions';
+import {showAllGroups} from '../../actions/group_actions';
 import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
@@ -41,7 +42,8 @@ const mapDispatchToProps = dispatch => ({
   showPoll: (id) => dispatch(showPoll(id)),
   showAllChoices: () => dispatch(showAllChoices()),
   destroyPoll: (id) => dispatch(destroyPoll(id)),
-  updatePoll: (poll, id) => dispatch(updatePoll(poll, id))
+  updatePoll: (poll, id) => dispatch(updatePoll(poll, id)),
+  showAllGroups: () => dispatch(showAllGroups()),
 
 });
 
