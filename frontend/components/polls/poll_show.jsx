@@ -64,10 +64,6 @@ class PollShow extends React.Component {
         }
       }
 
-      // let poll = this.props.poll;
-      // let updatedPoll = poll.active ? {active: false} : {active: true};
-      // this.props.updatePoll(updatedPoll, poll.id)
-
     
   
   }

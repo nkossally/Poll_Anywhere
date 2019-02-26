@@ -10,8 +10,8 @@ class PollForm extends React.Component {
 
     this.state = { group_id: "", user_id: this.props.user_id, body: "", category: "",
     choice1: "", choice2: "", choiceArray: [
-      <input key="1" className="choice-inside-poll" onChange={this.update('choice1')} />,
-      <input key="2" className="choice-inside-poll"  onChange={this.update('choice2')} />
+      <input key="1" className="choice-inside-poll"  placeholder="Choice 1" onChange={this.update('choice1')} />,
+      <input key="2" className="choice-inside-poll" placeholder="Choice 2" onChange={this.update('choice2')} />
     ]};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addChoice = this.addChoice.bind(this);
@@ -63,7 +63,7 @@ class PollForm extends React.Component {
       let newArr = this.state.choiceArray;
       const identifier = newArr.length+1;
       newArr.push(
-        <input key={identifier} className="choice-inside-poll" onChange={this.update([`choice${identifier}`])}  />
+        <input key={identifier} className="choice-inside-poll" placeholder={`Choice ${identifier}`} onChange={this.update([`choice${identifier}`])}  />
       )
       this.setState({
         choiceArray: newArr, [`choice${identifier}`]: ""
@@ -78,7 +78,7 @@ class PollForm extends React.Component {
     if(this.props.user){
       groupDropdown = (
           <div >
-            <select value={this.state.group_id} 
+            <select className="group-dropdown" value={this.state.group_id} 
                     onChange={this.update('group_id')}>
               {this.props.groups.map((group) => <option key={group.id} value={group.id}>{group.title}</option>)}
             </select>
@@ -115,10 +115,13 @@ class PollForm extends React.Component {
                 {this.state.choiceArray}
               </ul>
              <button className="add-choice" onClick={this.addChoice}><i className="fas fa-plus"></i> &nbsp;Add option</button>
-             {groupDropdown}
 
               <div className="horizontal-dashes" />
-             <input type="submit" className="submit-button" value={"Create"}/>
+              <div className="group-and-create-row">
+                {groupDropdown}
+                <input type="submit" className="submit-button" value={"Create"}/>
+              </div>
+
 
           </form>
 

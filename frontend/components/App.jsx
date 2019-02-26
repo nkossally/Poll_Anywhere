@@ -10,6 +10,7 @@ import PollShow from './polls/poll_show_container';
 import EditPollForm from './polls/edit_poll_container';
 import ActivePollResponseForm from './responses/active_poll_response_container';
 import Modal from './modal/modal';
+import HowItWorks from "./how_it_works/how_it_works_container";
 
 
 
@@ -22,6 +23,8 @@ const App = () => (
     <Modal />
 
     <Route exact path="/" component={HomePage}/>
+    <Route exact path="/how-it-works" component={HowItWorks}/>
+
 
     <Switch>
 

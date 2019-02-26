@@ -7,10 +7,7 @@ import { showAllChoices } from '../../actions/choice_actions';
 import ResponseForm from './response_form';
 
 const mapStateToProps = (state, ownProps) => {
-  // let poll;
-  // if(state.entities.polls[ownProps.match.params.pollId]){
-  //   poll = state.entities.polls[ownProps.match.params.pollId];
-  // }
+
   const poll = state.entities.polls[ownProps.match.params.pollId];
   let choices;
   if (poll){

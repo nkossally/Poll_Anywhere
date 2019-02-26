@@ -8,6 +8,7 @@
   display: flex;
   width: 975px;
   height: 115px;
+  margin-top: 30px;
   margin-bottom: 40px;
 }
 
@@ -75,6 +76,7 @@
 }
 
 .add-choice{
+  background-color: white;
   font-size: 12px;
   font-weight: bold;
   display: flex;
@@ -96,7 +98,6 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   
 }
@@ -146,5 +147,15 @@
   border-bottom: 1px dashed white;
   margin-top: 20px;
   margin-bottom: 15px;
+}
 
+.group-dropdown{
+  display: flex;
+  width: 490px;
+  height: 45px;
+}
+
+.group-and-create-row{
+  display: flex;
+  flex-direction: row;
 }

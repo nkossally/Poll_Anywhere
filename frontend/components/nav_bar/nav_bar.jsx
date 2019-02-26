@@ -22,7 +22,7 @@ class NavBar extends React.Component {
       myPolls =  <Link to={`/users/${this.props.user.id}`} className="my-polls" >My polls</Link>;
       logout =  <button className="white-nav-logout" onClick={this.props.logout}>Log out</button>    
     } else {
-      login = <Link className="login-nav" to="/login">Log in</Link>;
+      login = <Link className="login-nav" to="/login" >Log in</Link>;
       signup = <Link className="signup-nav" to="/signup">Sign up</Link>;
       demo = <button className="demo" onClick={this.props.demo}>demo</button>;
     }
@@ -37,21 +37,21 @@ class NavBar extends React.Component {
             <ul className="nav-logged-out-expanded">
 
               <li>
-                <Link id="support" to="">Support</Link>
+                <Link id="support" to="/how-it-works" >How it works</Link>
               </li>
-              <li>
+              <li className={this.props.user ? "nav-hidden": ""}>
                 {login}
               </li>
-              <li >
+              <li className={this.props.user ? "nav-hidden": ""} >
                 {signup}
               </li>
-              <li>
+              <li className={this.props.user ? "nav-hidden": ""}>
                 {demo}
               </li>
-              <li>
+              <li className={this.props.user ? "" :"nav-hidden"}>
                 {myPolls}
               </li>
-              <li>
+              <li className={this.props.user ? "" : "nav-hidden"}>
                 {logout}
               </li>
             </ul>

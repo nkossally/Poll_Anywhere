@@ -16,7 +16,6 @@ export const createPoll = (poll, choices) =>{
       (poll) =>{
            return ChoiceApiUtil.createChoice(choices, poll).then(
             (poll) =>{
-              // dispatch receive choices
             return dispatch(receivePoll(poll))
           },
           errors =>{

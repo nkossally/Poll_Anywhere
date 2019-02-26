@@ -53,7 +53,7 @@ class HomePage extends React.Component {
           Use multiple choice questions to identify gaps in understanding, or kick off group discussions with a colorful word cloud.
           </div>
           <div className="home-page-thirds"  id="middle">
-          Invite the audience to respond simultaneously by visiting a website or texting a number on their phones.
+          {"Invite the audience to respond simultaneously by visiting a website or texting a number on their phones."}&nbsp;&nbsp;&nbsp;&nbsp; 
           </div>
           <div className="home-page-thirds">
           Responses appear in an animated graph or chart embedded in your presentation. Results update live for all to see.

@@ -48,7 +48,6 @@ const mapDispatchToProps = dispatch => {
     openModal: (user_id, selectedPolls ) => dispatch(openModal(user_id, selectedPolls)),
     selectPoll: (poll) => dispatch(selectPoll(poll)),
     deselectPoll: (poll) => dispatch(deselectPoll(poll)),
-    // showAllUsers: () => dispatch(showAllUsers()),
     showUser: (id) => dispatch(showUser(id)),
 
   };

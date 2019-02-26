@@ -85,8 +85,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  /* text-align: left; */
 }
 
 .check-and-text{
@@ -144,9 +142,6 @@
 
 #user-activate-icon{
   margin-left: auto;
-
-  /* align-self: flex-start; */
-
 }
 
 #user-activate-icon:hover{
@@ -174,3 +169,4 @@
   color: #e75750;
   text-decoration: underline;
 }
+

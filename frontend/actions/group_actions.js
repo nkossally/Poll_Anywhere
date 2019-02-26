@@ -6,20 +6,6 @@ export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const RECEIVE_GROUP_ERRORS = 'RECEIVE_GROUP_ERRORS';
 
-
-// export const createGroup = (group, user) =>{
-//   return dispatch =>{
-//     GroupApiUtil.createGroup(group, user).then(
-//       (group) =>{
-//         return dispatch(receiveGroup(group))
-//       },
-//       errors =>{
-//         return dispatch(receiveGroupErrors(errors.responseJSON));
-//       }
-//     )
-//   }
-// }
-
 export const createGroup = (group, user, pollIds) =>{
   return dispatch =>{
     GroupApiUtil.createGroup(group, user, pollIds).then(

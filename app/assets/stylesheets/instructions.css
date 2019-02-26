@@ -1,0 +1,16 @@
+.instrutions{
+  display: flex;
+  flex-direction: column;
+}
+
+.instructions> li{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.instructions> li > div{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 50%;
+}

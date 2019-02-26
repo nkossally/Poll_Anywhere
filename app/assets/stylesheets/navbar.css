@@ -90,6 +90,8 @@
 
 
 
+
+
 /* .nav-logged-out-hamburger {
   display: none;
 }
@@ -244,4 +246,8 @@
 .white-nav-logout:hover{
   background-color: #e7e7e7;
 
+}
+
+.nav-hidden{
+  display: none !important;
 }

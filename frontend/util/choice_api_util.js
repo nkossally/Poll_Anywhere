@@ -1,11 +1,3 @@
-// export const createChoice = (choice)=>(
-//   $.ajax({
-// 		method: 'POST',
-// 		url: '/api/choices',
-// 		data: { choice }
-//   })
-// )
-
 export const createChoice = (choiceArr, poll)=>{
 	
 	return(  $.ajax({
