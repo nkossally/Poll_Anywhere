@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ChoiceForm from "../choices/create_choice_container";
 import merge from 'lodash/merge';
 import EditChoiceShow from "../choices/edit_choice_show";
+import BlueNavBar from '../nav_bar/blue_nav_bar_container';
+
 
 
 class EditPoll extends React.Component {
@@ -82,6 +84,8 @@ class EditPoll extends React.Component {
     
     return (
       <div >
+        <BlueNavBar />
+        <div className="empty-space"></div>
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >
             <input className="poll-input-box"

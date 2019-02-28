@@ -5,11 +5,29 @@ import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={active_poll_id: "", selectedPolls: [], showModal: false};
+    this.state={activePollId: this.props.activePollId, selectedPolls: [], showModal: false};
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
     this.handleUngroup = this.handleUngroup.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    // debugger
+    // if(nextProps.groups !== this.props.groups){
+    //   debugger
+    //   this.setState({newGroups: nextProps.groups});
+    // }
+    // if(nextProps.activePollId !== this.props.activePollId){
+    //   debugger
+    //   this.setState({activePollId: nextProps.activePollId});
+    // }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.activePollId !== prevProps.activePollId) {
+      this.props.showAllGroups();
+    }
   }
 
   componentDidMount(){
@@ -52,14 +70,14 @@ class User extends React.Component {
           this.props.updatePoll(inactivePoll, poll.id)
         }
       }
-      this.setState({active_poll_id: id})
+      this.setState({activePollId: id})
 
     } 
   }
 
   render() {
-    const groupsAndPolls = this.props.groups.map(group=>{
-      
+ 
+    let groupsAndPolls = this.props.groups.map(group=>{
       return(
         <div key={group.id}>
           <li className="group-title" >{group.title}</li>
@@ -72,7 +90,7 @@ class User extends React.Component {
                 className = "user-single-poll";
               }
               return(
-                <div className={className} key={poll.id}> 
+                <div className={className} key={idx}> 
                   <div className="check-and-text">
                     <div className="check-container">
                       <input type="checkbox" onClick={this.selectPoll(poll)}/>

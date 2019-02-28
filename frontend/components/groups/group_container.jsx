@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 import CreateGroup from './create_group';
 
+
 const mapStateToProps = (state, ownProps) => {
   let user;
   if(state.entities.users[state.session.id]){

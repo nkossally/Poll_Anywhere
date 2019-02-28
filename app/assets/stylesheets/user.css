@@ -35,7 +35,6 @@
   background-color: white;
   height: 40px;
   color: black;
-  margin-bottom: 2px;
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -54,6 +53,7 @@
 
   display: flex;
   background-color: #DBDBDB;
+
 }
 .user-polls-header button:hover{
   background-color: #c9c9c9;
