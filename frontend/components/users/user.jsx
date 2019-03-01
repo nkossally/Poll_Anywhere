@@ -103,6 +103,8 @@ class User extends React.Component {
                 <div className={className} key={idx} draggable
                 onDrag={(event) => this.onDrag(event, poll)}
                 > 
+                <div className={ poll.active ? "dark-green-div" : "user-empty-div"}> </div>
+
                   <div className="check-and-text">
                     <div className="check-container">
                       <input type="checkbox" onClick={this.selectPoll(poll)}/>

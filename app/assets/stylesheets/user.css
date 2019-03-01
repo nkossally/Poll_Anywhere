@@ -28,7 +28,7 @@
   color: #3C749E;
   margin-top: 10px;
   flex-direction: row;
-  margin-right: 7px;
+  margin-right: 2px;
 
 }
 
@@ -108,6 +108,19 @@
   align-items: center;
 }
 
+.dark-green-div{
+  background-color: #00C853;
+  width: 5px;
+  height: 40px;
+
+}
+
+.user-empty-div{
+  background-color: #F7FBFC;
+  width: 5px;
+  height: 40px;
+}
+
 
 .poll-text{
   text-indent: 5px;
@@ -143,6 +156,7 @@
 
 #user-activate-icon{
   margin-left: auto;
+  margin-right: 15px;
 }
 
 #user-activate-icon:hover{

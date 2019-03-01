@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { showPoll, destroyPoll, updatePoll} from '../../actions/poll_actions';
+import { showPoll, destroyPoll, updatePoll, showAllPolls} from '../../actions/poll_actions';
 
 import PollShow from './poll_show';
 import {showAllChoices, showChoice} from '../../actions/choice_actions';
@@ -25,8 +25,10 @@ const mapStateToProps = (state, ownProps) => {
   if(groups.length > 0){
     if(state.entities.polls){
       groups.forEach(group=>{  
-        group.poll_ids.forEach(id=>
-          polls.push(state.entities.polls[id]));
+        group.poll_ids.forEach(id=>{
+          let currPoll = state.entities.polls[id] ;
+          if(currPoll){ polls.push(currPoll) };
+        })
       })
     }
   }
@@ -44,6 +46,9 @@ const mapDispatchToProps = dispatch => ({
   destroyPoll: (id) => dispatch(destroyPoll(id)),
   updatePoll: (poll, id) => dispatch(updatePoll(poll, id)),
   showAllGroups: () => dispatch(showAllGroups()),
+  showAllGroups: () => dispatch(showAllGroups()),
+  showAllPolls: () => dispatch(showAllPolls()),
+
 
 });
 

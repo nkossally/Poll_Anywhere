@@ -15,7 +15,7 @@ class PollShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.polls !== prevProps.polls) {
+    if (this.props.poll && prevProps.poll && this.props.poll.active !== prevProps.poll.active) {
       this.props.showAllChoices();
     }
   }
@@ -24,24 +24,25 @@ class PollShow extends React.Component {
     this.props.showPoll(this.props.match.params.pollId);
     this.props.showAllChoices();
     this.props.showAllGroups();
+    this.props.showAllPolls();
     let that = this;
 
-    // const pusher = new Pusher('a00864a1ebfc95672108', {
-    //   cluster: 'us2',
-    //   forceTLS: true
-    // });
-    // const channel = pusher.subscribe('response_channel');
+    const pusher = new Pusher('a00864a1ebfc95672108', {
+      cluster: 'us2',
+      forceTLS: true
+    });
+    const channel = pusher.subscribe('response_channel');
 
-    // channel.bind('pusher:subscription_succeeded', function (members) {
-    //   console.log('subscribed successful');
-    // });
-    // channel.bind('pusher:subscription_error', function (status) {
-    //   console.log('subscribed error: ' + status);
-    // });
-    // channel.bind('respond', function (status) {
-    //   console.log('response noted');
-    //   that.props.showAllChoices();
-    // });
+    channel.bind('pusher:subscription_succeeded', function (members) {
+      console.log('subscribed successful');
+    });
+    channel.bind('pusher:subscription_error', function (status) {
+      console.log('subscribed error: ' + status);
+    });
+    channel.bind('respond', function (status) {
+      console.log('response noted');
+      that.props.showAllChoices();
+    });
   }
 
   // receiveResponse(){
@@ -61,20 +62,15 @@ class PollShow extends React.Component {
       let inactivePoll = {active: false};
       let activePoll = {active: true};
       for(let i=0; i<this.props.polls.length; i++){
-        
         let currPoll = this.props.polls[i];
 
         if(currPoll.id === poll.id){
-          
           let updatedPoll = poll.active ? inactivePoll : activePoll;
           this.props.updatePoll(updatedPoll, poll.id)
         } else {
           this.props.updatePoll(inactivePoll, currPoll.id)
         }
-      }
-
-    
-  
+      }      
   }
 
   render(){
@@ -121,7 +117,7 @@ class PollShow extends React.Component {
                     <BarChart layout="vertical"  data={pollDataPercents}>
                       <XAxis type="number" />
                       <YAxis dataKey="choice" type="category" />
-                      <Legend />
+                      {/* <Legend /> */}
                       <Bar dataKey="count" fill="#8884d8" />
                     </BarChart>
                     </ResponsiveContainer>
