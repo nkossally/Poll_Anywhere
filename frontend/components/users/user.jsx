@@ -42,7 +42,6 @@ class User extends React.Component {
   }
 
   onDrop(event, group ){
-    debugger
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
   }
 

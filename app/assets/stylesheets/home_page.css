@@ -18,17 +18,20 @@
 .first-img-big-txt{
   font-weight: 550;
   font-size: 4.5vw;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   margin-right: 100px;
   margin-left: 4vw;
   margin-top: 4vw;
   color: white;
+  font-family: 'Patua One';
 } 
 
 .first-img-small-txt{
   font-size: 3vw;
   margin-left: 4vw;
   color: white;
+  font-family: 'Patua One', cursive;
+
 
 }
 

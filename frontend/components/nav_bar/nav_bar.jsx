@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
+    this.handleDemo=this.handleDemo.bind(this);
   }
 
   myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
   
+  handleDemo(){
+    this.props.demo();
+    this.props.history.push(`/users/${12}`);
+
+  }
 
   render() {
   
@@ -24,7 +30,7 @@ class NavBar extends React.Component {
     } else {
       login = <Link className="login-nav" to="/login" >Log in</Link>;
       signup = <Link className="signup-nav" to="/signup">Sign up</Link>;
-      demo = <button className="demo" onClick={this.props.demo}>demo</button>;
+      demo = <button className="demo" onClick={this.handleDemo}>demo</button>;
     }
     return (
     <>
