@@ -10,18 +10,11 @@ class User extends React.Component {
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
     this.handleUngroup = this.handleUngroup.bind(this);
+    this.onDrag = this.onDrag.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
-    // debugger
-    // if(nextProps.groups !== this.props.groups){
-    //   debugger
-    //   this.setState({newGroups: nextProps.groups});
-    // }
-    // if(nextProps.activePollId !== this.props.activePollId){
-    //   debugger
-    //   this.setState({activePollId: nextProps.activePollId});
-    // }
+
   }
 
   componentDidUpdate(prevProps) {
@@ -34,6 +27,11 @@ class User extends React.Component {
     this.props.showAllPolls();
     this.props.showAllGroups();
     this.props.showUser(this.props.user.id);
+  }
+
+  onDrag(event, poll){
+    event.preventDefault();
+
   }
 
   handleUngroup(){
@@ -90,7 +88,9 @@ class User extends React.Component {
                 className = "user-single-poll";
               }
               return(
-                <div className={className} key={idx}> 
+                <div className={className} key={idx} draggable
+                onDrag={(event) => this.onDrag(event, poll)}
+                > 
                   <div className="check-and-text">
                     <div className="check-container">
                       <input type="checkbox" onClick={this.selectPoll(poll)}/>
@@ -120,8 +120,8 @@ class User extends React.Component {
             </div>
           <ul className="user-polls">
             <li className="user-polls-header">
-              <button onClick={this.handleModal}>Group</button>
-              <button onClick={this.handleUngroup}>Ungroup</button>
+              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleModal}>Group</button>
+              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleUngroup}>Ungroup</button>
             </li>
 
             {groupsAndPolls}

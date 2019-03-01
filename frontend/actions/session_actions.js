@@ -41,7 +41,7 @@ export const signup = (user, group) => {
     SessionApiUtil.signup(user, group).then(
       user => { 
         return GroupApiUtil.createGroup(group, user).then(
-          (user) =>{ 
+          () =>{ 
             return dispatch(receiveCurrentUser(user))
           },
           errors => {

@@ -8,6 +8,7 @@ const usersReducer = (oldState = {}, action) => {
   let newState;
   switch(action.type){
     case RECEIVE_CURRENT_USER:
+      if (action.user.title) { return oldState }
       newState = merge({}, oldState, { [action.user.id]: action.user });
       return newState;
     case RECEIVE_USER:

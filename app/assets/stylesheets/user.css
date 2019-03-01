@@ -170,3 +170,7 @@
   text-decoration: underline;
 }
 
+.disabled{
+  background-color: #EDEDED;
+  color: #A7A7A7;
+}

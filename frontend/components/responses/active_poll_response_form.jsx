@@ -47,7 +47,7 @@ class ActivePollResponseForm extends React.Component {
     let that = this;
     const poll = this.props.poll || {};
     let choiceButtons;
-    let deleteButton = this.props.choice_id ? <button className="delete-response" onClick={this.handleDelete} >Clear last response</button> : "";
+    let deleteButton = this.props.choice_id ? <button  onClick={this.handleDelete} >Clear last response</button> : "";
 
     if (Object.keys(poll).length !== 0) {
       
@@ -69,15 +69,19 @@ class ActivePollResponseForm extends React.Component {
     
     return(
       
-      <div>
+ 
         <ul className="response-blue-box">
           <li className="response-question">
             {poll.body}
           </li>
-          {choiceButtons}
-          {deleteButton}
+          <li className="response-choice-container">
+            {choiceButtons}
+          </li>
+          <li className={this.props.choice_id ? "delete-response" : "" }>
+            {deleteButton}
+          </li>
         </ul>
-      </div>
+
     )
 
   }

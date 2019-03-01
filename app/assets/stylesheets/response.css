@@ -3,13 +3,18 @@
 
 .response-blue-box{
   width: 100%;
-  min-height: 600px;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: #36516b;
 
+}
+
+.response-choice-container{
+  position: absolute;
+  top: 200px;
 }
 
 .response-choice{
@@ -19,8 +24,8 @@
   border: 1 px solid black;
   background-color: #efefef;
   margin-bottom: 10px;
+  margin-top: 10px;
   text-indent: 5px;
-
 }
 
 .response-choice:hover {
@@ -38,19 +43,17 @@
 
 }
 
-/* .response-choice > button{
-  text-indent: 5px;
-
-} */
-
 .response-question{
-  height: 65px;
+  /* height: 65px; */
+  height: auto;
   width: 880px;
   border: 1 px solid black;
   color: white;
-  font-weight: bold;
+  position: absolute;
+  top: 150px;
+  font-size: 35px;
   text-indent: 5px;
-  margin-top: 15px;
+  margin-bottom: 15px;
 
 
 }
@@ -64,9 +67,11 @@
   color: white;
   border: 1px solid white;
   margin-bottom: 10px;
-  /* text-align: center;
-  justify-items: center;
-  align-items: center; */
+  position: absolute;
+  top: 90px;
+  /* top: 55px; */
+
+
 
 }
 

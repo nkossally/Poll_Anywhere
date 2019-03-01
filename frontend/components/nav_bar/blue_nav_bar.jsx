@@ -14,7 +14,7 @@ class BlueNavBar extends React.Component {
   render() {
     const navLinks = this.props.user ? (
       <ul className="blue-nav">
-        <li className="polls-blue-nav"><Link to={`/users/${this.props.user.id}`}>Polls</Link></li>
+        <li className="polls-blue-nav"  ><Link to={`/users/${this.props.user.id}`} className="blue-nav-polls-button">Polls</Link></li>
         <li className="blue-logo-container"> <Link to="">< img src={window.blue_logo}  className="blue-logo" /></Link></li>
         <li className="logout-dropdown">
           <button onClick={this.myFunction} className="dropbtn">{this.props.user.username} <i className="fas fa-cog"></i></button>
