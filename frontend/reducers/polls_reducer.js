@@ -2,12 +2,18 @@ import { RECEIVE_POLL, RECEIVE_POLLS, DELETE_POLL } from '../actions/poll_action
 import merge from 'lodash/merge';
 
 const pollsReducer = (oldState = {}, action) => {
+  
   Object.freeze(oldState);
   let newState;
   switch(action.type){
     case RECEIVE_POLL:
+      if(action.poll.id){
+        newState = merge({}, oldState, {[action.poll.id]: action.poll});
+        return newState; 
+      } else {
       newState = merge({}, oldState, {[action.poll.poll.id]: action.poll.poll});
       return newState;
+      }
     case RECEIVE_POLLS:
       newState = merge({}, oldState, action.polls);
       return newState;

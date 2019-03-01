@@ -56,6 +56,21 @@ export const updatePoll = (poll, id, choices, group) =>{
 
 }
 
+export const updatePollChangeGroup = (poll, group) =>{
+  return dispatch =>{
+    PollApiUtil.updatePoll(poll, -1, [], group).then(
+      (poll) =>{
+            return dispatch(receivePoll(poll))
+          },
+          errors =>{
+            return dispatch(receivePollErrors(errors.responseJSON));
+          }
+        )
+      }
+  }
+
+
+
 
 
 export const showAllPolls = () =>{

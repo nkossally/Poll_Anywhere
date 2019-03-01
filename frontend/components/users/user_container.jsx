@@ -1,15 +1,12 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import User from './user';
-import {showAllPolls, updatePoll} from '../../actions/poll_actions';
+import {showAllPolls, updatePoll, updatePollChangeGroup} from '../../actions/poll_actions';
 import {showAllGroups} from '../../actions/group_actions';
 import {showAllUsers, showUser} from '../../actions/user_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import {selectPoll, deselectPoll, showSelection} from '../../actions/ui_actions';
 import { withRouter } from 'react-router';
-
-
-
 
 const mapStateToProps = (state, ownProps) => {
   let user = state.entities.users[ownProps.match.params.userId];
@@ -56,6 +53,7 @@ const mapDispatchToProps = dispatch => {
     selectPoll: (poll) => dispatch(selectPoll(poll)),
     deselectPoll: (poll) => dispatch(deselectPoll(poll)),
     showUser: (id) => dispatch(showUser(id)),
+    updatePollChangeGroup: (poll, group) => dispatch(updatePollChangeGroup(poll, group)),
 
   };
 };

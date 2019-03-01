@@ -15,6 +15,7 @@
   margin-left: 15px;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .user-create-button:hover{
@@ -27,7 +28,7 @@
   color: #3C749E;
   margin-top: 10px;
   flex-direction: row;
-  padding-right: 4px;
+  margin-right: 7px;
 
 }
 

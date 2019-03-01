@@ -5,12 +5,13 @@ import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={activePollId: this.props.activePollId, selectedPolls: [], showModal: false};
+    this.state={ activePollId: this.props.activePollId, selectedPolls: [], showModal: false, draggedPoll: "" };
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
     this.handleUngroup = this.handleUngroup.bind(this);
     this.onDrag = this.onDrag.bind(this);
+    this.onDragOver = this.onDragOver.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -31,13 +32,25 @@ class User extends React.Component {
 
   onDrag(event, poll){
     event.preventDefault();
+    this.setState({
+      draggedPoll: poll
+    });
+  }
 
+  onDragOver(event){
+    event.preventDefault();
+  }
+
+  onDrop(event, group ){
+    debugger
+    this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
   }
 
   handleUngroup(){
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
-    this.props.updatePoll(pollIds, -1, [], group)
+    this.props.updatePollChangeGroup(pollIds, group)
+
   }
 
   handleModal(){
@@ -77,9 +90,9 @@ class User extends React.Component {
  
     let groupsAndPolls = this.props.groups.map(group=>{
       return(
-        <div key={group.id}>
+        <div key={group.id} onDrop={(event) => this.onDrop(event, group)} onDragOver={(event => this.onDragOver(event)) } >
           <li className="group-title" >{group.title}</li>
-          <ul className="group-list">
+          <ul className="group-list"   >
             {group.polls.map((poll, idx)=>{
               let className;
               if(poll.active){
@@ -116,7 +129,7 @@ class User extends React.Component {
         <BlueNavBar />
         <div className="user-container">
             <div className="user-create-button">
-            <Link to="/createpoll">    Create</Link>
+            <Link to="/createpoll" id="extend-button">    Create</Link>
             </div>
           <ul className="user-polls">
             <li className="user-polls-header">
