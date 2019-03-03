@@ -9,7 +9,7 @@ import { withRouter } from 'react-router';
 const mapStateToProps = (state) => {
   let userId = state.session.id;
   return {
-    errors: state.errors.session,
+    errors: state.errors.user,
     formType: 'signup',
     link: <Link to="/login">log in</Link>,
     userId: userId

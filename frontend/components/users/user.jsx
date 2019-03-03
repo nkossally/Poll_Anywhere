@@ -14,14 +14,22 @@ class User extends React.Component {
     this.onDragOver = this.onDragOver.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
+  // componentWillReceiveProps(nextProps){
+  //   if( nextProps.groups !== this.props.groups ){
 
-  }
+  //   }
+
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.activePollId !== prevProps.activePollId) {
       this.props.showAllGroups();
+      this.props.showAllPolls();
     }
+    // if (this.props.groupCounts !== prevProps.groupCounts) {
+    //   this.props.showAllGroups();
+    // }
+  
   }
 
   componentDidMount(){
@@ -103,7 +111,7 @@ class User extends React.Component {
                 <div className={className} key={idx} draggable
                 onDrag={(event) => this.onDrag(event, poll)}
                 > 
-                <div className={ poll.active ? "dark-green-div" : "user-empty-div"}> </div>
+                {/* <div className={ poll.active ? "dark-green-div" : "user-empty-div"}> </div> */}
 
                   <div className="check-and-text">
                     <div className="check-container">

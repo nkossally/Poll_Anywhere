@@ -13,8 +13,6 @@ class NavBar extends React.Component {
   
   handleDemo(){
     this.props.demo();
-    this.props.history.push(`/users/${12}`);
-
   }
 
   render() {

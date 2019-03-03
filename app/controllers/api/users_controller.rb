@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
             login(@user)
             render :show
         else
-            render json: ["invalid information"], status: 422
+            render json: ["invalid information poop"], status: 422
         end
     end
 

@@ -13,4 +13,17 @@
   margin-top: 30px;
   margin-bottom: 30px;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin-left: auto; */
+  margin-right: 30px;
+
+}
+
+.instructions> li > div > img{
+  width: 90%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }

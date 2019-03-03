@@ -10,10 +10,12 @@ import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
   let user = state.entities.users[ownProps.match.params.userId];
+  
 
   const groups = [];
   const polls = [];
   let activePollId = "";
+  let groupCounts = [];
   if(user && user.group_ids){
     for(let j=0; j<user.group_ids.length; j++){
       const group = state.entities.groups[user.group_ids[j]];
@@ -24,11 +26,14 @@ const mapStateToProps = (state, ownProps) => {
   }
   if(groups.length > 0){
     if(state.entities.polls){
-      groups.forEach(group=>{  
+      groups.forEach(group=>{ 
+        groupCounts.push(group.poll_ids.length) 
         group.poll_ids.forEach(id=>{
           let poll = state.entities.polls[id];
-          polls.push(poll);
-          if(poll.active) {activePollId = poll.id};
+          if(poll){
+            polls.push(poll);
+            if(poll.active) {activePollId = poll.id};
+          }
 
         });
       })
@@ -40,6 +45,7 @@ const mapStateToProps = (state, ownProps) => {
     groups: groups,
     polls: polls,
     activePollId: activePollId,
+    groupCounts: groupCounts,
   };
 };
 
