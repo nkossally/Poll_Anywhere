@@ -1,18 +1,18 @@
 # README
 
-Pollarity
-Pollarity is a clone of Poll Everywhere that was created using Ruby on Rails and React.js. Pollarity
+Poll Anywhere
+Poll Anywhere is a clone of Poll Everywhere, created using Ruby on Rails and React.js.
 
 Single Page with React routing
-Pollarity is a single-page app that uses React routes and nested components to mimic multi-page functionality. Users have access to the following distinct regions:
+Poll Anywhere is a single-page app that uses React routes and nested components to mimic multi-page functionality. Users have access to the following distinct regions:
 
-Home/landing page
+Homepage
 Signin
 Signup
-User surveys list
-Survey creation (via modal)
-Voting page for participation
-Vote reporting with real-time updates
+User polls list
+Polls creation
+Poll response page
+Poll charts that 
 Survey Summary
 Users can see all of their surveys on their personal page. Summaries include the survey title, questions, and links to reporting and participation.
 
@@ -30,7 +30,7 @@ Options
 New question components have two option components by default. These components can be edited and deleted prior to save. Options can be text, an image, or both. The image-upload interface provided by Cloudinary is simple, but sufficient to create polls with high-quality imagery.
 
 Anonymous Participation
-Users can participate in Pollarity polls with or without an account. To track anonymous users, the app sets a simple cookie and creates a temporary account in "anon" mode (flagged at the database level).
+Users can participate in Poll Anywhere polls with or without an account. To track anonymous users, the app sets a simple cookie and creates a temporary account in "anon" mode (flagged at the database level).
 
 Users can only vote once, but they can change and/or remove an original vote by clicking on different options. To update a user's vote, the option component evaluates the circumstances and sends an appropriate response to the database: create (if no previous votes are associated with the current question and user account), update (if the user previously selected a different option) or delete (if the user has clicked an already-selected response).
 
