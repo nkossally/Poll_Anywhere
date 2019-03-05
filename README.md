@@ -18,7 +18,7 @@ Poll edit form
 ## Poll Creation
 Users can create multiple-choice polls with any number of choices. In the poll creation form, there are two input boxes for choices by default, and an "Add option" button that generates additional inputs for choices. Once users click create, the poll and its associated choices are added to the database, and users are redirected to their polls list page, which instantly contains the newly created poll. Polls can be activated by clicking the activation icon next to the target poll's title in the polls list. Alternatively, users can navigate to a poll's page by clicking its title in the polls list and then clicking the "Activate" icon.
 
-![Image](/app/assests/images/activate.png)
+![Create Poll](https://github.com/nkossally/Poll_Anywhere/blob/master/app/assets/images/how_create_poll.png)
 
 ## Poll Response
 Each poll's page contains a link to the poll's response form. A poll can only receive a response when active. Poll creators distribute the link to respondants. Respondants must be logged in order to respond. Respondants click one of the multiple choice options in order to have their response persisted to the database. If the creator of the poll views an active poll's page at the time a response is persisted, then the creator can nearly instaneously witness the response being added to the bar chart of response counts. Pusher's easy-to-implement websocket API enables this nearly instantaneous data presentation
