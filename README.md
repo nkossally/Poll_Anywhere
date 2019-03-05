@@ -1,6 +1,6 @@
 # README
 
-Poll Anywhere
+## Poll Anywhere
 Poll Anywhere is a clone of Poll Everywhere, created using Ruby on Rails and React.js.
 
 Single Page with React routing
