@@ -9,20 +9,16 @@ Poll Anywhere is a single-page app that uses React routes and nested components 
 Homepage
 Signin
 Signup
-User polls list
-Polls creation
-Poll response page
-Poll charts that 
-Survey Summary
-Users can see all of their surveys on their personal page. Summaries include the survey title, questions, and links to reporting and participation.
+User polls list with links to each poll's page and each poll's edit form
+Poll page with data chart
+Poll creation form
+Poll response form
 
-Multiple-Choice Questions; Multi-Question Surveys
-Users can create polls with any number of questions. Questions are multiple-choice. Model-level validations ensure that all surveys have at least 2 text and/or image options for users to choose from.
+
+Multiple-Choice Polls
+Users can create multiple-choice polls with any number of choices. In the poll creation form, there are two input boxes for choices by default, and an "Add Option" button that generates additional inputs for choices upon clicking. Once users click create, the poll and its associated choices are added to the database, and users are redirected to their poll's page, which instantly contains the newly created poll.
 
 Upon clicking "Create", the survey instantly appears in the user's list of surveys. Reporting and the participation page are available immediately.
-
-Endless Question List
-On the survey summary page, a modal lets the user create an endless stream of survey questions just by typing, without having to use an "Add" button.
 
 At all times, a dummy question box sits at the bottom of the modal, inviting the user to enter a new question. This input field has a change handler set. When the user enters text in the dummy question box, the handler create a real question box component instantly, transferring the text to the new component; changing the focus; and clearing the dummy question box. Additional questions can be created by typing into the dummy box.
 
