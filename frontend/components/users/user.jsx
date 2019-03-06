@@ -14,21 +14,35 @@ class User extends React.Component {
     this.onDragOver = this.onDragOver.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if( nextProps.groups !== this.props.groups ){
-
-  //   }
-
-  // }
+  componentWillReceiveProps(nextProps){
+    if((nextProps.groups[0] && this.props.groups[0]) && (nextProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
+      debugger
+      this.props.showAllGroups();
+      this.props.showAllPolls();      
+    }
+    if( (nextProps.groups.length !== this.props.groups.length) ){
+      debugger
+      this.props.showAllGroups();
+      this.props.showAllPolls();      
+    }
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.activePollId !== prevProps.activePollId) {
       this.props.showAllGroups();
       this.props.showAllPolls();
     }
-    // if (this.props.groupCounts !== prevProps.groupCounts) {
-    //   this.props.showAllGroups();
-    // }
+    if((prevProps.groups[0] && this.props.groups[0]) && (prevProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
+      debugger
+      this.props.showAllGroups();
+      this.props.showAllPolls();      
+    }
+    if( (prevProps.groups.length !== this.props.groups.length) ){
+      debugger
+      this.props.showAllGroups();
+      this.props.showAllPolls();      
+    }
+    
   
   }
 
