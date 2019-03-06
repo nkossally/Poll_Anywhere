@@ -5,7 +5,9 @@ class Api::UsersController < ApplicationController
             login(@user)
             render :show
         else
-            render json: ["invalid information poop"], status: 422
+            debugger
+            render json: ["Invalid signup. All inputs must be filled and passwords 
+                must be six characters long."], status: 422
         end
     end
 

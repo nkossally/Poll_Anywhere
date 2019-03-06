@@ -16,12 +16,10 @@ class User extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if((nextProps.groups[0] && this.props.groups[0]) && (nextProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
-      debugger
       this.props.showAllGroups();
       this.props.showAllPolls();      
     }
     if( (nextProps.groups.length !== this.props.groups.length) ){
-      debugger
       this.props.showAllGroups();
       this.props.showAllPolls();      
     }
@@ -33,12 +31,10 @@ class User extends React.Component {
       this.props.showAllPolls();
     }
     if((prevProps.groups[0] && this.props.groups[0]) && (prevProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
-      debugger
       this.props.showAllGroups();
       this.props.showAllPolls();      
     }
     if( (prevProps.groups.length !== this.props.groups.length) ){
-      debugger
       this.props.showAllGroups();
       this.props.showAllPolls();      
     }
@@ -114,7 +110,7 @@ class User extends React.Component {
         <div key={group.id} onDrop={(event) => this.onDrop(event, group)} onDragOver={(event => this.onDragOver(event)) } >
           <li className="group-title" >{group.title}</li>
           <ul className="group-list"   >
-            {group.polls.map((poll, idx)=>{
+            {this.props.polls.filter(poll => poll.group_id === group.id).map((poll, idx)=>{
               let className;
               if(poll.active){
                 className = "green-user-single-poll";

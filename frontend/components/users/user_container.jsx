@@ -28,14 +28,22 @@ const mapStateToProps = (state, ownProps) => {
     if(state.entities.polls){
       groups.forEach(group=>{ 
         groupCounts.push(group.poll_ids.length) 
-        group.poll_ids.forEach(id=>{
-          let poll = state.entities.polls[id];
+        // group.poll_ids.forEach(id=>{
+        //   let poll = state.entities.polls[id];
+        //   if(poll){
+        //     polls.push(poll);
+        //     if(poll.active) {activePollId = poll.id};
+        //   }
+        // });
+        let sorted = group.poll_ids.sort();
+        for( let j = 0; j < sorted.length; j++){
+          let poll = state.entities.polls[sorted[j]];
           if(poll){
             polls.push(poll);
             if(poll.active) {activePollId = poll.id};
           }
 
-        });
+        }
       })
     }
   }
