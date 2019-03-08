@@ -34,18 +34,12 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    let group;
-    if(this.props.formType === "signup"){
-      group = {title: "Ungrouped"}
-    }
-    this.props.processForm(user, group);
-
-
+    this.props.processForm(user);
   }
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -94,8 +88,7 @@ class SessionForm extends React.Component {
         <div className="session-container">
           <form onSubmit={this.handleSubmit} >
             <div >
-            {/* {this.props.formType} or {this.props.link} */}
-            {this.renderErrors()}
+              {this.renderErrors()}
               <br/>
               <label className="input-label">Username:
                 <input className="input-box" type="text"

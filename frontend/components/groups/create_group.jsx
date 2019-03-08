@@ -32,7 +32,7 @@ class CreateGroup extends React.Component {
   return (
     <ul  className="create-group-box">
       <li className="group-big-text">New Group</li>
-      <li className="group-small-text">What should this group be named</li>
+      <li className="group-small-text">What should this group be named?</li>
       <li><input className="create-group-input" onChange={this.update('title')}  /></li>
       <li className="create-group-last-row">
         <button className="cancel-create-group" onClick={this.props.closeModal}>Cancel</button>

@@ -97,8 +97,10 @@
   background-color: #D3D3D3;
   display: flex;
   min-height: 100vh;
+  width: 100vw;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
   
 }
 
@@ -116,13 +118,12 @@
 
 .poll-input-box{
   display: flex;
+  width: 90%;
   width: 975px;
   height: 50px;
   background-color: white;
   margin-bottom: 15px;
   text-indent: 5px;
-
-
 }
 
 .submit-button{

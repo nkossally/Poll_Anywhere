@@ -48,3 +48,14 @@
 .login:hover {
   background-color: #e75750;
 }
+
+.errors{
+  margin-top: 5px;
+  width: 460px;
+  color: red;
+}
+
+.errors li{
+  width: 100%;
+  display: inline-block;
+}

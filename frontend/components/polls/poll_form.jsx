@@ -91,7 +91,7 @@ class PollForm extends React.Component {
       <div >
         <BlueNavBar />
         <div className="white-box" >
-        <Link to={`/users/${this.props.user_id}`}> <div className="orange-x" >x</div></Link>
+          <Link to={`/users/${this.props.user_id}`}> <div className="orange-x" >x</div></Link>
         </div>
         <ul className="gray-box">
           <form onSubmit={this.handleSubmit} >

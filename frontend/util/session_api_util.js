@@ -1,9 +1,9 @@
-export const signup = (user, group)=>{
+export const signup = (user)=>{
 	return(
 		$.ajax({
 			method: 'POST',
 			url: '/api/users',
-			data: { user: user, group: group }
+			data: { user: user }
 		})
 	)
 }

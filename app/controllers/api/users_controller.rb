@@ -3,11 +3,10 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login(@user)
+            Group.create({title: "Ungrouped", user_id: @user.id})
             render :show
         else
-            debugger
-            render json: ["Invalid signup. All inputs must be filled and passwords 
-                must be six characters long."], status: 422
+            render json: [ @user.errors.full_messages ], status: 422
         end
     end
 

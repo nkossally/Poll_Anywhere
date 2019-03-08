@@ -9,7 +9,7 @@ import { withRouter } from 'react-router';
 const mapStateToProps = (state) => {
   let userId = state.session.id;
   return {
-    errors: state.errors.user,
+    errors: state.errors.session,
     formType: 'signup',
     link: <Link to="/login">log in</Link>,
     userId: userId
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user, group) => dispatch(signup(user, group)),
+    processForm: (user) => dispatch(signup(user)),
   };
 };
 

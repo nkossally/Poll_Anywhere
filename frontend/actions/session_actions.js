@@ -36,22 +36,38 @@ export const login = user => {
 };
 
 
-export const signup = (user, group) => {
+// export const signup = (user, group) => {
+//   return dispatch => {
+//     SessionApiUtil.signup(user, group).then(
+//       user => { 
+//         debugger
+//         return GroupApiUtil.createGroup(group, user).then(
+//           () =>{ 
+//             return dispatch(receiveCurrentUser(user))
+//           },
+//           errors => {
+//             return dispatch(receiveErrors(errors.responseJSON));
+//         },
+//       );
+//     })
+//   }
+// }
+
+export const signup = (user) => {
   return dispatch => {
-    SessionApiUtil.signup(user, group).then(
+    SessionApiUtil.signup(user).then(
       user => { 
-        return GroupApiUtil.createGroup(group, user).then(
-          () =>{ 
+        
+        
             return dispatch(receiveCurrentUser(user))
           },
           errors => {
             return dispatch(receiveErrors(errors.responseJSON));
         }
-      );
-    })
+
+    )
   }
 }
-
 
 
 const receiveErrors = errors => ({

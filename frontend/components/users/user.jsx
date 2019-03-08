@@ -5,7 +5,9 @@ import BlueNavBar from "../nav_bar/blue_nav_bar_container";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state={ activePollId: this.props.activePollId, selectedPolls: [], showModal: false, draggedPoll: "" };
+    this.state={ selectedPolls: [], showModal: false, draggedPoll: "",
+      ungroupedLength: this.props.ungroupLength, groupCount: this.props.groups.length,
+      count: 0 };
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
@@ -15,28 +17,28 @@ class User extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if((nextProps.groups[0] && this.props.groups[0]) && (nextProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
-      this.props.showAllGroups();
-      this.props.showAllPolls();      
-    }
-    if( (nextProps.groups.length !== this.props.groups.length) ){
-      this.props.showAllGroups();
-      this.props.showAllPolls();      
-    }
+    // if((nextProps.groups[0] && this.props.groups[0]) && (nextProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
+    //   this.props.showAllGroups();
+    //   this.props.showAllPolls();      
+    // }
+    // if( (nextProps.groups.length !== this.props.groups.length) ){
+    //   this.props.showAllGroups();
+    //   this.props.showAllPolls();      
+    // }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.activePollId !== prevProps.activePollId) {
       this.props.showAllGroups();
       this.props.showAllPolls();
     }
-    if((prevProps.groups[0] && this.props.groups[0]) && (prevProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
+    if( this.state.ungroupLength !== prevState.ungroupLength){
       this.props.showAllGroups();
-      this.props.showAllPolls();      
+      this.props.showAllPolls();
     }
-    if( (prevProps.groups.length !== this.props.groups.length) ){
+    if( this.state.count > prevState.count){
       this.props.showAllGroups();
-      this.props.showAllPolls();      
+      this.props.showAllPolls();
     }
     
   
@@ -61,19 +63,28 @@ class User extends React.Component {
 
   onDrop(event, group ){
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
+    this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
+    this.setState({ count: this.state.count+=1 });
   }
 
   handleUngroup(){
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
     this.props.updatePollChangeGroup(pollIds, group)
+    this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
+    this.setState({ count: this.state.count+=1 });
 
   }
 
   handleModal(){
-    return( 
-      this.props.openModal(this.props.user.id, this.state.selected_polls)
-    )
+    // return()=>{ 
+      this.props.openModal(this.props.user.id, this.state.selected_polls);
+      // this.setState({ groupCount: this.props.groups.length });
+      // this.setState({ groupCount: this.props.user.group_ids.length });
+      this.setState({ count: this.state.count+=1 });
+
+
+    // }
   }
 
   selectPoll(poll){
@@ -98,8 +109,6 @@ class User extends React.Component {
           this.props.updatePoll(inactivePoll, poll.id)
         }
       }
-      this.setState({activePollId: id})
-
     } 
   }
 
@@ -121,7 +130,7 @@ class User extends React.Component {
                 <div className={className} key={idx} draggable
                 onDrag={(event) => this.onDrag(event, poll)}
                 > 
-                {/* <div className={ poll.active ? "dark-green-div" : "user-empty-div"}> </div> */}
+                <div className={ poll.active ? "dark-green-div" : "user-empty-div"}> </div>
 
                   <div className="check-and-text">
                     <div className="check-container">
