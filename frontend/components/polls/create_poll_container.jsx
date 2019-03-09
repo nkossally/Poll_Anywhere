@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
   action: (poll, choices) => dispatch(createPoll(poll, choices)),
   createChoice: (choice) => dispatch(createChoice(choice)),
   showAllGroups: () => dispatch(showAllGroups()),
-  showAllPollss: () => dispatch(showAllPolls()),
+  showAllPolls: () => dispatch(showAllPolls()),
 
 
 });

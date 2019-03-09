@@ -15,6 +15,8 @@ class CreateGroup extends React.Component {
     let pollIds = Object.values(this.props.selectedPolls).map(poll=>poll.id);
     this.props.createGroup(group, this.props.user, pollIds);
     this.props.closeModal();
+    // this.props.showAllPolls();
+    // this.props.showAllGroups();
 
   }
 

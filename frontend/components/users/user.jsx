@@ -64,6 +64,8 @@ class User extends React.Component {
 
   onDrop(event, group ){
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
+    this.props.showAllGroups;
+    this.props.showAllPolls;
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+=1 });
   }
@@ -71,7 +73,9 @@ class User extends React.Component {
   handleUngroup(){
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
-    this.props.updatePollChangeGroup(pollIds, group)
+    this.props.updatePollChangeGroup(pollIds, group);
+    this.props.showAllGroups;
+    this.props.showAllPolls;
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+=1 });
 
