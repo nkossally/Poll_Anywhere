@@ -53,6 +53,8 @@ class PollForm extends React.Component {
     delete choiceObject["group_id"];
     let choices = Object.values(choiceObject);    
     this.props.action(poll, choices);
+    this.props.showAllGroups;
+    this.props.showAllPolls;
     this.props.history.push(`/users/${this.props.user_id}`);
 
   }

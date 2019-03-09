@@ -17,17 +17,18 @@ class User extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // if((nextProps.groups[0] && this.props.groups[0]) && (nextProps.groups[0].poll_ids.length !== this.props.groups[0].poll_ids.length)){
-    //   this.props.showAllGroups();
-    //   this.props.showAllPolls();      
-    // }
-    // if( (nextProps.groups.length !== this.props.groups.length) ){
+
+    // if( (nextProps.polls !== this.props.polls) ){
     //   this.props.showAllGroups();
     //   this.props.showAllPolls();      
     // }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // if( (prevProps.polls !== this.props.polls) ){
+    //   this.props.showAllGroups();
+    //   this.props.showAllPolls();      
+    // }
     if (this.props.activePollId !== prevProps.activePollId) {
       this.props.showAllGroups();
       this.props.showAllPolls();
@@ -45,9 +46,9 @@ class User extends React.Component {
   }
 
   componentDidMount(){
+    this.props.showUser(this.props.user.id);
     this.props.showAllPolls();
     this.props.showAllGroups();
-    this.props.showUser(this.props.user.id);
   }
 
   onDrag(event, poll){
