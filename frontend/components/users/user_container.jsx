@@ -49,6 +49,7 @@ const mapStateToProps = (state, ownProps) => {
       })
     }
   }
+  
   return {
     id: state.session.id,
     user: user,

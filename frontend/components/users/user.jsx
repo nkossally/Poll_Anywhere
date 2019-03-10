@@ -6,11 +6,12 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state={ selectedPolls: [], showModal: false, draggedPoll: "",
-      ungroupedLength: this.props.ungroupLength, groupCount: this.props.groups.length,
+      ungroupLength: this.props.ungroupLength, groupCount: this.props.groups.length,
       count: 0 };
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
+    this.handleModalContainer = this.handleModalContainer.bind(this);
     this.handleUngroup = this.handleUngroup.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
@@ -18,13 +19,21 @@ class User extends React.Component {
 
   componentWillReceiveProps(nextProps){
 
-    // if( (nextProps.polls !== this.props.polls) ){
+    // if( (nextProps.groups !== this.props.groups) ){
     //   this.props.showAllGroups();
     //   this.props.showAllPolls();      
     // }
+
+
+    // if( !this.props.ungroupLength ){
+    //   this.props.showAllGroups();
+    //   this.props.showAllPolls();      
+    // }
+   
   }
 
   componentDidUpdate(prevProps, prevState) {
+    
     // if( (prevProps.polls !== this.props.polls) ){
     //   this.props.showAllGroups();
     //   this.props.showAllPolls();      
@@ -33,14 +42,15 @@ class User extends React.Component {
       this.props.showAllGroups();
       this.props.showAllPolls();
     }
-    if( this.state.ungroupLength !== prevState.ungroupLength){
-      this.props.showAllGroups();
-      this.props.showAllPolls();
-    }
+
     if( this.state.count > prevState.count){
-      this.props.showAllGroups();
+      // this.props.showAllGroups();
       this.props.showAllPolls();
     }
+    // if(prevProps.user.group_ids.length !== this.props.user.group_ids.length){
+    //   this.props.showAllGroups();
+    //   this.props.showAllPolls();
+    // }
     
   
   }
@@ -64,21 +74,27 @@ class User extends React.Component {
 
   onDrop(event, group ){
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
-    this.props.showAllGroups;
-    this.props.showAllPolls;
+    this.props.showAllGroups();
+    this.props.showAllPolls();
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
-    this.setState({ count: this.state.count+=1 });
+    this.setState({ count: this.state.count+1 });
   }
 
   handleUngroup(){
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
     this.props.updatePollChangeGroup(pollIds, group);
-    this.props.showAllGroups;
-    this.props.showAllPolls;
+    this.props.showAllGroups();
+    this.props.showAllPolls();
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
-    this.setState({ count: this.state.count+=1 });
+    this.setState({ count: this.state.count+1 });
 
+  }
+
+  handleModalContainer(){
+    this.handleModal();
+    this.props.showAllGroups();
+    this.props.showAllPolls();
   }
 
   handleModal(){
@@ -166,7 +182,7 @@ class User extends React.Component {
             </div>
           <ul className="user-polls">
             <li className="user-polls-header">
-              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleModal}>Group</button>
+              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleModalContainer}>Group</button>
               <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleUngroup}>Ungroup</button>
             </li>
 
