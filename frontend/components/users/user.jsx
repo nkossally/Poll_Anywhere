@@ -19,16 +19,14 @@ class User extends React.Component {
 
   componentWillReceiveProps(nextProps){
 
-    // if( (nextProps.groups !== this.props.groups) ){
-    //   this.props.showAllGroups();
-    //   this.props.showAllPolls();      
-    // }
 
+    if(nextProps.user.group_ids.length !== this.props.user.group_ids.length){
+      debugger
+      this.props.showUser(this.props.user.id);
 
-    // if( !this.props.ungroupLength ){
-    //   this.props.showAllGroups();
-    //   this.props.showAllPolls();      
-    // }
+      this.props.showAllGroups();
+      this.props.showAllPolls();
+    }
    
   }
 
@@ -39,15 +37,16 @@ class User extends React.Component {
     //   this.props.showAllPolls();      
     // }
     if (this.props.activePollId !== prevProps.activePollId) {
-      this.props.showAllGroups();
+      // this.props.showAllGroups();
       this.props.showAllPolls();
     }
 
     if( this.state.count > prevState.count){
-      // this.props.showAllGroups();
+      this.props.showAllGroups();
       this.props.showAllPolls();
     }
     // if(prevProps.user.group_ids.length !== this.props.user.group_ids.length){
+    //   debugger
     //   this.props.showAllGroups();
     //   this.props.showAllPolls();
     // }
@@ -74,8 +73,8 @@ class User extends React.Component {
 
   onDrop(event, group ){
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
-    this.props.showAllGroups();
-    this.props.showAllPolls();
+    // this.props.showAllGroups();
+    // this.props.showAllPolls();
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+1 });
   }
@@ -84,8 +83,8 @@ class User extends React.Component {
     let pollIds = this.state.selectedPolls.map(poll=>poll.id);
     let group = this.props.groups[0];
     this.props.updatePollChangeGroup(pollIds, group);
-    this.props.showAllGroups();
-    this.props.showAllPolls();
+    // this.props.showAllGroups();
+    // this.props.showAllPolls();
     this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+1 });
 
