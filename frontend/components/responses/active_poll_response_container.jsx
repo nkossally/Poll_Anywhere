@@ -3,19 +3,34 @@ import {createResponse } from '../../actions/response_actions';
 import { showPoll, showAllPolls } from '../../actions/poll_actions';
 import { showAllChoices } from '../../actions/choice_actions';
 import {showAllResponses, destroyResponse} from '../../actions/response_actions';
+import { showAllGroups } from '../../actions/group_actions';
+import { showAllUsers } from '../../actions/user_actions';
+
+
 
 
 import ActivePollResponseForm from './active_poll_response_form';
 
+
 const mapStateToProps = (state, ownProps) => {
   let poll;
   let responseProp;
+  let validGroupIds = [];
+  if(state.entities.groups){
+    let groups = Object.values(state.entities.groups);
+    for(let i=0; i<groups.length; i++){
+      if (groups[i].user_id === parseInt(ownProps.match.params.userId)){
+        validGroupIds.push( groups[i].id );
+
+      }
+    }
+  }
   if(state.entities.polls){
     let polls = Object.values(state.entities.polls);
     for(let i=0; i<polls.length; i++){
-      if(polls[i].active){
+      if(polls[i].active && validGroupIds.includes(polls[i].group_id) ){
+
         poll = polls[i];
-        break;
       }
     }
   }
@@ -35,6 +50,7 @@ const mapStateToProps = (state, ownProps) => {
         responseProp = response;
       }
     })
+    debugger
   return {
     user_id: user.id,
     poll: poll,
@@ -51,6 +67,8 @@ const mapDispatchToProps = dispatch => ({
   showAllChoices: ()=> dispatch(showAllChoices()),
   showAllResponses: ()=> dispatch(showAllResponses()),
   destroyResponse: (id)=> dispatch(destroyResponse(id)),
+  showAllGroups: () => dispatch(showAllGroups()),
+  showAllUsers: () => dispatch(showAllUsers()),
 
 });
 

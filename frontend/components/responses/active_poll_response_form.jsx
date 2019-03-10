@@ -29,6 +29,7 @@ class ActivePollResponseForm extends React.Component {
   
   componentDidMount(){
     this.props.showAllPolls();
+    this.props.showAllGroups();
     this.props.showAllChoices();
     this.props.showAllResponses();
   }

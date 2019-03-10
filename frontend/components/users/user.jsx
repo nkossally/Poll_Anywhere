@@ -31,6 +31,7 @@ class User extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    this.state.groupCout = this.props.groups.length;
     
     // if( (prevProps.polls !== this.props.polls) ){
     //   this.props.showAllGroups();
@@ -42,6 +43,11 @@ class User extends React.Component {
     }
 
     if( this.state.count > prevState.count){
+      this.props.showAllGroups();
+      this.props.showAllPolls();
+    }
+
+    if( this.state.groupCount !== prevState.groupCount){
       this.props.showAllGroups();
       this.props.showAllPolls();
     }
@@ -181,7 +187,7 @@ class User extends React.Component {
             </div>
           <ul className="user-polls">
             <li className="user-polls-header">
-              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleModalContainer}>Group</button>
+              <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleModal}>Group</button>
               <button disabled={ this.state.selectedPolls.length === 0 } className={ this.state.selectedPolls.length === 0 ? "disabled" : "" } onClick={this.handleUngroup}>Ungroup</button>
             </li>
 
