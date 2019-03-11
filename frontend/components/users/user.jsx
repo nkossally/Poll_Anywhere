@@ -21,7 +21,6 @@ class User extends React.Component {
 
 
     if(nextProps.user.group_ids.length !== this.props.user.group_ids.length){
-      debugger
       this.props.showUser(this.props.user.id);
 
       this.props.showAllGroups();
@@ -31,7 +30,7 @@ class User extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.state.groupCout = this.props.groups.length;
+    this.state.groupCount = this.props.groups.length;
     
     // if( (prevProps.polls !== this.props.polls) ){
     //   this.props.showAllGroups();
@@ -55,7 +54,7 @@ class User extends React.Component {
     //   debugger
     //   this.props.showAllGroups();
     //   this.props.showAllPolls();
-    // }
+    // }/
     
   
   }
