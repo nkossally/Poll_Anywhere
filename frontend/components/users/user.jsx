@@ -32,10 +32,6 @@ class User extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     this.state.groupCount = this.props.groups.length;
     
-    // if( (prevProps.polls !== this.props.polls) ){
-    //   this.props.showAllGroups();
-    //   this.props.showAllPolls();      
-    // }
     if (this.props.activePollId !== prevProps.activePollId) {
       // this.props.showAllGroups();
       this.props.showAllPolls();
@@ -90,9 +86,9 @@ class User extends React.Component {
     this.props.updatePollChangeGroup(pollIds, group);
     // this.props.showAllGroups();
     // this.props.showAllPolls();
-    this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
+    // this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+1 });
-
+    this.setState({ selectedPolls: [] });
   }
 
   handleModalContainer(){

@@ -18,14 +18,13 @@ const mapStateToProps = (state, ownProps) => {
   let activePollId = "";
   let groupCounts = [];
   let ungroupLength;
-  if(user && user.group_ids){
-    for(let j=0; j<user.group_ids.length; j++){
-      const group = state.entities.groups[user.group_ids[j]];
-      if(group){
-        groups.push(group);
-      }
+
+  Object.values(state.entities.groups).filter(group => group.user_id === user.id).forEach(group =>{
+    if(!groups.includes(group)){
+      groups.push(group);
     }
-  }
+  })
+
   if(groups.length > 0){
     if(state.entities.polls){
       groups.forEach(group=>{
@@ -44,8 +43,7 @@ const mapStateToProps = (state, ownProps) => {
       })
     }
   }
-
-  debugger
+  
   return {
     id: state.session.id,
     user: user,

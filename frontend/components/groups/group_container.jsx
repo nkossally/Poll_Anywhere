@@ -6,7 +6,6 @@ import { showAllPolls } from '../../actions/poll_actions';
 import { showAllGroups } from '../../actions/group_actions';
 
 
-
 import CreateGroup from './create_group';
 
 
