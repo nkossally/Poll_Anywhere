@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
   if(groups.length > 0){
     if(state.entities.polls){
       groups.forEach(group=>{
+        debugger
         if(group.title === "Ungrouped") { ungroupLength = group.poll_ids.length }
         groupCounts.push(group.poll_ids.length) 
         let sorted = group.poll_ids.sort();

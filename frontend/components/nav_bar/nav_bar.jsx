@@ -7,12 +7,17 @@ class NavBar extends React.Component {
     this.handleDemo=this.handleDemo.bind(this);
   }
 
+  componentDidMount(){
+    this.props.showAllUsers();
+  }
+
   myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
   
   handleDemo(){
     this.props.demo();
+    this.props.history.push(`/users/${this.props.demoUserId}`);
   }
 
   render() {
