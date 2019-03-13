@@ -28,13 +28,14 @@ const mapStateToProps = (state, ownProps) => {
   if(groups.length > 0){
     if(state.entities.polls){
       groups.forEach(group=>{
-        debugger
         if(group.title === "Ungrouped") { ungroupLength = group.poll_ids.length }
         groupCounts.push(group.poll_ids.length) 
         let sorted = group.poll_ids.sort();
         for( let i = 0; i < sorted.length; i++){
           let poll = state.entities.polls[sorted[i]];
-          if(poll && !pollIds.includes(poll.id)){
+          // if(poll && !pollIds.includes(poll.id)){
+          if(poll && poll.group_id === group.id && !pollIds.includes(poll.id)){
+
             pollIds.push(poll.id)
             polls.push(poll);
             if(poll.active) {activePollId = poll.id};

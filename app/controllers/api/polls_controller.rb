@@ -41,7 +41,6 @@ class Api::PollsController < ApplicationController
     end
   end
 
-
   def index
     @polls = Poll.all
     render :index
