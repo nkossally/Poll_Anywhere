@@ -6,7 +6,7 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state={ selectedPolls: [], showModal: false, draggedPoll: "",
-      ungroupLength: this.props.ungroupLength, groupCount: this.props.groups.length,
+      groupCount: this.props.groups.length,
       count: 0 };
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
@@ -73,10 +73,10 @@ class User extends React.Component {
   }
 
   onDrop(event, group ){
+    event.preventDefault();
     this.props.updatePollChangeGroup( [this.state.draggedPoll.id], group)
     // this.props.showAllGroups();
     // this.props.showAllPolls();
-    this.setState({ ungroupLength: this.props.groups[0].poll_ids.length } )
     this.setState({ count: this.state.count+1 });
   }
 
