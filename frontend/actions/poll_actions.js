@@ -7,8 +7,7 @@ export const RECEIVE_POLL_ERRORS = 'RECEIVE_POLL_ERRORS';
 
 import * as ChoiceApiUtil from '../util/choice_api_util';
 
-
-
+import { showAllGroups } from '../actions/group_actions';
 
 export const createPoll = (poll, choices) =>{
   return dispatch =>{
@@ -60,7 +59,9 @@ export const updatePollChangeGroup = (poll, group) =>{
   return dispatch =>{
     PollApiUtil.updatePoll(poll, -1, [], group).then(
       (poll) =>{
-            return dispatch(receivePoll(poll))
+              dispatch(receivePoll(poll));
+              dispatch(showAllPolls());
+              dispatch(showAllGroups());
           },
           errors =>{
             return dispatch(receivePollErrors(errors.responseJSON));

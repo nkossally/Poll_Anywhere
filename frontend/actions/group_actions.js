@@ -1,18 +1,13 @@
 import * as GroupApiUtil from '../util/group_api_util';
 import * as PollApiUtil from '../util/poll_api_util';
 
+import { closeModal } from '../actions/modal_actions';
+import { showAllPolls } from '../actions/poll_actions';
+
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const RECEIVE_GROUP_ERRORS = 'RECEIVE_GROUP_ERRORS';
-
-import { closeModal } from '../actions/modal_actions';
-
-import { showAllPolls } from '../actions/poll_actions';
-
-// closeModal();
-// showAllPolls();
-// showAllGroups();
 
 export const createGroup = (group, user, pollIds) =>{
   return dispatch =>{
@@ -20,10 +15,10 @@ export const createGroup = (group, user, pollIds) =>{
       (group) =>{
         return PollApiUtil.updatePoll(pollIds, -1, [], group).then(
           (group) => {
-            dispatch(closeModal())
-            dispatch(showAllPolls())
-            dispatch(showAllGroups())
-            dispatch(receiveGroup(group))
+            dispatch(closeModal());
+            dispatch(showAllPolls());
+            dispatch(showAllGroups());
+            dispatch(receiveGroup(group));
         }, errors => {
           return dispatch(receiveGroupErrors(errors.responseJSON));
         });
