@@ -16,8 +16,10 @@ class NavBar extends React.Component {
   }
   
   handleDemo(){
-    this.props.demo();
-    this.props.history.push(`/users/${this.props.demoUserId}`);
+    this.props.demo().then(user =>{
+      this.props.history.push(`/users/${user.id}`);
+
+    });
   }
 
   render() {
@@ -33,7 +35,7 @@ class NavBar extends React.Component {
     } else {
       login = <Link className="login-nav" to="/login" >Log in</Link>;
       signup = <Link className="signup-nav" to="/signup">Sign up</Link>;
-      demo = <button className="demo" onClick={this.handleDemo}>demo</button>;
+      demo = <button className="demo" onClick={this.handleDemo}>try demo</button>;
     }
     return (
     <>

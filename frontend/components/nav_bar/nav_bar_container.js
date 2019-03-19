@@ -7,10 +7,9 @@ import { withRouter } from "react-router";
 
 
 const mapStateToProps = (state) =>{
-    let demoUserId = Object.values(state.entities.users).filter(user => user.username === "demoUser")[0].id;
+
     return({
         user: state.entities.users[state.session.id],
-        demoUserId: demoUserId,
     })
 };
 
