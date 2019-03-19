@@ -50,7 +50,6 @@ const mapStateToProps = (state, ownProps) => {
         responseProp = response;
       }
     })
-    debugger
   return {
     user_id: user.id,
     poll: poll,

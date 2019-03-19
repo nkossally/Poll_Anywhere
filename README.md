@@ -28,3 +28,9 @@ Users can create groups on their polls list page. Users have at least one group 
 
 ## Technologies
 Poll Anywhere uses Ruby 2.5.1 and Pusher 1.3.2
+
+## Design Docs
+[Frontend Routes](https://github.com/nkossally/Poll_Anywhere/wiki/Frontend-Routes) <br/>
+[Backend Routes](https://github.com/nkossally/Poll_Anywhere/wiki/Backend-Routes) <br/>
+[Sample State](https://github.com/nkossally/Poll_Anywhere/wiki/Sample-State) <br/>
+

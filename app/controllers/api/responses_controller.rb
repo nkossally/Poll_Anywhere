@@ -29,9 +29,10 @@ class Api:: ResponsesController < ApplicationController
   def destroy
     response = Response.find_by(id: params[:id])
     if response
-      response.destroy
+      response.delete
       Pusher.trigger("response_channel", 'respond', {})
-      render json: ["response deleted"]
+      # render json: ["response deleted"]
+      render json: params[:id]
     end
   end
 

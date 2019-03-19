@@ -15,7 +15,6 @@ const pollsReducer = (oldState = {}, action) => {
       return newState;
       }
     case RECEIVE_POLLS:
-      // newState = merge({}, oldState, action.polls);
       newState = merge({}, action.polls);
       return newState;
     case DELETE_POLL:
