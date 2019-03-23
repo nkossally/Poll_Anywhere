@@ -64,8 +64,10 @@
   height: 40px;
   text-indent: 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .group-list {
@@ -180,4 +182,13 @@
 .disabled {
   background-color: #ededed;
   color: #a7a7a7;
+}
+
+.delete-group-icon {
+  margin-right: 5px;
+  color: #3c749e;
+}
+
+.delete-group-icon:hover {
+  color: #e75750;
 }

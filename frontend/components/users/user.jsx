@@ -13,6 +13,7 @@ class User extends React.Component {
     this.handleUngroup = this.handleUngroup.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
+    this.handleDeleteGroup = this.handleDeleteGroup.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -50,10 +51,20 @@ class User extends React.Component {
     this.setState({ selectedPolls: [] });
   }
 
+  handleDeleteGroup(group) {
+    return () => {
+      group.poll_ids.forEach(id => {
+        this.props.destroyPoll(id);
+      });
+      this.props.destroyGroup(group.id);
+    };
+  }
+
   handleModalContainer() {
+    this.setState({ selectedPolls: [] });
     this.handleModal();
-    this.props.showAllGroups();
-    this.props.showAllPolls();
+    // this.props.showAllGroups();
+    // this.props.showAllPolls();
   }
 
   handleModal() {
@@ -93,7 +104,19 @@ class User extends React.Component {
           onDrop={event => this.onDrop(event, group)}
           onDragOver={event => this.onDragOver(event)}
         >
-          <li className="group-title">{group.title}</li>
+          <ul className="group-title">
+            <li>{group.title}</li>
+            <li className="delete-group-icon">
+              <i
+                className={
+                  group.id === this.props.user.group_ids.sort()[0]
+                    ? "display-none"
+                    : "fas fa-trash-alt"
+                }
+                onClick={this.handleDeleteGroup(group)}
+              />
+            </li>
+          </ul>
           <ul className="group-list">
             {this.props.polls
               .filter(poll => poll.group_id === group.id)
