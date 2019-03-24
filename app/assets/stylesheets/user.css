@@ -39,7 +39,7 @@
   justify-content: left;
   text-align: left;
   text-indent: 5px;
-  margin-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .user-polls-header button {
