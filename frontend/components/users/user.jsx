@@ -53,10 +53,10 @@ class User extends React.Component {
 
   handleDeleteGroup(group) {
     return () => {
+      this.props.destroyGroup(group.id);
       group.poll_ids.forEach(id => {
         this.props.destroyPoll(id);
       });
-      this.props.destroyGroup(group.id);
     };
   }
 
