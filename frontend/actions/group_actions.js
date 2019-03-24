@@ -61,7 +61,6 @@ export const destroyGroup = id => {
       () => {
         dispatch(deleteGroup(id));
         dispatch(showAllPolls());
-
         dispatch(showAllGroups());
       },
       errors => {
