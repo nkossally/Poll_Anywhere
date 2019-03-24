@@ -9,7 +9,6 @@ class User extends React.Component {
     this.activate = this.activate.bind(this);
     this.selectPoll = this.selectPoll.bind(this);
     this.handleModal = this.handleModal.bind(this);
-    this.handleModalContainer = this.handleModalContainer.bind(this);
     this.handleUngroup = this.handleUngroup.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
@@ -60,15 +59,9 @@ class User extends React.Component {
     };
   }
 
-  handleModalContainer() {
-    this.setState({ selectedPolls: [] });
-    this.handleModal();
-    // this.props.showAllGroups();
-    // this.props.showAllPolls();
-  }
-
   handleModal() {
     this.props.openModal(this.props.user.id, this.state.selected_polls);
+    this.setState({ selectedPolls: [] });
   }
 
   selectPoll(poll) {
