@@ -1,28 +1,24 @@
-export const createResponse = (response)=>(
+export const createResponse = response =>
   $.ajax({
-		method: 'POST',
-		url: '/api/responses',
-		data: { response }
-  })
-)
+    method: "POST",
+    url: "/api/responses",
+    data: { response }
+  });
 
-export const showResponse = (id)=>(
+export const showResponse = id =>
   $.ajax({
-		method: 'GET',
-		url: `/api/responses/${id}`,
-  })
-)
+    method: "GET",
+    url: `/api/responses/${id}`
+  });
 
-export const showAllResponses = ()=>(
+export const showAllResponses = () =>
   $.ajax({
-		method: 'GET',
-		url: '/api/responses'
-  })
-)
+    method: "GET",
+    url: "/api/responses"
+  });
 
-export const destroyResponse = (id)=>(
+export const destroyResponse = id =>
   $.ajax({
-		method: 'DELETE',
-		url: `/api/responses/${id}`
-  })
-)
+    method: "DELETE",
+    url: `/api/responses/${id}`
+  });

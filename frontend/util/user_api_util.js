@@ -1,13 +1,11 @@
-export const showAllUsers = ()=>(
+export const showAllUsers = () =>
   $.ajax({
-		method: 'GET',
-		url: '/api/users'
-  })
-)
+    method: "GET",
+    url: "/api/users"
+  });
 
-export const showUser = (id)=>(
+export const showUser = id =>
   $.ajax({
-		method: 'GET',
-		url: `/api/users/${id}`,
-  })
-)
+    method: "GET",
+    url: `/api/users/${id}`
+  });

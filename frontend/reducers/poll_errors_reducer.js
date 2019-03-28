@@ -1,8 +1,13 @@
-import { RECEIVE_POLL_ERRORS, RECEIVE_POLL, RECEIVE_POLLS, DELETE_POLL } from '../actions/poll_actions';
+import {
+  RECEIVE_POLL_ERRORS,
+  RECEIVE_POLL,
+  RECEIVE_POLLS,
+  DELETE_POLL
+} from "../actions/poll_actions";
 
 const pollErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
-  switch(action.type){
+  switch (action.type) {
     case RECEIVE_POLL_ERRORS:
       return action.errors ? action.errors : null;
     case RECEIVE_POLL:
@@ -10,11 +15,10 @@ const pollErrorsReducer = (oldState = [], action) => {
     case RECEIVE_POLLS:
       return [];
     case DELETE_POLL:
-      return []; 
+      return [];
     default:
       return oldState;
   }
-} 
+};
 
 export default pollErrorsReducer;
-

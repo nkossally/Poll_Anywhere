@@ -20,7 +20,6 @@ const mapStateToProps = (state, ownProps) => {
   });
   let defaultGroupId;
   if (groups.length > 0) defaultGroupId = groups[0].id;
-  debugger;
   return {
     user: user,
     user_id: state.session.id,

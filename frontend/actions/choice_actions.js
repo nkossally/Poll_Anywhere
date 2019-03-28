@@ -1,78 +1,78 @@
-import * as ChoiceApiUtil from '../util/choice_api_util';
+import * as ChoiceApiUtil from "../util/choice_api_util";
 
-export const RECEIVE_CHOICE = 'RECEIVE_CHOICE';
-export const RECEIVE_CHOICES = 'RECEIVE_CHOICES';
-export const DELETE_CHOICE = 'DELETE_CHOICE';
-export const RECEIVE_CHOICE_ERRORS = 'RECEIVE_CHOICE_ERRORS';
+export const RECEIVE_CHOICE = "RECEIVE_CHOICE";
+export const RECEIVE_CHOICES = "RECEIVE_CHOICES";
+export const DELETE_CHOICE = "DELETE_CHOICE";
+export const RECEIVE_CHOICE_ERRORS = "RECEIVE_CHOICE_ERRORS";
 
-export const createChoice = (choiceArr, poll) =>{
-  return dispatch =>{
+export const createChoice = (choiceArr, poll) => {
+  return dispatch => {
     ChoiceApiUtil.createChoice(choiceArr, poll).then(
-      (choiceArr) =>{
-        return dispatch(receiveChoice(choiceArr))
+      choiceArr => {
+        return dispatch(receiveChoice(choiceArr));
       },
-      errors =>{
+      errors => {
         return dispatch(receiveChoiceErrors(errors.responseJSON));
       }
-    )
-  }
-}
+    );
+  };
+};
 
-export const showChoice = (id) =>{
-  return dispatch =>{
+export const showChoice = id => {
+  return dispatch => {
     ChoiceApiUtil.showChoice(id).then(
-      (choice) =>{
-        return dispatch(receiveChoice(choice))
+      choice => {
+        return dispatch(receiveChoice(choice));
       },
-      errors =>{
+      errors => {
         return dispatch(receiveChoiceErrors(errors.responseJSON));
       }
-    )
-  }
-}
+    );
+  };
+};
 
-export const showAllChoices = () =>{
-  return dispatch =>{
+export const showAllChoices = () => {
+  return dispatch => {
     ChoiceApiUtil.showAllChoices().then(
-      (choices) =>{
-        return dispatch(receiveChoices(choices))
+      choices => {
+        return dispatch(receiveChoices(choices));
       },
-      errors =>{
+      errors => {
         return dispatch(receiveChoiceErrors(errors.responseJSON));
       }
-    )
-  }
-}
+    );
+  };
+};
 
-export const destroyChoice = (id) =>{
-  return dispatch =>{
+export const destroyChoice = id => {
+  return dispatch => {
     ChoiceApiUtil.destroyChoice(id).then(
-      () =>{
-        return dispatch(deleteChoice(id))
+      () => {
+        return dispatch(deleteChoice(id));
       },
-      errors =>{
+      errors => {
         return dispatch(receiveChoiceErrors(errors.responseJSON));
       }
-    )
-  }
-}
+    );
+  };
+};
 
-const receiveChoice = (choice) =>({
+const receiveChoice = choice => ({
   type: RECEIVE_CHOICE,
   choice
 });
 
-const receiveChoices = (choices) =>({
+const receiveChoices = choices => ({
   type: RECEIVE_CHOICES,
   choices
 });
 
-const deleteChoice = (id) =>({
+const deleteChoice = id => ({
   type: DELETE_CHOICE,
   id
 });
 
-const receiveChoiceErrors = (errors) =>({
+const receiveChoiceErrors = errors => ({
   type: RECEIVE_CHOICE_ERRORS,
   errors
 });

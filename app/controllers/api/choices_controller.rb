@@ -1,7 +1,5 @@
 class Api::ChoicesController < ApplicationController
 
-
-
   def create
     broken = false
     @choices = []

@@ -1,11 +1,10 @@
-import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
-import { connect } from 'react-redux';
-import CreateGroupContainer from '../groups/group_container';
+import React from "react";
+import { closeModal } from "../../actions/modal_actions";
+import { connect } from "react-redux";
+import CreateGroupContainer from "../groups/group_container";
 
-function Modal( {modal, closeModal}){
-
-  if(!modal) {
+function Modal({ modal, closeModal }) {
+  if (!modal) {
     return null;
   }
 
@@ -30,6 +29,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Modal);
