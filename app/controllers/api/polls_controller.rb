@@ -11,7 +11,7 @@ class Api::PollsController < ApplicationController
 
   def show
     @poll = Poll.find_by(id: params[:id])
-    if(@poll)
+    if @poll
       render :show
     else
       render json: ["Poll not found"], status: 404
@@ -19,22 +19,22 @@ class Api::PollsController < ApplicationController
   end
 
   def update
-    broken = false
-    if(!params[:group])
-      @poll = Poll.find_by(id: params[:id])
-      if(@poll.update(poll_params))
-        render :show
-      end
-    elsif(params[:group])
-      pollIds = params[:poll]
-      pollIds.each do |id|
-        realPoll = Poll.find(id)
-        if(! realPoll.update(group_id: params[:group][:id] ))
-          broken = true
+    @poll = Poll.find_by(id: params[:id])
+    if @poll.update(poll_params)
+      if poll_params[:active]
+        group = Group.find(@poll.group_id)
+        user = User.find(group.user_id)
+        user.groups.each do |group|
+          group.polls.each do |poll|
+            unless poll == @poll
+              if poll.active
+                poll.update({ "active"=>false })
+              end
+            end
+          end
         end
       end
-      @group = Group.find_by(id: params[:group][:id])
-      render "api/groups/show" unless broken
+      render :show
     else
       render json: ["Could not update poll"], status: 404
     end

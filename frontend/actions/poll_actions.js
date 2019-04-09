@@ -43,7 +43,8 @@ export const updatePoll = (poll, id, choices, group) => {
     PollApiUtil.updatePoll(poll, id, choices, group).then(poll => {
       return ChoiceApiUtil.createChoice(choices, poll).then(
         poll => {
-          return dispatch(receivePoll(poll));
+          // dispatch(receivePoll(poll));
+          dispatch(showAllPolls());
         },
         errors => {
           return dispatch(receivePollErrors(errors.responseJSON));

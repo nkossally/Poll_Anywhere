@@ -73,17 +73,17 @@ class User extends React.Component {
 
   activate(id) {
     return () => {
-      let inactivePoll = { active: false };
+      // let inactivePoll = { active: false };
       let activePoll = { active: true };
-      for (let i = 0; i < this.props.polls.length; i++) {
-        const poll = this.props.polls[i];
+      // for (let i = 0; i < this.props.polls.length; i++) {
+      //   const poll = this.props.polls[i];
 
-        if (poll.id === id) {
-          this.props.updatePoll(activePoll, poll.id);
-        } else {
-          this.props.updatePoll(inactivePoll, poll.id);
-        }
-      }
+      //   if (poll.id === id) {
+      this.props.updatePoll(activePoll, id);
+      //   } else {
+      //     this.props.updatePoll(inactivePoll, poll.id);
+      //   }
+      // }
     };
   }
 
