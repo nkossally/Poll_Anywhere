@@ -23,3 +23,11 @@ export const destroyGroup = id =>
     method: "DELETE",
     url: `/api/groups/${id}`
   });
+
+export const updateGroup = (pollIds, group) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/groups/${group.id}`,
+    data: { pollIds, group }
+  });
+};

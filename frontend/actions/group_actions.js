@@ -55,6 +55,22 @@ export const showAllGroups = () => {
   };
 };
 
+export const updateGroup = (pollIds, group) => {
+  return dispatch => {
+    GroupApiUtil.updateGroup(pollIds, group).then(
+      group => {
+        dispatch(deselectPolls());
+        // dispatch(receiveGroup(group));
+        dispatch(showAllPolls());
+        dispatch(showAllGroups());
+      },
+      errors => {
+        return dispatch(receivePollErrors(errors.responseJSON));
+      }
+    );
+  };
+};
+
 export const destroyGroup = id => {
   return dispatch => {
     GroupApiUtil.destroyGroup(id).then(

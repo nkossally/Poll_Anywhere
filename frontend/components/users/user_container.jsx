@@ -4,10 +4,13 @@ import User from "./user";
 import {
   showAllPolls,
   updatePoll,
-  updatePollChangeGroup,
   destroyPoll
 } from "../../actions/poll_actions";
-import { showAllGroups, destroyGroup } from "../../actions/group_actions";
+import {
+  showAllGroups,
+  destroyGroup,
+  updateGroup
+} from "../../actions/group_actions";
 import { showUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import {
@@ -76,10 +79,9 @@ const mapDispatchToProps = dispatch => {
     selectPoll: poll => dispatch(selectPoll(poll)),
     deselectPoll: poll => dispatch(deselectPoll(poll)),
     showUser: id => dispatch(showUser(id)),
-    updatePollChangeGroup: (poll, group) =>
-      dispatch(updatePollChangeGroup(poll, group)),
     destroyPoll: id => dispatch(destroyPoll(id)),
-    destroyGroup: id => dispatch(destroyGroup(id))
+    destroyGroup: id => dispatch(destroyGroup(id)),
+    updateGroup: (pollIds, group) => dispatch(updateGroup(pollIds, group))
   };
 };
 

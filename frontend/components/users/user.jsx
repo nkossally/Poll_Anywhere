@@ -40,13 +40,13 @@ class User extends React.Component {
 
   onDrop(event, group) {
     event.preventDefault();
-    this.props.updatePollChangeGroup([this.state.draggedPoll.id], group);
+    this.props.updateGroup([this.state.draggedPoll.id], group);
   }
 
   handleUngroup() {
     let pollIds = this.state.selectedPolls.map(poll => poll.id);
     let group = this.props.groups[0];
-    this.props.updatePollChangeGroup(pollIds, group);
+    this.props.updateGroup(pollIds, group);
     this.setState({ selectedPolls: [] });
   }
 
@@ -67,9 +67,7 @@ class User extends React.Component {
   selectPoll(poll) {
     return () => {
       this.props.selectPoll(poll);
-      let newSelection = this.state.selectedPolls;
-      newSelection.push(poll);
-      this.setState({ selectedPolls: newSelection });
+      this.setState({ selectedPolls: this.state.selectedPolls.concat(poll) });
     };
   }
 
